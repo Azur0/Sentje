@@ -241,8 +241,8 @@
             <div class="col-sm-4">
               <div class="team-member">
                 <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-                <h4>Kay Garland</h4>
-                <p class="text-muted">Lead Designer</p>
+                <h4>Burak Imre</h4>
+                <p class="text-muted">Developer</p>
                 <ul class="list-inline social-buttons">
                   <li class="list-inline-item">
                     <a href="#">
@@ -265,8 +265,8 @@
             <div class="col-sm-4">
               <div class="team-member">
                 <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-                <h4>Larry Parker</h4>
-                <p class="text-muted">Lead Marketer</p>
+                <h4>Jeroen van Beuningen</h4>
+                <p class="text-muted">Developer</p>
                 <ul class="list-inline social-buttons">
                   <li class="list-inline-item">
                     <a href="#">
@@ -289,16 +289,16 @@
             <div class="col-sm-4">
               <div class="team-member">
                 <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-                <h4>Diana Pertersen</h4>
-                <p class="text-muted">Lead Developer</p>
+                <h4>Thanos</h4>
+                <p class="text-muted">Marketing</p>
                 <ul class="list-inline social-buttons">
                   <li class="list-inline-item">
-                    <a href="#">
+                    <a href="https://twitter.com/lonelythanos">
                       <i class="fab fa-twitter"></i>
                     </a>
                   </li>
                   <li class="list-inline-item">
-                    <a href="#">
+                    <a href="https://www.facebook.com/ThanosMarveI/">
                       <i class="fab fa-facebook-f"></i>
                     </a>
                   </li>
@@ -310,7 +310,6 @@
                 </ul>
               </div>
             </div>
-          </div>
           <div class="row">
             <div class="col-lg-8 mx-auto text-center">
               <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
