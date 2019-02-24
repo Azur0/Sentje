@@ -124,6 +124,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
+  cursor: pointer;
   font-size: 90%;
   font-weight: 400;
   padding: 0.75em 0;
@@ -683,4 +684,8 @@ ul.social-buttons li a {
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
   background-color: #fed136;
+}
+
+.con-target {
+    display: block !important;
 }
