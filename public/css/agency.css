@@ -721,7 +721,13 @@ footer {
 
 #content_wrapper
 {
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
+}
+
+#banner
+{
+  min-height: 101px;
+  background-color: #F3F3F3;
 }
 
 #form_login
@@ -729,6 +735,6 @@ footer {
   width: 500px;
   background-color: #26292D
   color: #ffffff;
-  margin: 6em auto;
+  margin: auto;
   padding: 1em;
 }
