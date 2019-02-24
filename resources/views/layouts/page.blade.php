@@ -11,9 +11,9 @@
     </head>
     <body id="page-top">
         @include('partials.header')
-
-        @yield('content')
-
+        <div id="content_wrapper">
+            @yield('content')
+        </div>
         @include('partials.footer')
 
         <!-- Bootstrap core JavaScript -->

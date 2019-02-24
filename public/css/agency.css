@@ -718,3 +718,17 @@ footer {
 #mainNav .navbar-nav .nav-item .nav-link-custom {
     padding: 1.1em 1em !important;
 }
+
+#content_wrapper
+{
+  min-height: 100vh;
+}
+
+#form_login
+{
+  width: 500px;
+  background-color: #26292D
+  color: #ffffff;
+  margin: 6em auto;
+  padding: 1em;
+}
