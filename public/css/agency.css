@@ -686,6 +686,15 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   background-color: #fed136;
 }
 
+footer {
+    background-color: #212529;
+    padding: 10px 0px !important;
+}
+
+.copyright {
+    color: #fed136 !important;
+}
+
 .con-target {
     display: block !important;
 }
