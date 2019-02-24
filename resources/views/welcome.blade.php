@@ -111,7 +111,7 @@
               <div class="team-member">
                 <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
                 <h4>Thanos</h4>
-                <p class="text-muted">Marketing</p>
+                <p class="text-muted">HR</p>
                 <ul class="list-inline social-buttons">
                   <li class="list-inline-item">
                     <a href="https://twitter.com/lonelythanos">
@@ -131,11 +131,6 @@
                 </ul>
               </div>
             </div>
-          <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-              <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-            </div>
-          </div>
         </div>
       </section>
 

@@ -27,10 +27,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">Login</a>
+                  <a class="nav-link-custom js-scroll-trigger" href="{{ url('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">Sign up</a>
+                  <a class="nav-link-custom js-scroll-trigger" href="{{ url('register') }}">Sign up</a>
                 </li>
               </ul>
             </div>
