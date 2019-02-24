@@ -3,9 +3,9 @@
     <head>
         @include('partials._metaData')
 
-        <title><?= $title . ' | ' ?>{{ config('app.name', 'Sentje') }}</title>
+        <title>@yield('title') | {{ config('app.name', 'Sentje') }}</title>
         <link rel="icon" type="image/png" href=".\img\icon.png" />
-        
+
         @include('partials._styles')
 
     </head>

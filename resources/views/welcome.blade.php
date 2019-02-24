@@ -1,5 +1,7 @@
 @extends('layouts/page')
 
+@section('title', 'Home')
+
 @section('content')
     <!-- Header -->
   <header class="masthead">
