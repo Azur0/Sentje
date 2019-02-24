@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?= $title . ' | ' ?>{{ config('app.name', 'Sentje') }}</title>
-
+        <link rel="icon" type="image/png" href=".\img\icon.png" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
