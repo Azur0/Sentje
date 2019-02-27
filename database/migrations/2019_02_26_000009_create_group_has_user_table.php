@@ -23,8 +23,8 @@ class CreateGroupHasUserTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('ID');
-            $table->integer('group_ID');
-            $table->integer('user_ID');
+            $table->unsignedInteger('group_ID');
+            $table->unsignedInteger('user_ID');
             $table->timestamps();
 
             $table->index(["user_ID"], 'fk_group_has_user_user1_idx');

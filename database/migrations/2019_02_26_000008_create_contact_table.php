@@ -23,8 +23,8 @@ class CreateContactTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('ID');
-            $table->integer('user_ID');
-            $table->integer('user_ID1');
+            $table->unsignedInteger('user_ID');
+            $table->unsignedInteger('user_ID1');
             $table->timestamps();
 
             $table->index(["user_ID1"], 'fk_group_user2_idx');

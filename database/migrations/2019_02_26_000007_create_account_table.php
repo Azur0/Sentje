@@ -23,7 +23,7 @@ class CreateAccountTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('ID');
-            $table->integer('user_ID');
+            $table->unsignedInteger('user_ID');
             $table->string('iban', 40);
             $table->timestamps();
 

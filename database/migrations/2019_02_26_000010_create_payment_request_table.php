@@ -23,10 +23,10 @@ class CreatePaymentRequestTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('ID');
-            $table->integer('created_by_user_ID');
-            $table->integer('to_user_ID');
-            $table->integer('deposit_account_ID');
-            $table->integer('currency_ID')->default('Euro');
+            $table->unsignedInteger('created_by_user_ID');
+            $table->unsignedInteger('to_user_ID');
+            $table->unsignedInteger('deposit_account_ID');
+            $table->unsignedInteger('currency_ID');
             $table->double('requested_amount');
             $table->enum('status', ['pending', 'partial', 'completed', 'canceled'])->default('pending');
             $table->string('payment_url');

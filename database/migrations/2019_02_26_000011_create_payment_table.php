@@ -23,11 +23,11 @@ class CreatePaymentTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('ID');
-            $table->integer('user_ID')->nullable();
-            $table->integer('payment_request_ID');
+            $table->unsignedInteger('user_ID')->nullable();
+            $table->unsignedInteger('payment_request_ID');
             $table->string('description');
             $table->double('amount');
-            $table->integer('currency_ID')->default('Euro');
+            $table->unsignedInteger('currency_ID');
             $table->string('iban', 40);
             $table->binary('media')->nullable();
             $table->timestamps();
