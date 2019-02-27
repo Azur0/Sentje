@@ -24,6 +24,7 @@ class CreateGroupTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('ID');
             $table->string('groupname', 45);
+            $table->timestamps();
         });
     }
 

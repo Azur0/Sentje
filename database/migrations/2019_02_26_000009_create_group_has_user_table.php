@@ -25,6 +25,7 @@ class CreateGroupHasUserTable extends Migration
             $table->increments('ID');
             $table->integer('group_ID');
             $table->integer('user_ID');
+            $table->timestamps();
 
             $table->index(["user_ID"], 'fk_group_has_user_user1_idx');
 

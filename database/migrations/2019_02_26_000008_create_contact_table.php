@@ -25,6 +25,7 @@ class CreateContactTable extends Migration
             $table->increments('ID');
             $table->integer('user_ID');
             $table->integer('user_ID1');
+            $table->timestamps();
 
             $table->index(["user_ID1"], 'fk_group_user2_idx');
 

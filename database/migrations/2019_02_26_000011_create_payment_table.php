@@ -30,6 +30,7 @@ class CreatePaymentTable extends Migration
             $table->integer('currency_ID')->default('Euro');
             $table->string('iban', 40);
             $table->binary('media')->nullable();
+            $table->timestamps();
 
             $table->index(["user_ID"], 'fk_payment_user1_idx');
 
