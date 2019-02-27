@@ -10,11 +10,11 @@
 
     </head>
     <body id="page-top">
-        @include('partials.header')
+        @include('partials._header')
         <div id="content_wrapper">
             @yield('content')
         </div>
-        @include('partials.footer')
+        @include('partials._footer')
 
         <!-- Bootstrap core JavaScript -->
         <script src="{{ asset('js/jquery.min.js') }}"></script>
