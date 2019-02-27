@@ -10,7 +10,7 @@ class CreateAccountTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'account';
+    public $tableName = 'accounts';
 
     /**
      * Run the migrations.
@@ -31,7 +31,7 @@ class CreateAccountTable extends Migration
 
 
             $table->foreign('user_ID', 'fk_account_user1_idx')
-                ->references('ID')->on('user')
+                ->references('ID')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

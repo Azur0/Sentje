@@ -33,12 +33,12 @@ class CreateGroupHasUserTable extends Migration
 
 
             $table->foreign('group_ID', 'fk_group_has_user_group1_idx')
-                ->references('ID')->on('group')
+                ->references('ID')->on('groups')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('user_ID', 'fk_group_has_user_user1_idx')
-                ->references('ID')->on('user')
+                ->references('ID')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

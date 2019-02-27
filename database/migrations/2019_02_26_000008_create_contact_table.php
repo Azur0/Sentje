@@ -10,7 +10,7 @@ class CreateContactTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'contact';
+    public $tableName = 'contacts';
 
     /**
      * Run the migrations.
@@ -33,12 +33,12 @@ class CreateContactTable extends Migration
 
 
             $table->foreign('user_ID', 'fk_group_user1_idx')
-                ->references('ID')->on('user')
+                ->references('ID')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('user_ID1', 'fk_group_user2_idx')
-                ->references('ID')->on('user')
+                ->references('ID')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

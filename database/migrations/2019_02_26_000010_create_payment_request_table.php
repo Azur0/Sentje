@@ -10,7 +10,7 @@ class CreatePaymentRequestTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'payment_request';
+    public $tableName = 'payment_requests';
 
     /**
      * Run the migrations.
@@ -44,17 +44,17 @@ class CreatePaymentRequestTable extends Migration
 
 
             $table->foreign('created_by_user_ID', 'fk_payment_request_user_idx')
-                ->references('ID')->on('user')
+                ->references('ID')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('deposit_account_ID', 'fk_payment_request_account2_idx')
-                ->references('ID')->on('account')
+                ->references('ID')->on('accounts')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('to_user_ID', 'fk_payment_request_user1_idx')
-                ->references('ID')->on('user')
+                ->references('ID')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
