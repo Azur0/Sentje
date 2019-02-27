@@ -724,18 +724,46 @@ footer {
   min-height: calc(100vh - 70px);
 }
 
-#banner
+#bg_img
 {
-  min-height: 101px;
-  background-color: #F3F3F3;
+  min-height: calc(100vh - 70px);
+  background-image: url(../img/header-bg.jpg);
+  padding: 140px 0 0 0;
 }
 
-#form_login
+#form_login, #form_register 
 {
-  width: 500px;
-  background-color: #26292D
-  color: #ffffff;
   margin: auto;
+  width: 500px;
+  background-color: #F3F3F3;
+  position: relative;
+}
+.form_buttons
+{
+  background-color: #14181D;
+  padding: 1em;
+  text-align: center;
+}
+.form_buttons input[type="button"], .form_buttons a
+{
+  width: calc(50% - (1em / 2));
+}
+
+.form_fields
+{
   padding: 1em;
 }
-
+.form_fields input, .form_fields label
+{
+  width: 40%;
+  font-size: 20px;
+  margin: 0 0 1em 0;
+}
+.form_fields input
+{
+  border: 4px solid #FFFFFF;
+  border-radius: .25rem;
+  outline: none;
+  padding: 5px 8px;
+  width: 60%;
+}
