@@ -737,6 +737,7 @@ footer {
   width: 500px;
   background-color: #F3F3F3;
   position: relative;
+  border-radius: .25rem;
 }
 .form_buttons
 {
