@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PaymentRequestController extends Controller
 {
+    public function getOverview()
+    {
+        return view('overview', ['' => $mocs],['incomingPaymentRequests' => $]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +29,7 @@ class PaymentRequestController extends Controller
      */
     public function create()
     {
-        //
+        return view('payment_request');
     }
 
     /**
