@@ -728,10 +728,14 @@ footer {
 {
   min-height: calc(100vh - 70px);
   background-image: url(../img/header-bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
   padding: 140px 0 0 0;
 }
 
-#form_login, #form_register 
+#form_login, #form_register
 {
   margin: auto;
   width: 500px;
