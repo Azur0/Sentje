@@ -11,12 +11,11 @@
 			<label for="password">Password</label><input type="password" name="password" required="true">
 			<label for="password2">Password</label><input type="password" name="password2" required="true">
 		</div>
-		<div id="form_response">
-			
+		<div id="logreg_other">
+			Already have an account? Login <a href="./login">here</a>
 		</div>
 		<div class="form_buttons">
-			<input class="btn btn-primary btn-xl text-uppercase" type="button" name="login" value="login">
-			<a href="./register" class="btn btn-primary btn-xl text-uppercase">register</a>
+			<input class="btn btn-primary btn-xl text-uppercase" type="button" name="login" value="register">
 		</div>
 	</form>
 </div>
