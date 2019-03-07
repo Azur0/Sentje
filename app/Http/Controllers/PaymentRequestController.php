@@ -9,7 +9,10 @@ class PaymentRequestController extends Controller
 {
     public function getOverview()
     {
-        return view('overview', ['' => $mocs],['incomingPaymentRequests' => $]);
+        $payment1 = Payment::All();
+        $payment2 = PaymentRequest::All();
+
+        return view('overview', ['Payment' => $payment1],['incomingPaymentRequests' => $payment2]);
     }
 
     /**
