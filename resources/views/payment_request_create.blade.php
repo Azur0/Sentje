@@ -4,6 +4,11 @@
 
 @section('content')
 <div id="bg_img">
-	overview
+	
+	<form method="POST" action="/paymentrequest/create" id="moc_create_form">
+		{{csrf_field() }}
+
+	</form>
+
 </div>
 @endsection

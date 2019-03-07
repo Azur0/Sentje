@@ -22,3 +22,16 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/overview', 'PaymentRequestController@getOverview');
+
+Route::get('/paymentrequest/create', 'PaymentRequestController@create');
+Route::post('/paymentrequest/create', 'PaymentRequestController@create');
+
+Route::get('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@show');
+
+Route::delete('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@destroy');
+Route::patch('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@update');
+
+Route::get('/paymentrequest/{{paymentrequest}}/edit', 'PaymentRequestController@edit');
+
