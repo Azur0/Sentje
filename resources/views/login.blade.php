@@ -10,10 +10,10 @@
 			<label for="password">Password</label><input type="password" name="password" required="true">
 		</div>
 		<div id="form_response">
-			
+
 		</div>
 		<div id="logreg_other">
-			don't have an account? Register <a href="./login">here</a>
+			don't have an account? Register <a href="/register">here</a>
 		</div>
 		<div class="form_buttons">
 			<input class="btn btn-primary btn-xl text-uppercase" type="button" name="login" value="login">
