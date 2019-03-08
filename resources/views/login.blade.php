@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-<div id="bg_img">
+<div id="bg_img" style="background-image: url(../img/header-bg.jpg)">
 	<form id="form_login">
 		<div class="form_fields">
 			<label for="email">Email</label><input type="email" name="email" required="true">

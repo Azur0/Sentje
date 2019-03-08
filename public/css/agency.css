@@ -727,7 +727,6 @@ footer {
 #bg_img
 {
   min-height: calc(100vh - 70px);
-  background-image: url(../img/header-bg.jpg);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
