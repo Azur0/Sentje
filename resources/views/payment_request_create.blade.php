@@ -4,9 +4,9 @@
 
 @section('content')
 <div id="bg_img">
-	
+
 	<form method="POST" action="/paymentrequest/create" id="moc_create_form">
-		{{csrf_field() }}
+		{{ csrf_field() }}
 
 	</form>
 
