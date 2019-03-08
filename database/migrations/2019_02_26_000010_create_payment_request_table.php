@@ -22,11 +22,11 @@ class CreatePaymentRequestTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('ID');
-            $table->unsignedInteger('created_by_user_ID');
-            $table->unsignedInteger('to_user_ID');
-            $table->unsignedInteger('deposit_account_ID');
-            $table->unsignedInteger('currency_ID');
+            $table->increments('id');
+            $table->unsignedInteger('created_by_user_id');
+            $table->unsignedInteger('to_user_id');
+            $table->unsignedInteger('deposit_account_id');
+            $table->unsignedInteger('currency_id');
             $table->double('requested_amount');
             $table->enum('status', ['pending', 'partial', 'completed', 'canceled'])->default('pending');
             $table->string('payment_url');
@@ -34,32 +34,32 @@ class CreatePaymentRequestTable extends Migration
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
             $table->timestamps();
 
-            $table->index(["created_by_user_ID"], 'fk_payment_request_user_idx');
+            $table->index(["created_by_user_id"], 'fk_payment_request_user_idx');
 
-            $table->index(["currency_ID"], 'fk_payment_request_currency1_idx');
+            $table->index(["currency_id"], 'fk_payment_request_currency1_idx');
 
-            $table->index(["to_user_ID"], 'fk_payment_request_user1_idx');
+            $table->index(["to_user_id"], 'fk_payment_request_user1_idx');
 
-            $table->index(["deposit_account_ID"], 'fk_payment_request_account2_idx');
+            $table->index(["deposit_account_id"], 'fk_payment_request_account2_idx');
 
 
-            $table->foreign('created_by_user_ID', 'fk_payment_request_user_idx')
-                ->references('ID')->on('users')
+            $table->foreign('created_by_user_id', 'fk_payment_request_user_idx')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('deposit_account_ID', 'fk_payment_request_account2_idx')
-                ->references('ID')->on('accounts')
+            $table->foreign('deposit_account_id', 'fk_payment_request_account2_idx')
+                ->references('id')->on('accounts')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('to_user_ID', 'fk_payment_request_user1_idx')
-                ->references('ID')->on('users')
+            $table->foreign('to_user_id', 'fk_payment_request_user1_idx')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('currency_ID', 'fk_payment_request_currency1_idx')
-                ->references('ID')->on('currency')
+            $table->foreign('currency_id', 'fk_payment_request_currency1_idx')
+                ->references('id')->on('currency')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

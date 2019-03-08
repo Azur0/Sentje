@@ -22,17 +22,17 @@ class CreateAccountTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('ID');
-            $table->unsignedInteger('user_ID');
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('name', 40);
             $table->string('iban', 40);
             $table->timestamps();
 
-            $table->index(["user_ID"], 'fk_account_user1_idx');
+            $table->index(["user_id"], 'fk_account_user1_idx');
 
 
-            $table->foreign('user_ID', 'fk_account_user1_idx')
-                ->references('ID')->on('users')
+            $table->foreign('user_id', 'fk_account_user1_idx')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

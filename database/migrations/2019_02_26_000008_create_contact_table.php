@@ -22,23 +22,23 @@ class CreateContactTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('ID');
-            $table->unsignedInteger('user_ID');
-            $table->unsignedInteger('user_ID1');
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id1');
             $table->timestamps();
 
-            $table->index(["user_ID1"], 'fk_group_user2_idx');
+            $table->index(["user_id1"], 'fk_group_user2_idx');
 
-            $table->index(["user_ID"], 'fk_group_user1_idx');
+            $table->index(["user_id"], 'fk_group_user1_idx');
 
 
-            $table->foreign('user_ID', 'fk_group_user1_idx')
-                ->references('ID')->on('users')
+            $table->foreign('user_id', 'fk_group_user1_idx')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('user_ID1', 'fk_group_user2_idx')
-                ->references('ID')->on('users')
+            $table->foreign('user_id1', 'fk_group_user2_idx')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

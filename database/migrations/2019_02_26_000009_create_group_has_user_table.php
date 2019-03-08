@@ -22,23 +22,23 @@ class CreateGroupHasUserTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('ID');
-            $table->unsignedInteger('group_ID');
-            $table->unsignedInteger('user_ID');
+            $table->increments('id');
+            $table->unsignedInteger('group_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
 
-            $table->index(["user_ID"], 'fk_group_has_user_user1_idx');
+            $table->index(["user_id"], 'fk_group_has_user_user1_idx');
 
-            $table->index(["group_ID"], 'fk_group_has_user_group1_idx');
+            $table->index(["group_id"], 'fk_group_has_user_group1_idx');
 
 
-            $table->foreign('group_ID', 'fk_group_has_user_group1_idx')
-                ->references('ID')->on('groups')
+            $table->foreign('group_id', 'fk_group_has_user_group1_idx')
+                ->references('id')->on('groups')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('user_ID', 'fk_group_has_user_user1_idx')
-                ->references('ID')->on('users')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

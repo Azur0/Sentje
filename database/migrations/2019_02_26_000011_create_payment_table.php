@@ -22,35 +22,35 @@ class CreatePaymentTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('ID');
-            $table->unsignedInteger('user_ID')->nullable();
-            $table->unsignedInteger('payment_request_ID');
+            $table->increments('id');
+            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('payment_request_id');
             $table->string('description');
             $table->double('amount');
-            $table->unsignedInteger('currency_ID');
+            $table->unsignedInteger('currency_id');
             $table->string('iban', 40);
             $table->binary('media')->nullable();
             $table->timestamps();
 
-            $table->index(["user_ID"], 'fk_payment_user1_idx');
+            $table->index(["user_id"], 'fk_payment_user1_idx');
 
-            $table->index(["payment_request_ID"], 'fk_payment_payment_request1_idx');
+            $table->index(["payment_request_id"], 'fk_payment_payment_request1_idx');
 
-            $table->index(["currency_ID"], 'fk_payment_currency1_idx');
+            $table->index(["currency_id"], 'fk_payment_currency1_idx');
 
 
-            $table->foreign('user_ID', 'fk_payment_user1_idx')
-                ->references('ID')->on('users')
+            $table->foreign('user_id', 'fk_payment_user1_idx')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('payment_request_ID', 'fk_payment_payment_request1_idx')
-                ->references('ID')->on('payment_requests')
+            $table->foreign('payment_request_id', 'fk_payment_payment_request1_idx')
+                ->references('id')->on('payment_requests')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('currency_ID', 'fk_payment_currency1_idx')
-                ->references('ID')->on('currency')
+            $table->foreign('currency_id', 'fk_payment_currency1_idx')
+                ->references('id')->on('currency')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

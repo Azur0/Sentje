@@ -22,7 +22,7 @@ class CreateCurrencyTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('ID');
+            $table->increments('id');
             $table->string('currency', 45);
             $table->timestamps();
         });
