@@ -16,11 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/register', function () {
-    return view('register');
+    return view('auth.register');
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth.login');
 });
 
 Route::get('/overview', 'PaymentRequestController@getOverview');
@@ -39,3 +39,7 @@ Route::get('/paymentrequest/{{paymentrequest}}/edit', 'PaymentRequestController@
 Route::get('/accounts/index', function () {
     return view('accounts.index');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
