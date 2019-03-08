@@ -15,14 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
 Route::get('/overview', 'PaymentRequestController@getOverview');
 
 Route::get('/paymentrequest/create', 'PaymentRequestController@create');
@@ -34,11 +26,6 @@ Route::delete('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@de
 Route::patch('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@update');
 
 Route::get('/paymentrequest/{{paymentrequest}}/edit', 'PaymentRequestController@edit');
-
-//  Accounts
-Route::get('/accounts/index', function () {
-    return view('accounts.index');
-});
 
 Auth::routes();
 
