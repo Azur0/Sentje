@@ -36,6 +36,6 @@ Route::patch('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@upd
 Route::get('/paymentrequest/{{paymentrequest}}/edit', 'PaymentRequestController@edit');
 
 //  Accounts
-Route::get('/account/index', function () {
+Route::get('/accounts/index', function () {
     return view('accounts.index');
 });

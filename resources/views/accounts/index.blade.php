@@ -7,4 +7,7 @@
         </div>
       </div>
     </header>
+    <div class="container">
+        
+    </div>
 @endsection
