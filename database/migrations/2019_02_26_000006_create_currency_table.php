@@ -10,7 +10,7 @@ class CreateCurrencyTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'currency';
+    public $tableName = 'currencies';
 
     /**
      * Run the migrations.
