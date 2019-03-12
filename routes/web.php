@@ -27,8 +27,6 @@ Route::get('/paymentrequest/{{paymentrequest}}/edit', 'PaymentRequestController@
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Group::routes();
-
 Route::resource('groups', 'GroupsController');
 Route::resource('accounts', 'AccountsController');
 Route::resource('currency', 'CurrencyController');

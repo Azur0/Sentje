@@ -26,7 +26,7 @@ class CreatePaymentRequestTable extends Migration
             $table->unsignedInteger('created_by_user_id');
             $table->unsignedInteger('to_user_id');
             $table->unsignedInteger('deposit_account_id');
-            $table->unsignedInteger('currency_id');
+            $table->unsignedInteger('currencies_id');
             $table->double('requested_amount');
             $table->enum('status', ['pending', 'partial', 'completed', 'canceled'])->default('pending');
             $table->string('payment_url');
@@ -36,7 +36,7 @@ class CreatePaymentRequestTable extends Migration
 
             $table->index(["created_by_user_id"], 'fk_payment_request_user_idx');
 
-            $table->index(["currency_id"], 'fk_payment_request_currency1_idx');
+            $table->index(["currencies_id"], 'fk_payment_request_currencies1_idx');
 
             $table->index(["to_user_id"], 'fk_payment_request_user1_idx');
 
@@ -58,8 +58,8 @@ class CreatePaymentRequestTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('currency_id', 'fk_payment_request_currency1_idx')
-                ->references('id')->on('currency')
+            $table->foreign('currencies_id', 'fk_payment_request_currencies1_idx')
+                ->references('id')->on('currencies')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

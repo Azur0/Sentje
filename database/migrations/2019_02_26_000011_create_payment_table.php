@@ -27,7 +27,7 @@ class CreatePaymentTable extends Migration
             $table->unsignedInteger('payment_request_id');
             $table->string('description');
             $table->double('amount');
-            $table->unsignedInteger('currency_id');
+            $table->unsignedInteger('currencies_id');
             $table->string('iban', 40);
             $table->binary('media')->nullable();
             $table->timestamps();
@@ -36,7 +36,7 @@ class CreatePaymentTable extends Migration
 
             $table->index(["payment_request_id"], 'fk_payment_payment_request1_idx');
 
-            $table->index(["currency_id"], 'fk_payment_currency1_idx');
+            $table->index(["currencies_id"], 'fk_payment_currencies1_idx');
 
 
             $table->foreign('user_id', 'fk_payment_user1_idx')
@@ -49,8 +49,8 @@ class CreatePaymentTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('currency_id', 'fk_payment_currency1_idx')
-                ->references('id')->on('currency')
+            $table->foreign('currencies_id', 'fk_payment_currencies1_idx')
+                ->references('id')->on('currencies')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

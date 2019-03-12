@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Currency;
 use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
@@ -13,7 +13,8 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        //
+        //$currencies = Currency::All();
+        return view('currency.create', ['currencies' => Currency::All()]);
     }
 
     /**
@@ -23,7 +24,7 @@ class CurrencyController extends Controller
      */
     public function create()
     {
-        //
+        return view('currency.create');
     }
 
     /**
@@ -34,7 +35,9 @@ class CurrencyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $values = request()->validate([
+            'currency' => ['required','min:2','string','max:45']
+        ]);
     }
 
     /**
@@ -45,7 +48,8 @@ class CurrencyController extends Controller
      */
     public function show($id)
     {
-        //
+        $currency = Currency::find($id);
+        return view('currency.create', ['currencies' => $currency]);
     }
 
     /**
