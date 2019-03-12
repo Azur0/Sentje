@@ -19,14 +19,18 @@ Route::get('/overview', 'PaymentRequestController@getOverview');
 
 Route::get('/paymentrequest/create', 'PaymentRequestController@create');
 Route::post('/paymentrequest/create', 'PaymentRequestController@create');
-
 Route::get('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@show');
-
 Route::delete('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@destroy');
 Route::patch('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@update');
-
 Route::get('/paymentrequest/{{paymentrequest}}/edit', 'PaymentRequestController@edit');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Group::routes();
+
+Route::resource('groups', 'GroupsController');
+Route::resource('accounts', 'AccountsController');
+Route::resource('currency', 'CurrencyController');
+
+
