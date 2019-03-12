@@ -32,12 +32,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Group::class);
     }
 
-    public function user() {
+    public function contact() {
         return $this->belongsTo(Contact::class);
     }
 
     public function account() {
-        return $this->belongsTo(Account::class);
+        return $this->hasMany(Account::class);
     }
 
     public function payment() {

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\Account;
-use App\PaymentRequest;
 
-class AccountController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +13,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = Account::all()->where('user_id', Auth::user()->id);
-        $paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
-
-        return view('accounts.index', compact(['accounts', 'paymentrequests']));
+        //
     }
 
     /**

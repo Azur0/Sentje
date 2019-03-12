@@ -1,13 +1,57 @@
-@extends('layouts/page')
+@extends('layouts.app')
 
 @section('content')
-    <header class="masthead" style="background-image: url(../img/header-bg.jpg)">
-      <div class="container">
-        <div class="intro-text" style="padding: 150px 0px">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card" style="margin-bottom: 50px;">
+                <div class="card-header">
+                    My Accounts
+                    <i class="far fa-plus-square"></i>
+                </div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <ul>
+                    @foreach ($accounts as $account)
+                        <li>
+                            <?= $account->name . '</br>' . $account->iban ?>
+                        </li>
+                    @endforeach
+                    </ul>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Incoming requests</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <ul>
+                    @if ($paymentrequests->count())
+                        @foreach ($paymentrequests as $paymentrequest)
+                            <li>
+                                <?= $paymentrequest->payment_url ?>
+                            </li>
+                        @endforeach
+                    @else
+                        <p>No incoming requests</p>
+                    @endif
+                    </ul>
+
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
-    <div class="container">
-        
     </div>
+</div>
 @endsection

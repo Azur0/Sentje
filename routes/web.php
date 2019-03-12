@@ -29,8 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Group::routes();
 
-Route::resource('groups', 'GroupsController');
-Route::resource('accounts', 'AccountsController');
+Route::resource('groups', 'GroupController');
+Route::resource('accounts', 'AccountController');
 Route::resource('currency', 'CurrencyController');
-
-
+Route::resource('payments', 'PaymentController');
