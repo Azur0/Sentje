@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Currency;
 use Illuminate\Http\Request;
+use Auth;
 
 class CurrencyController extends Controller
 {
@@ -13,8 +14,11 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        $currencies = Currency::All();
-        return view('currency.index', ['currencies' => $currencies]);
+        if(Auth::user()->role == 0)
+        {
+            $currencies = Currency::All();
+            return view('currency.index', ['currencies' => $currencies]);
+        }
     }
 
     /**
@@ -24,7 +28,25 @@ class CurrencyController extends Controller
      */
     public function create()
     {
-        return view('currency.create');
+        if(Auth::user()->role == 0)
+        {
+            return view('currency.create');
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        if(Auth::user()->role == 0)
+        {
+            $currency = Currency::find($id);
+            return view('currency.create', ['currencies' => $currency]);
+        }
     }
 
     /**
@@ -45,18 +67,6 @@ class CurrencyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $currency = Currency::find($id);
-        return view('currency.create', ['currencies' => $currency]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -64,7 +74,11 @@ class CurrencyController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(Auth::user()->role == 0)
+        {
+            $currency = Currency::find($id);
+            return view('currency.update', ['currencies' => $currency]);
+        }
     }
 
     /**

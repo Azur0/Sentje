@@ -13,7 +13,7 @@
 				<ul>
 				@foreach($currencies as $currency)
 					<li>
-						<span>{{$currency->currency}}</span><a href="/currency/{{$currency->id}}/update"></a><a href="/currency/{{$currency->id}}/delete"></a>
+						<span>{{$currency->currency}}</span><a href="/currency/{{$currency->id}}/edit">update</a><a href="/currency/{{$currency->id}}/delete">delete</a>
 					</li>
 				@endforeach
 				</ul>

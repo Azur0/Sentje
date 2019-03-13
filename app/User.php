@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function paymentrequest() {
         return $this->belongsTo(PaymentRequest::class);
     }
+
+    public function roles() {
+        return $this->hasOne(Role::class);
+    }
 }
