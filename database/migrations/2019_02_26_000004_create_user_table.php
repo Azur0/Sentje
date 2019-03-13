@@ -26,8 +26,16 @@ class CreateUserTable extends Migration
             $table->string('name', 45);
             $table->string('email', 100)->unique();
             $table->string('password');
+            $table->unsignedInteger('role_id');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index(["role_id"], 'fk_user_has_role_idx');
+
+            $table->foreign('role_id', 'fk_user_has_role_idx')
+                ->references('id')->on('roles')
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 
