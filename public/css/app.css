@@ -10674,3 +10674,7 @@ a.text-dark:focus {
   background-color: brown;
 }
 
+.card-body {
+  display: none;
+}
+
