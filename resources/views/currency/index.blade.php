@@ -8,12 +8,14 @@
 		<div>
 			<a href="/currency/create">new</a>
 		</div>
+		<br>
 		<div>
+			<h3>Currencies</h3>
 			@if($currencies->count())
 				<ul>
 				@foreach($currencies as $currency)
 					<li>
-						<span>{{$currency->currency}}</span><a href="/currency/{{$currency->id}}/edit">update</a><a href="/currency/{{$currency->id}}/delete">delete</a>
+						<span><a href="/currency/{{$currency->id}}">{{$currency->currency}}</a></span><a href="/currency/{{$currency->id}}/edit">update</a><a href="/currency/{{$currency->id}}/delete">delete</a>
 					</li>
 				@endforeach
 				</ul>

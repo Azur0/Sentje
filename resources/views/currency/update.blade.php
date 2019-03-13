@@ -10,10 +10,8 @@
 			@method('patch')
 
 			<div class="form_row">
-			<label>currency</label><input type="text" name="currency" value={{ $currency->currency }}>
-				@if($currencies->count())
-				<div class="error">{{ $errors->first('currency') }}</div>
-				@endif
+			<label>currency</label><input type="text" name="currency" value="{{$currency->currency}}">
+
 			</div>
 
 			<div class="form_row_buttons">

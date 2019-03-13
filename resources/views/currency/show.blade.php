@@ -5,17 +5,9 @@
 @section('content')
 <div id="bg_img" style="background-image: url(../img/header-bg.jpg)">
 	<div id="content">	
-		<form id="form" action="/" method="POST">
-			@csrf
-			<div class="form_row">
-				<label>currency</label>
-			</div>
-
-			<div class="form_row_buttons">
-				<input type="submit" name="submit">
-				<a href="/currency">cancel</a>
-			</div>
-		</form>
+		<h3>{{$currency->currency}}</h3>
+		<p>{{$currency->created_at}}</p>
+		<p>{{$currency->updated_at}}</p>
 	</div>
 </div>
 @endsection

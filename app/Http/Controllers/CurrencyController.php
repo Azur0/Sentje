@@ -77,7 +77,8 @@ class CurrencyController extends Controller
         if(Auth::user()->role == 0)
         {
             $currency = Currency::find($id);
-            return view('currency.update', ['currencies' => $currency]);
+            //dd($currency);
+            return view('currency.update', ['currency' => $currency]);
         }
     }
 
