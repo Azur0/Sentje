@@ -13,8 +13,8 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        //$currencies = Currency::All();
-        return view('currency.create', ['currencies' => Currency::All()]);
+        $currencies = Currency::All();
+        return view('currency.index', ['currencies' => $currencies]);
     }
 
     /**
@@ -33,11 +33,15 @@ class CurrencyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         $values = request()->validate([
             'currency' => ['required','min:2','string','max:45']
         ]);
+
+        Currency::create($values);
+
+        redirect('/currency.index');
     }
 
     /**

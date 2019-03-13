@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Currency extends Model
 {
+	protected $fillable = [
+		'currency'
+	];
+
     public function payment() {
         return $this->hasMany(Payment::class);
     }
