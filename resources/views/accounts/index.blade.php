@@ -24,10 +24,12 @@
                         <tbody>
                         @foreach ($accounts as $account)
                             <tr>
-                                <?=
-                                    '<td>' . $account->name . '</td></br>
-                                    <td>' . $account->iban . '</td>' .
-                                ?>
+                                <td>{{ $account->name }}</td>
+                                <td>{{ $account->iban }}</td>
+                                <td class="text-center">
+                                    <a href="{{ url("/accounts/$account->id/edit") }}"><i class="fas fa-edit" style="font-size:20px; margin-right: 10px; color:#2578AF;"></i></a>
+                                    <a href="{{ url("/accounts/$account->id/delete") }}"><i class="fas fa-trash-alt" style="font-size:20px; color:red;"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

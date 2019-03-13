@@ -15,6 +15,6 @@ class Account extends Model
     }
 
     public function paymentrequest() {
-        return $this->belongsTo(PaymentRequest::class);
+        return $this->hasMany(PaymentRequest::class);
     }
 }

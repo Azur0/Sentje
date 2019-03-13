@@ -28,7 +28,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('currency', 'CurrencyController');
+
 Route::resource('payments', 'PaymentController');
+
 Route::resource('accounts', 'AccountController');
+Route::get('accounts/{account}/delete', 'AccountController@delete');
 
 Route::get('/admin', 'AdminController@index');
+

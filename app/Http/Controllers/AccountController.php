@@ -73,9 +73,17 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Account $account)
     {
-        //
+        if(Auth::check()) {
+            if($account->user_id == Auth::user()->id) {
+                return view('accounts.edit', compact('account'));
+            } else {
+                return redirect('/accounts');
+            }
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -85,9 +93,32 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Account $account)
     {
-        //
+        $account->update(request(['name', 'iban']));
+
+        return redirect('/accounts');
+    }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Account $account)
+    {
+        $paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id);
+
+        if(Auth::check()) {
+            if($account->user_id == Auth::user()->id) {
+                return view('accounts.delete', compact(['account', 'paymentrequests']));
+            } else {
+                return redirect('/accounts');
+            }
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
