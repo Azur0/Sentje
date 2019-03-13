@@ -29,7 +29,11 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::check()) {
+            return view('accounts.create');
+        }
+
+        return redirect('/');
     }
 
     /**
@@ -38,9 +42,18 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        if(Auth::check()) {
+            Account::create(array_merge($this->validate(request(), [
+                'name' => ['required'],
+                'iban' => ['required']
+            ]), ['user_id' => Auth::user()->id]));
+
+            return redirect('/accounts');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

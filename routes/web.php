@@ -29,3 +29,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('currency', 'CurrencyController');
 Route::resource('payments', 'PaymentController');
+Route::resource('accounts', 'AccountController');

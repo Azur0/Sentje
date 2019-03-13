@@ -7,24 +7,31 @@
             <div class="card" style="margin-bottom: 50px;">
                 <div class="card-header">
                     My Accounts
-                    <i class="far fa-plus-square"></i>
+                    <a href="/accounts/create">
+                        <i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
+                    </a>
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <ul>
-                    @foreach ($accounts as $account)
-                        <li>
-                            <?= $account->name . '</br>' . $account->iban ?>
-                        </li>
-                    @endforeach
-                    </ul>
-
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Account Name</th>
+                                <th scope="col">IBAN Number</th>
+                                <th scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($accounts as $account)
+                            <tr>
+                                <?=
+                                    '<td>' . $account->name . '</td></br>
+                                    <td>' . $account->iban . '</td>' .
+                                ?>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="card">
