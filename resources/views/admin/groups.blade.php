@@ -6,14 +6,13 @@
 <div id="bg_img" style="background-image: url(../img/header-bg.jpg)">
 	<div id="content">
 		<div>
-			<a href="/currency">currencies</a>
-		</div><br>
-		<div>
-			<a href="/admin/users">users</a>
-		</div><br>
-		<div>
-			<a href="/admin/groups">groups</a>
-		</div><br>
+			<ul>
+			@foreach($groups as $group)
+			<li>
+				<a href="/admin/groups/{{$group->id}}">{{$group->id}}</a> 
+			</li>
+			@endforeach
+		</ul>
 	</div>
 </div>
 @endsection
