@@ -9,7 +9,7 @@
 					</button>
 			</div>
 			<div class="col">
-				
+
 				@guest
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav text-uppercase ml-auto">
@@ -24,17 +24,15 @@
 					</ul>
 					</div>
 				@else
-					<div class="collapse navbar-collapse" id="navbarResponsive">
+					<div class="collapse navbar-collapse float-right" id="navbarResponsive">
 						<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 								{{ Auth::user()->name }} <span class="caret"></span>
 						</a>
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-							@if(Auth::user()->role_id == 2)
-								<a class="dropdown-item" href="/admin">admin</a>
-							@else
-								<a class="dropdown-item" href="/home">user</a>
-							@endif
+							<a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
+							<a class="dropdown-item" href="{{ route('accounts.index') }}">Accounts</a>
+							<a class="dropdown-item" href="/home">Settings</a>
 							<a class="dropdown-item" href="{{ route('logout') }}"
 								 onclick="event.preventDefault();
 															 document.getElementById('logout-form').submit();">

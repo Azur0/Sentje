@@ -22,14 +22,11 @@
                         </thead>
                         <tbody>
                             @foreach ($paymentrequests as $paymentrequest)
-                                @if(is_null($paymentrequest->to_user_id))
-                                	<td>guest</td>
-                                @else
-                                	<td>{{ $paymentrequest->to_user_id }}</td>
-                                @endif
-                                
+                            <tr>
+                                <td>{{ $paymentrequest->to_user_id }}</td>
                                 <td>{{ $paymentrequest->requested_amount }}</td>
-                                <td>{{ $paymentrequest->currencies_id }}</td>
+                                <td>{{ $paymentrequest->currency->currency }}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
