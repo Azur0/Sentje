@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
                             @foreach ($paymentrequests as $paymentrequest)
-                                <td>{{ $paymentrequest->name }}</td>
+                                <td>{{ $paymentrequest->to_user->name }}</td>
                                 <td>{{ $paymentrequest->requested_amount }}</td>
                             @endforeach
                         </tbody>

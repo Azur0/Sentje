@@ -24,7 +24,7 @@ class CreatePaymentRequestTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('created_by_user_id');
-            $table->unsignedInteger('to_user_id');
+            $table->unsignedInteger('to_user_id')->nullable();
             $table->unsignedInteger('deposit_account_id');
             $table->unsignedInteger('currencies_id');
             $table->double('requested_amount');

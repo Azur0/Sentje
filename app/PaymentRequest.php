@@ -18,8 +18,12 @@ class PaymentRequest extends Model
         'request_type'
     ];
 
-    public function user() {
+    public function created_by_user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function to_user(){
+    	return $this->hasOne(User::class);
     }
 
     public function account() {
