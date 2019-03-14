@@ -23,7 +23,7 @@ class PaymentRequest extends Model
     }
 
     public function to_user(){
-    	return $this->hasOne(User::class);
+    	return $this->hasOne(User::class, 'id');
     }
 
     public function account() {
@@ -35,6 +35,6 @@ class PaymentRequest extends Model
     }
 
     public function currency() {
-        return $this->belongsTo(Currency::class);
+        return $this->belongsTo(Currency::class, 'id');
     }
 }
