@@ -10,19 +10,20 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <strong style="color:red;">There are open payment requests to the account!</strong>
+
+                    <table class="table table-hover" style="margin: 40px 0px;">
                         <thead>
                             <tr>
-                                <th scope="col">Deposit account</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></th>
+                                <th scope="col">User</th>
+                                <th scope="col">Pending amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($paymentrequests as $paymentrequest)
-                                <td>{{ $paymentrequest->account }}</td>
+                            @foreach ($paymentrequests as $paymentrequest)
+                                <td>{{ $paymentrequest->name }}</td>
                                 <td>{{ $paymentrequest->requested_amount }}</td>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                     <button type="submit" class="btn btn-primary" style="background-color: red;">Delete account</button>
