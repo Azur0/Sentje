@@ -35,4 +35,6 @@ Route::resource('accounts', 'AccountController');
 Route::get('accounts/{account}/delete', 'AccountController@delete');
 
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/users', 'AdminController@users');
+Route::get('/admin/groups', 'AdminController@groups');
 
