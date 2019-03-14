@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\PaymentRequest;
 use Illuminate\Http\Request;
+use App\Account;
+use Auth;
 
 class PaymentRequestController extends Controller
 {
@@ -32,7 +34,9 @@ class PaymentRequestController extends Controller
      */
     public function create()
     {
-        return view('payment_request');
+		$accounts = Account::all()->where('user_id', Auth::user()->id);
+
+        return view('paymentrequest.create', compact('accounts'));
     }
 
     /**
