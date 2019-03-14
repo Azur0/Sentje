@@ -10,19 +10,26 @@
                 </div>
 
                 <div class="card-body">
-                    <strong style="color:red;">There are open payment requests to the account!</strong>
+                    <strong style="color:red;">You have open payment requests to this account. Are you sure you want to delete this account?</strong>
 
                     <table class="table table-hover" style="margin: 40px 0px;">
                         <thead>
                             <tr>
                                 <th scope="col">User</th>
                                 <th scope="col">Pending amount</th>
+                                <th scope="col">Currency</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($paymentrequests as $paymentrequest)
-                                <td>{{ $paymentrequest->to_user->name }}</td>
+                                @if(is_null($paymentrequest->to_user_id))
+                                	<td>guest</td>
+                                @else
+                                	<td>{{ $paymentrequest->to_user_id }}</td>
+                                @endif
+                                
                                 <td>{{ $paymentrequest->requested_amount }}</td>
+                                <td>{{ $paymentrequest->currencies_id }}</td>
                             @endforeach
                         </tbody>
                     </table>
