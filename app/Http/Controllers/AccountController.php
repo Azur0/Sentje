@@ -9,6 +9,11 @@ use App\PaymentRequest;
 
 class AccountController extends Controller
 {
+    private function authFail()
+    {
+    	return redirect('/');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +21,14 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = Account::all()->where('user_id', Auth::user()->id);
-        $paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
+        if(Auth::check()) {
+        	$accounts = Account::all()->where('user_id', Auth::user()->id);
+        	$paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
 
-        return view('accounts.index', compact(['accounts', 'paymentrequests']));
+        	return view('accounts.index', compact(['accounts', 'paymentrequests']));
+        } else {
+        	return redirect('login');
+        }
     }
 
     /**
@@ -29,11 +38,12 @@ class AccountController extends Controller
      */
     public function create()
     {
-        if(Auth::check()) {
+        if(Auth::check())
+        {
             return view('accounts.create');
         }
 
-        return redirect('/');
+        authFail();
     }
 
     /**
@@ -44,15 +54,18 @@ class AccountController extends Controller
      */
     public function store()
     {
-        if(Auth::check()) {
+        if(Auth::check())
+        {
             Account::create(array_merge($this->validate(request(), [
                 'name' => ['required'],
                 'iban' => ['required']
             ]), ['user_id' => Auth::user()->id]));
 
             return redirect('/accounts');
-        } else {
-            return redirect('/');
+        }
+        else
+        {
+           authFail();
         }
     }
 
@@ -64,7 +77,19 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::check())
+        {
+        	$accounts = Account::all()->where('id', $id);
+        	$paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
+
+        	return view('accounts.show',compact('accounts','paymentrequests'));
+        }
+        else
+        {
+        	authFail();
+        }
+
+        
     }
 
     /**
@@ -75,14 +100,20 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        if(Auth::check()) {
-            if($account->user_id == Auth::user()->id) {
+        if(Auth::check())
+        {
+            if($account->user_id == Auth::user()->id)
+            {
                 return view('accounts.edit', compact('account'));
-            } else {
+            }
+            else
+            {
                 return redirect('/accounts');
             }
-        } else {
-            return redirect('/');
+        }
+        else
+        {
+            authFail();
         }
     }
 
@@ -110,14 +141,20 @@ class AccountController extends Controller
     {
         $paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id);
 
-        if(Auth::check()) {
-            if($account->user_id == Auth::user()->id) {
+        if(Auth::check())
+        {
+            if($account->user_id == Auth::user()->id)
+            {
                 return view('accounts.delete', compact(['account', 'paymentrequests']));
-            } else {
+            }
+            else
+            {
                 return redirect('/accounts');
             }
-        } else {
-            return redirect('/');
+        }
+        else
+        {
+            authFail();
         }
     }
 
