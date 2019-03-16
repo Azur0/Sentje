@@ -15,15 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/overview', 'PaymentRequestController@getOverview');
-
-Route::get('/paymentrequest/create', 'PaymentRequestController@create');
-Route::post('/paymentrequest/create', 'PaymentRequestController@create');
-Route::get('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@show');
-Route::delete('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@destroy');
-Route::patch('/paymentrequest/{{paymentrequest}}', 'PaymentRequestController@update');
-Route::get('/paymentrequest/{{paymentrequest}}/edit', 'PaymentRequestController@edit');
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -31,7 +22,8 @@ Route::resource('currency', 'CurrencyController');
 
 Route::resource('payments', 'PaymentController');
 
-Route::resource('paymentrequest','PaymentRequestController');
+Route::resource('paymentrequests','PaymentRequestController');
+Route::get('paymentrequests/{request}/delete', 'PaymentRequestController@delete');
 
 Route::resource('accounts', 'AccountController');
 Route::get('accounts/{account}/delete', 'AccountController@delete');
@@ -40,3 +32,4 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/groups', 'AdminController@groups');
 
+Route::resource('user','UserController');
