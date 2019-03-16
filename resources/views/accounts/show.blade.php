@@ -9,7 +9,7 @@
 	        <div class="col-md-8">
 	            <div class="card" style="margin-bottom: 50px;">
 	                <div class="card-header">
-	                    My Accounts
+	                    {{ $account->name }}
 	                </div>
 
 	                <div class="card-body">
@@ -22,7 +22,6 @@
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        @foreach ($accounts as $account)
 	                            <tr>
 	                                <td>{{ $account->name }}</td>
 	                                <td>{{ $account->iban }}</td>
@@ -31,7 +30,6 @@
 	                                    <a href="{{ url("/accounts/$account->id/delete") }}"><i class="fas fa-trash-alt" style="font-size:20px; color:red;"></i></a>
 	                                </td>
 	                            </tr>
-	                        @endforeach
 	                        </tbody>
 	                    </table>
 	                </div>
@@ -41,7 +39,7 @@
 	        	<div class="card" style="margin-bottom: 50px;">
 	                <div class="card-header">
 	                    My payment requests
-	                    <a href="/accounts/create">
+	                    <a href="/paymentrequests/create">
 	                        <i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
 	                    </a>
 	                </div>
@@ -50,18 +48,19 @@
 	                    <table class="table table-hover">
 	                        <thead>
 	                            <tr>
-	                                <th scope="col">Account Name</th>
-	                                <th scope="col">IBAN Number</th>
-	                                <th scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></th>
+	                                <th scope="col">User</th>
+	                                <th scope="col">Amount</th>
+	                                <th scope="col">Date Filed</th>
+	                                <th scope="col">status</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
 	                        @foreach ($paymentrequests as $paymentrequest)
 	                            <tr>
-	                                <td>{{ $paymentrequest->id }}</td>
-	                                <td class="text-center">
-	                                    kanker
-	                                </td>
+	                                <td>{{ $paymentrequest->to_user_id }}</td>
+	                                <td>{{ $paymentrequest->requested_amount }}</td>
+	                                <td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
+	                                <td>{{ $paymentrequest->status }}</td>
 	                            </tr>
 	                        @endforeach
 	                        </tbody>

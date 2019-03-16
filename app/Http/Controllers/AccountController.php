@@ -79,10 +79,13 @@ class AccountController extends Controller
     {
         if(Auth::check())
         {
-        	$accounts = Account::all()->where('id', $id);
+        	$account = Account::all()->where('id', $id)->first();
         	$paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
 
-        	return view('accounts.show',compact('accounts','paymentrequests'));
+        	if($account->user = Auth::user()->id)
+        	{
+				return view('accounts.show',compact('account','paymentrequests'));
+        	}
         }
         else
         {

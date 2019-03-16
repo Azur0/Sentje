@@ -9,13 +9,6 @@ use Auth;
 
 class PaymentRequestController extends Controller
 {
-    public function getOverview()
-    {
-        $payment1 = Payment::All();
-        $payment2 = PaymentRequest::All();
-
-        return view('overview', ['Payment' => $payment1],['incomingPaymentRequests' => $payment2]);
-    }
 
     /**
      * Display a listing of the resource.
@@ -48,11 +41,9 @@ class PaymentRequestController extends Controller
     public function store()
     {
         PaymentRequest::create([
-            'created_by_user'=>     1,
-            'to_user'=>             request('account'),
-            'currency'=>            request('currency'),
+            'to_user_id'=>             request('account'),
+            'currency_id'=>            request('currency'),
             'requested_amount'=>    request('amount'),
-            'paymenturl'=>          "aars",
             'description'=>         request('description'),
             'request_type'=>        request('request_type')
         ]);

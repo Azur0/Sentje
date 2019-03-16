@@ -1,6 +1,6 @@
 @extends('layouts/page')
 
-@section('title', 'Home')
+@section('title', 'login')
 
 @section('content')
 <div id="bg_img" style="background-image: url(../img/header-bg.jpg)">

@@ -31,6 +31,8 @@ Route::resource('currency', 'CurrencyController');
 
 Route::resource('payments', 'PaymentController');
 
+Route::resource('paymentrequest','PaymentRequestController');
+
 Route::resource('accounts', 'AccountController');
 Route::get('accounts/{account}/delete', 'AccountController@delete');
 
