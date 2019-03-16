@@ -32,4 +32,4 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/groups', 'AdminController@groups');
 
-Route::resource('user','UserController');
+Route::resource('users','UserController');
