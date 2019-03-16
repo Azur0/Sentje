@@ -18,6 +18,10 @@
 		</a>
 
 		<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+			@if(Auth::user()->role_id == 2)
+				<a class="dropdown-item" href="/admin">Admin</a>
+			@endif
+
 			<a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
 			<a class="dropdown-item" href="{{ route('accounts.index') }}">Accounts</a>
 			<a class="dropdown-item" href="/home">Settings</a>
