@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@extends('layouts/page')
+
+@section('create', 'register')
 
 @section('content')
+<div id="bg_img" style="background-image: url(../img/header-bg.jpg)">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -73,5 +76,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
