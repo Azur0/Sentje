@@ -33,7 +33,7 @@ class User extends Authenticatable
     }
 
     public function contact() {
-        return $this->belongsTo(Contact::class);
+        return $this->hasMany(Contact::class);
     }
 
     public function account() {
