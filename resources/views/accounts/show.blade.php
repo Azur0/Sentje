@@ -39,7 +39,7 @@
 	        	<div class="card" style="margin-bottom: 50px;">
 	                <div class="card-header">
 	                    My payment requests
-	                    <a href="/paymentrequests/create">
+	                    <a href="/accounts/{{ $account->id }}/paymentrequests/create">
 	                        <i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
 	                    </a>
 	                </div>
