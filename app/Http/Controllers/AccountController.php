@@ -23,9 +23,8 @@ class AccountController extends Controller
     {
         if(Auth::check()) {
         	$accounts = Account::all()->where('user_id', Auth::user()->id);
-        	$paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
 
-        	return view('accounts.index', compact(['accounts', 'paymentrequests']));
+        	return view('accounts.index', compact('accounts'));
         } else {
         	return redirect('login');
         }
