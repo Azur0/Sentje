@@ -21,11 +21,12 @@
 							<label for="to_user_id">User</label>
 							<select name="to_user_id">
 							@if($contact === null )
+								<option selected value="-">select a user</option>
 								@foreach($users as $user)
-									<option value="{{ $user->ID }}">{{ $user->name }}</option>
+									<option value="{{ $user->id }}">{{ $user->name }}</option>
 								@endforeach
 							@else
-								<option value="{{ $contact->ID }}">{{ $contact->name }}</option>
+								<option value="{{ $contact->id }}">{{ $contact->name }}</option>
 							@endif
 							</select>
 							@if( $errors->has('to_user_id'))
@@ -38,8 +39,9 @@
 						<div class="form-group">
 							<label for="currencies_id">Currency</label>
 							<select name="currencies_id">
+								<option selected value="-">select a currency</option>
 								@foreach($currencies as $currency)
-									<option value="{{ $currency->ID }}">{{ $currency->currency }}</option>
+									<option value="{{ $currency->id }}">{{ $currency->currency }}</option>
 								@endforeach
 							</select>
 							@if( $errors->has('currencies_id'))
@@ -51,7 +53,7 @@
 						</div>
 						<div class="form-group">
 							<label for="requested_amount">Amount</label>
-							<input type="number" name="requested_amount" min="0" required>
+							<input type="text" name="requested_amount" pattern="^\d{1,3}(,\d{3})*(\.\d+)?$" value="{{ old('requested_amount') }}" data-type="currency" placeholder="$1.00" required>
 							@if( $errors->has('requested_amount'))
 								<div class="alert alert-danger">
 									{{ $errors->first('requested_amount') }}
@@ -61,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<label for="description">Description</label>
-							<textarea name="description" required=""></textarea>
+							<textarea name="description" required value="{{ old('description') }}"></textarea>
 							@if( $errors->has('description'))
 								<div class="alert alert-danger">
 									{{ $errors->first('description') }}
@@ -84,7 +86,7 @@
 							@endif
 						</div>
 						<div>
-							<input type="submit" name="btn_submit" value="create"><a href=""></a>
+							<input type="submit" name="btn_submit" value="create"><a href="/accounts/{{$account->id}}">cancel</a>
 						</div>
 					</form>
                 </div>

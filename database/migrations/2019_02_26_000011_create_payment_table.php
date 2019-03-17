@@ -29,7 +29,6 @@ class CreatePaymentTable extends Migration
             $table->double('amount');
             $table->unsignedInteger('currencies_id');
             $table->string('iban', 40);
-            $table->binary('media')->nullable();
             $table->timestamps();
 
             $table->index(["user_id"], 'fk_payment_user1_idx');

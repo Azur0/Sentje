@@ -7,15 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class PaymentRequest extends Model
 {
     protected $fillable = [
-        'created_by_user_ID',
-        'to_user_ID',
-        'deposit_account_ID',
-        'currency_ID',
+        'created_by_user_id',
+        'to_user_id',
+        'deposit_account_id',
+        'currencies_id',
         'requested_amount',
-        'status',
-        'payment_url',
         'description',
-        'request_type'
+        'request_type',
+        'payment_url'
     ];
 
     public function created_by_user() {

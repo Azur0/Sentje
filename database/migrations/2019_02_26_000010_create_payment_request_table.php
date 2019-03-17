@@ -28,10 +28,11 @@ class CreatePaymentRequestTable extends Migration
             $table->unsignedInteger('deposit_account_id');
             $table->unsignedInteger('currencies_id');
             $table->double('requested_amount');
-            $table->enum('status', ['pending', 'partial', 'completed', 'canceled'])->default('pending');
+            $table->enum('status', ['open','pending', 'partial', 'completed', 'canceled', 'expired'])->default('open');
             $table->string('payment_url');
             $table->string('description');
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
+           	$table->binary('media')->nullable();
             $table->timestamps();
 
             $table->index(["created_by_user_id"], 'fk_payment_request_user_idx');
