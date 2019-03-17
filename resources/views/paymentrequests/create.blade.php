@@ -13,9 +13,9 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="/paymentrequest/create" id="form">
+                    <form method="POST" action="/accounts/{{$account->id}}/paymentrequests" id="form">
 						{{csrf_field() }}
-						<input type="hidden" name="account_id" required value="$account->id">
+						<input type="hidden" name="account_id" required value="{{$account->id}}">
 
 						<div class="form-group">
 							<label for="to_user_id">User</label>

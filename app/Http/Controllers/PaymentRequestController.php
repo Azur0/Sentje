@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Mollie;
 use App\PaymentRequest;
 use Illuminate\Http\Request;
 use App\Account;
@@ -13,11 +12,7 @@ use Auth;
 class PaymentRequestController extends Controller
 {
 
-    public function __construct()
-    {
-    	$mollie = new \Mollie\Api\MollieApiClient();
-		$mollie->setApiKey(getenv('MOLLIE_KEY'));
-    }
+
 
     /**
      * Display a listing of the resource.
@@ -36,18 +31,24 @@ class PaymentRequestController extends Controller
      */
     public function create($account_id)
     {
-		dd($mollie);
-
-		$contact = null;
-		$currencies = Currency::all();
-		$account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id);
-		$users = User::all()->where('id','!=', Auth::user()->id);
-
-		if( isset($_POST['contact_id']) )
+		if(Auth::check())
 		{
-			$contact = $_POST['contact_id'];
-		}
-		return view('paymentrequests.create', compact('accounts','currencies','contact','users'));
+
+			$contact = null;
+			$currencies = Currency::all();
+			$account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
+			$users = User::all()->where('id','!=', Auth::user()->id);
+
+			if( isset($_POST['contact_id']) )
+			{
+				$contact = $_POST['contact_id'];
+			}
+			return view('paymentrequests.create', compact('account','currencies','contact','users'));
+    	}
+    	else
+    	{
+    		return redirect('/login');
+    	}
     }
 
     /**
@@ -58,26 +59,33 @@ class PaymentRequestController extends Controller
      */
     public function store()
     {
+        dd(request());
+
         $this->validate(request(), [
-            'account_id' => 'required',
-            'to_user_id' => 'required',
+            'account_id' => 'required|integer',
+            'to_user_id' => 'nullable|integer',
             'currencies_id' => 'required',
-            'requested_amount' => 'required',
-            'description' => 'required',
-            'request_type' => 'required',
+            'requested_amount' => 'required|numeric|gt:0',
+            'description' => 'required|min:4',
+            'request_type' => ['required','regex:(payment|donation)']
         ]);
+
         // foreach($to_users_id as $to_user_id)
         // {
 
         // }
         PaymentRequest::create([
-        	'created_by_user_id'=>  Auth::user()->id
-            'to_user_id'=			request('to_user_id'),
-            'currency_id'=>			request('currency_id'),
-            'requested_amount'=>	request('requested_amount'),
-            'description'=>			request('description'),
-            'request_type'=>		request('request_type')
-        ]);
+        	'created_by_user_id' =>	Auth::user()->id,
+            'to_user_id' =>			request('to_user_id'),
+            'deposit_account_id' =>	request('account_id'),
+            'currency_id' =>		request('currencies_id'),
+            'requested_amount' =>	request('requested_amount'),
+            'description' =>		request('description'),
+            'request_type' =>		strtolower(request('request_type')),
+            'payment_url' =>		'pornhub'
+		]);
+
+		redirect('/accounts/'.request('account_id'));
     }
 
     /**
@@ -136,4 +144,6 @@ class PaymentRequestController extends Controller
     {
         //
     }
+
+
 }
