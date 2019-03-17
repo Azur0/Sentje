@@ -80,7 +80,7 @@ class AccountController extends Controller
         if(Auth::check())
         {
         	$account = Account::all()->where('id', $id)->first();
-        	$paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
+        	$paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id)->where('deposit_account_id', $id);
 
         	if($account->user = Auth::user()->id)
         	{
@@ -92,7 +92,7 @@ class AccountController extends Controller
         	authFail();
         }
 
-        
+
     }
 
     /**
