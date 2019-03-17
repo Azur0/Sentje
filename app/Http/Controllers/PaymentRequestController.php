@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mollie;
 use App\PaymentRequest;
 use Illuminate\Http\Request;
 use App\Account;
@@ -11,6 +12,12 @@ use Auth;
 
 class PaymentRequestController extends Controller
 {
+
+    public function __construct()
+    {
+    	$mollie = new \Mollie\Api\MollieApiClient();
+		$mollie->setApiKey(getenv('MOLLIE_KEY'));
+    }
 
     /**
      * Display a listing of the resource.
@@ -29,6 +36,8 @@ class PaymentRequestController extends Controller
      */
     public function create($account_id)
     {
+		dd($mollie);
+
 		$contact = null;
 		$currencies = Currency::all();
 		$account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id);
@@ -51,26 +60,23 @@ class PaymentRequestController extends Controller
     {
         $this->validate(request(), [
             'account_id' => 'required',
-            'to_user_id' => 'required'.$user->id,
+            'to_user_id' => 'required',
             'currencies_id' => 'required',
             'requested_amount' => 'required',
             'description' => 'required',
             'request_type' => 'required',
         ]);
+        // foreach($to_users_id as $to_user_id)
+        // {
 
-
-
-
-        foreach($to_users_id as $to_user_id)
-        {
-
-        }
+        // }
         PaymentRequest::create([
-            'to_user_id'=>             request('account'),
-            'currency_id'=>            request('currency'),
-            'requested_amount'=>    request('amount'),
-            'description'=>         request('description'),
-            'request_type'=>        request('request_type')
+        	'created_by_user_id'=>  Auth::user()->id
+            'to_user_id'=			request('to_user_id'),
+            'currency_id'=>			request('currency_id'),
+            'requested_amount'=>	request('requested_amount'),
+            'description'=>			request('description'),
+            'request_type'=>		request('request_type')
         ]);
     }
 

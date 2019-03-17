@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84c09bb4d3b12040c463fff38fa4daf2",
+    "content-hash": "e2e8ed18ce10ee8720f05edb06775052",
     "packages": [
         {
             "name": "components/jquery",
@@ -47,6 +47,62 @@
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
             "time": "2018-03-04T13:23:48+00:00"
+        },
+        {
+            "name": "composer/ca-bundle",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/ca-bundle.git",
+                "reference": "558f321c52faeb4828c03e7dc0cfe39a09e09a2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/558f321c52faeb4828c03e7dc0cfe39a09e09a2d",
+                "reference": "558f321c52faeb4828c03e7dc0cfe39a09e09a2d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "ext-pcre": "*",
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5",
+                "psr/log": "^1.0",
+                "symfony/process": "^2.5 || ^3.0 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\CaBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.",
+            "keywords": [
+                "cabundle",
+                "cacert",
+                "certificate",
+                "ssl",
+                "tls"
+            ],
+            "time": "2019-01-28T09:30:10+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1145,20 +1201,109 @@
             "time": "2019-02-01T08:50:36+00:00"
         },
         {
-            "name": "mollie/mollie-api-php",
+            "name": "mollie/laravel-mollie",
             "version": "v2.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mollie/mollie-api-php.git",
-                "reference": "a8d20b941d622151a924acf4cf6e634bec2e2b30"
+                "url": "https://github.com/mollie/laravel-mollie.git",
+                "reference": "66350c3dffb1123285c8f4e2b97b539f689b3d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mollie/mollie-api-php/zipball/a8d20b941d622151a924acf4cf6e634bec2e2b30",
-                "reference": "a8d20b941d622151a924acf4cf6e634bec2e2b30",
+                "url": "https://api.github.com/repos/mollie/laravel-mollie/zipball/66350c3dffb1123285c8f4e2b97b539f689b3d08",
+                "reference": "66350c3dffb1123285c8f4e2b97b539f689b3d08",
                 "shasum": ""
             },
             "require": {
+                "illuminate/support": "^5.5",
+                "mollie/mollie-api-php": "^2.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "^4.0|^5.0",
+                "laravel/socialite": "^3.0",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.5|^7.0"
+            },
+            "suggest": {
+                "laravel/socialite": "Use Mollie Connect (OAuth) to authenticate via Laravel Socialite with the Mollie API. This is needed for some endpoints."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mollie\\Laravel\\MollieServiceProvider"
+                    ],
+                    "aliases": {
+                        "Mollie": "Mollie\\Laravel\\Facades\\Mollie"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mollie\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Mollie B.V.",
+                    "email": "info@mollie.com"
+                }
+            ],
+            "description": "Mollie API client wrapper for Laravel & Mollie Connect provider for Laravel Socialite",
+            "homepage": "https://github.com/mollie/laravel-mollie",
+            "keywords": [
+                "api",
+                "bancontact",
+                "banktransfer",
+                "belfius",
+                "belfius direct net",
+                "bitcoin",
+                "charges",
+                "creditcard",
+                "direct debit",
+                "gateway",
+                "ideal",
+                "laravel",
+                "lumen",
+                "mistercash",
+                "mollie",
+                "payment",
+                "payments",
+                "paypal",
+                "paysafecard",
+                "podiumcadeaukaart",
+                "recurring",
+                "refunds",
+                "sepa",
+                "service",
+                "socialite",
+                "sofort",
+                "sofortbanking",
+                "subscriptions"
+            ],
+            "time": "2018-07-09T11:03:41+00:00"
+        },
+        {
+            "name": "mollie/mollie-api-php",
+            "version": "v2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mollie/mollie-api-php.git",
+                "reference": "8af06816ab0f37dd4433dd6d56ee893b66b7118c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mollie/mollie-api-php/zipball/8af06816ab0f37dd4433dd6d56ee893b66b7118c",
+                "reference": "8af06816ab0f37dd4433dd6d56ee893b66b7118c",
+                "shasum": ""
+            },
+            "require": {
+                "composer/ca-bundle": "^1.1",
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-openssl": "*",
@@ -1166,7 +1311,8 @@
                 "php": ">=5.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7|^6.5|^7.1"
+                "eloquent/liberator": "^2.0",
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.1"
             },
             "suggest": {
                 "mollie/oauth2-mollie-php": "Use OAuth to authenticate with the Mollie API. This is needed for some endpoints. Visit https://docs.mollie.com/ for more information."
@@ -1207,8 +1353,10 @@
                 "inghomepay",
                 "intersolve",
                 "kbc",
+                "klarna",
                 "mistercash",
                 "mollie",
+                "paylater",
                 "payment",
                 "payments",
                 "paypal",
@@ -1218,11 +1366,12 @@
                 "refunds",
                 "sepa",
                 "service",
+                "sliceit",
                 "sofort",
                 "sofortbanking",
                 "subscriptions"
             ],
-            "time": "2018-05-08T14:56:07+00:00"
+            "time": "2019-03-03T22:34:31+00:00"
         },
         {
             "name": "monolog/monolog",
