@@ -39,30 +39,6 @@
 	                    </table>
 	                </div>
 	            </div>
-	            <div class="card">
-	                <div class="card-header">Incoming requests</div>
-
-	                <div class="card-body">
-	                    @if (session('status'))
-	                        <div class="alert alert-success" role="alert">
-	                            {{ session('status') }}
-	                        </div>
-	                    @endif
-
-	                    <ul>
-	                    @if ($paymentrequests->count())
-	                        @foreach ($paymentrequests as $paymentrequest)
-	                            <li>
-	                                <?= $paymentrequest->payment_url ?>
-	                            </li>
-	                        @endforeach
-	                    @else
-	                        <p>No incoming requests</p>
-	                    @endif
-	                    </ul>
-
-	                </div>
-	            </div>
 	        </div>
 	    </div>
 	</div>
