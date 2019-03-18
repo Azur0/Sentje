@@ -35,9 +35,49 @@ class PaymentRequestController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index($account_id)
+	{
+		if(Auth::check())
+		{
+			$account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
+			$paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id)->where('deposit_account_id', $account_id);
+
+			if($account->user_id == Auth::user()->id)
+			{
+				return view('paymentrequests.index', compact('account','paymentrequests'));
+			}
+			else
+			{
+				echo 'sukkel';
+				//redirect('/accounts');
+			}
+		}
+		else
+		{
+			redirect('/login');
+		}
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  \App\PaymentRequest  $paymentRequest
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show(PaymentRequest $paymentRequest)
 	{
 		//
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  \App\PaymentRequest  $paymentRequest
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(PaymentRequest $paymentRequest)
+	{
+		
 	}
 
 	/**
@@ -101,28 +141,6 @@ class PaymentRequestController extends Controller
 		]);
 
 		redirect('/accounts/'.request('account_id'));
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\PaymentRequest  $paymentRequest
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(PaymentRequest $paymentRequest)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\PaymentRequest  $paymentRequest
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(PaymentRequest $paymentRequest)
-	{
-		
 	}
 
 	/**

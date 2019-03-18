@@ -38,7 +38,7 @@
 	        <div class="col-md-8">
 	        	<div class="card" style="margin-bottom: 50px;">
 	                <div class="card-header">
-	                    My payment requests
+	                    <a href="/accounts/{{ $account->id }}/paymentrequests">My payment requests</a>
 	                    <a href="/accounts/{{ $account->id }}/paymentrequests/create">
 	                        <i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
 	                    </a>
@@ -57,10 +57,12 @@
 	                        <tbody>
 	                        @foreach ($paymentrequests as $paymentrequest)
 	                            <tr>
-	                                <td>{{ $paymentrequest->to_user_id }}</td>
-	                                <td>{{ $paymentrequest->requested_amount }}</td>
-	                                <td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
-	                                <td>{{ $paymentrequest->status }}</td>
+	                            	<a href="/accounts/{{ $account->id }}/paymentrequests/{{$paymentrequest->id}}">
+	                                	<td>{{ $paymentrequest->to_user_id }}</td>
+	                                	<td>{{ $paymentrequest->requested_amount }}</td>
+	                                	<td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
+	                                	<td>{{ $paymentrequest->status }}</td>
+	                            	</a>
 	                            </tr>
 	                        @endforeach
 	                        </tbody>
