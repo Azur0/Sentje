@@ -48,8 +48,7 @@ class PaymentRequestController extends Controller
 			}
 			else
 			{
-				echo 'sukkel';
-				//redirect('/accounts');
+				redirect('/accounts');
 			}
 		}
 		else
