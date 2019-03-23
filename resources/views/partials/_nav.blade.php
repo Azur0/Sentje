@@ -9,6 +9,16 @@
 			<a class="nav-link-custom js-scroll-trigger" href="{{ url('register') }}">{{ __('Register') }}</a>
 		</li>
 		@endif
+		<li class="nav-item">
+			<a class="nav-link-custom js-scroll-trigger" href="{{ url('/locale/nl') }}">
+				<img src={{ url('img/nl.png') }} width="15px" height="15px">
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link-custom js-scroll-trigger" href="{{ url('/locale/en') }}">
+				<img src="{{ url('img/uk.png') }}" width="15px" height="15px">
+			</a>
+		</li>
 	</ul>
 	</div>
 @else

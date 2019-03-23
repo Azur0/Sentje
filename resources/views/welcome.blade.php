@@ -7,9 +7,9 @@
   <header class="masthead">
     <div class="container">
       <div class="intro-text">
-        <div class="intro-lead-in">Welcome To Sentje!</div>
-        <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+        <div class="intro-lead-in">{{ __('header.welcome') }}</div>
+        <div class="intro-heading text-uppercase">{{ __('header.subwelcome') }}</div>
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">{{ __('header.more') }}</a>
       </div>
     </div>
   </header>
@@ -56,7 +56,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+              <h2 class="section-heading text-uppercase">{{ __('header.ourteam') }}</h2>
               <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
           </div>
