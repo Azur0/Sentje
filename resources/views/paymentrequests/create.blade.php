@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="/accounts/{{$account->id}}/paymentrequests" id="form">
+                    <form method="POST" action="/accounts/{{$account->id}}/paymentrequests" id="form" enctype="multipart/form-data">
 						{{csrf_field() }}
 						<input type="hidden" name="account_id" required value="{{$account->id}}">
 
@@ -78,6 +78,19 @@
 								<option value="payment">Payment</option>
 								<option value="donation">Donation</option>
 							</select>
+							@if( $errors->has('request_type'))
+								<div class="alert alert-danger">
+									{{ $errors->first('request_type') }}
+									
+								</div>
+							@endif
+						</div>
+						<div class="form-group">
+							<div>
+								<label for="request_type">Select Media</label>
+								<input type="file" name="media">
+								<div id="media"><img src="/public/img/" alt="media"></div>
+							</div>
 							@if( $errors->has('request_type'))
 								<div class="alert alert-danger">
 									{{ $errors->first('request_type') }}

@@ -120,7 +120,8 @@ class PaymentRequestController extends Controller
 			'currencies_id' => 'required',
 			'requested_amount' => 'required|numeric|gt:0',
 			'description' => 'required|min:4',
-			'request_type' => ['required','regex:(payment|donation)']
+			'request_type' => ['required','regex:(payment|donation)'],
+			'media' => ['image']
 		]);
 
 		$url = $this->preparePayment();
