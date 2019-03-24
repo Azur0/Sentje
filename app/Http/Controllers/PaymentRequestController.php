@@ -112,8 +112,10 @@ class PaymentRequestController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
+		$name = 'default.gif';
+
 		$this->validate(request(), [
 			'account_id' => 'required|integer',
 			'to_user_id' => 'nullable|integer',
@@ -125,6 +127,15 @@ class PaymentRequestController extends Controller
 		]);
 
 		$url = $this->preparePayment();
+
+		if ($request->hasFile('media'))
+		{
+        	$image = $request->file('media');
+        	$name = request('account_id').'_'.time().'.'.$image->getClientOriginalExtension();
+        	$destinationPath = public_path('/img/paymentrequest_media');
+        	$image->move($destinationPath, $name);
+    	}
+
 		// foreach($to_users_id as $to_user_id)
 		// {
 
@@ -137,10 +148,9 @@ class PaymentRequestController extends Controller
 			'requested_amount' =>	request('requested_amount'),
 			'description' =>		request('description'),
 			'request_type' =>		strtolower(request('request_type')),
-			'payment_url' =>		$url
+			'payment_url' =>		$url,
+			'media' =>				$name
 		]);
-
-		redirect('/accounts/'.request('account_id'));
 	}
 
 	/**

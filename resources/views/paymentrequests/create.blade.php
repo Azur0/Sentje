@@ -91,10 +91,9 @@
 								<input type="file" name="media">
 								<div id="media"><img src="/public/img/" alt="media"></div>
 							</div>
-							@if( $errors->has('request_type'))
+							@if( $errors->has('media'))
 								<div class="alert alert-danger">
-									{{ $errors->first('request_type') }}
-									
+									{{ $errors->first('media') }}
 								</div>
 							@endif
 						</div>
