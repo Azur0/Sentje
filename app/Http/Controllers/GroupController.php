@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Group;
 
 class GroupController extends Controller
 {
@@ -13,7 +15,13 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::check()) {
+        	$groups = Group::all()->where('owner_id', Auth::user()->id);
+
+        	return view('group.index', compact('groups'));
+        } else {
+        	return redirect('login');
+        }
     }
 
     /**
@@ -23,7 +31,12 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::check())
+        {
+            return view('group.create');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

@@ -35,3 +35,5 @@ Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/groups', 'AdminController@groups');
 
 Route::resource('users','UserController');
+
+Route::resource('group','GroupController');
