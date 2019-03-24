@@ -72,7 +72,24 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(Auth::check())
+        {
+            $users = User::all()->where('id','!=', Auth::user()->id);
+            $group = Group::find($id);
+            
+            if($group->owner_id == Auth::user()->id)
+            {
+                return view('group.edit', compact('users', 'group'));
+            }
+            else
+            {
+                return redirect('/group');
+            }
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -95,6 +112,8 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Group::destroy($id);
+
+        return redirect('/group');
     }
 }

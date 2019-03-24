@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <div id="bg_img" style="background-image: url(../img/header-bg.jpg)">
+    <div id="bg_img" style="background-image: url(/../img/header-bg.jpg)">
     	<div class="container">
     	    <div class="row justify-content-center">
     	        <div class="col-md-8">
@@ -27,11 +27,21 @@
     	                        <tbody>
                                     @foreach ($groups as $group)
                                         <tr>
-                                            <td><a href="/group/{{ $group->id }}">{{ $group->groupname }}</a></td>
+                                            <td><a href="/group/{{ $group->id }}/edit">{{ $group->groupname }}</a></td>
                                             <td></td>
                                             <td class="text-center">
-                                                <a href="{{ url("/group/$group->id/edit") }}"><i class="fas fa-edit" style="font-size:20px; margin-right: 10px; color:#2578AF;"></i></a>
-                                                <a href="{{ url("/group/$group->id/delete") }}"><i class="fas fa-trash-alt" style="font-size:20px; color:red;"></i></a>
+                                                <div class="row justify-content-center">
+                                                    <div>
+                                                        <a href="/group/{{ $group->id }}/edit"><i class="fas fa-edit" style="font-size:20px; margin-right: 10px; color:#2578AF; cursor: pointer;"></i></a>
+                                                    </div>
+                                                    <div>
+                                                        <form id="formDelete" method="post" action="/group/{{ $group->id }}">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <a onclick="document.getElementById('formDelete').submit();"><i class="fas fa-trash-alt" style="font-size:20px; color:red; cursor: pointer;"></i></a>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
