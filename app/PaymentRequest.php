@@ -14,7 +14,8 @@ class PaymentRequest extends Model
         'requested_amount',
         'description',
         'request_type',
-        'payment_url'
+        'payment_url',
+        'media'
     ];
 
     public function created_by_user() {

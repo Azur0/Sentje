@@ -10670,7 +10670,54 @@ a.text-dark:focus {
   padding: 1em;
 }
 
-#content form {
-  background-color: brown;
+#form textarea {
+  width: 100%;
+  min-height: 50px;
+}
+
+#select_user {
+  min-height: 60px;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+#select_user #all_users,
+#select_user #paymentrequest_reciever,
+#select_user #buttons {
+  min-height: 200px;
+  margin: 0;
+  padding: 5px;
+  font-size: 12px;
+}
+
+#select_user #all_users,
+#select_user #paymentrequest_reciever {
+  border: 1px solid #D9D9D9;
+  background-color: #F7F7F7;
+  overflow-y: auto;
+}
+
+#select_user #all_users .user,
+#select_user #paymentrequest_reciever .user {
+  padding: 5px;
+  background-color: #FFFFFF;
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+#select_user #buttons input {
+  display: block;
+  text-align: center;
+  margin: 15px auto;
+}
+
+#form_media div {
+  min-height: 150px;
+}
+
+#form_media div img {
+  height: 100%;
+  border: 1px solid black;
 }
 

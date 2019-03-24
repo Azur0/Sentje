@@ -114,20 +114,21 @@ class PaymentRequestController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$name = 'default.gif';
+		
 
 		$this->validate(request(), [
 			'account_id' => 'required|integer',
 			'to_user_id' => 'nullable|integer',
 			'currencies_id' => 'required',
-			'requested_amount' => 'required|numeric|gt:0',
+			'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',
 			'description' => 'required|min:4',
 			'request_type' => ['required','regex:(payment|donation)'],
 			'media' => ['image']
 		]);
-
+		
 		$url = $this->preparePayment();
-
+		//Image
+		$name = 'default.gif';
 		if ($request->hasFile('media'))
 		{
         	$image = $request->file('media');
@@ -138,19 +139,21 @@ class PaymentRequestController extends Controller
 
 		// foreach($to_users_id as $to_user_id)
 		// {
+			$to_user_id = request('to_user_id');
 
+			PaymentRequest::create([
+				'created_by_user_id' =>	Auth::user()->id,
+				'to_user_id' =>			$to_user_id,
+				'deposit_account_id' =>	request('account_id'),
+				'currencies_id' =>		request('currencies_id'),
+				'requested_amount' =>	request('requested_amount'),
+				'description' =>		request('description'),
+				'request_type' =>		strtolower(request('request_type')),
+				'payment_url' =>		$url,
+				'media' =>				$name
+			]);
 		// }
-		PaymentRequest::create([
-			'created_by_user_id' =>	Auth::user()->id,
-			'to_user_id' =>			request('to_user_id'),
-			'deposit_account_id' =>	request('account_id'),
-			'currencies_id' =>		request('currencies_id'),
-			'requested_amount' =>	request('requested_amount'),
-			'description' =>		request('description'),
-			'request_type' =>		strtolower(request('request_type')),
-			'payment_url' =>		$url,
-			'media' =>				$name
-		]);
+		
 	}
 
 	/**
