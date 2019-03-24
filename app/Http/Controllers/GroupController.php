@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Group;
+use App\User;
 
 class GroupController extends Controller
 {
@@ -31,9 +32,11 @@ class GroupController extends Controller
      */
     public function create()
     {
+        $users = User::all()->where('id','!=', Auth::user()->id);
+
         if(Auth::check())
         {
-            return view('group.create');
+            return view('group.create', compact('users'));
         } else {
             return redirect('/');
         }

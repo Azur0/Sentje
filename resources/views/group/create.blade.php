@@ -21,9 +21,18 @@
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="iban">Users</label>
-	                            <input type="text" class="form-control" id="iban" name="iban" placeholder="NL00 1234 5678 90">
+								<div class="input-group">
+		                            <select class="form-control">
+										@foreach ($users as $user)
+											<option value="{{ $user->id }}">{{ $user->name }}</option>
+										@endforeach
+									</select>
+									<a href="">
+										<i class="fas fa-plus-square" style="font-size: 35px; vertical-align: middle; float:right; margin-left: 15px;"></i>
+									</a>
+								</div>
 	                        </div>
-	                        <button type="submit" class="btn btn-primary">Add account</button>
+	                        <button type="submit" class="btn btn-primary">Create group</button>
 	                    </form>
 	                </div>
 	            </div>
