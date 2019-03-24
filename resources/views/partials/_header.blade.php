@@ -9,7 +9,7 @@
 					</button>
 			</div>
 			<div class="col">
-				@include('partials._nav');
+				@include('partials._nav')
 			</div>
 		</div>
 	</div>
