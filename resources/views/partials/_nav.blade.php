@@ -34,6 +34,7 @@
 
 			<a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
 			<a class="dropdown-item" href="{{ route('accounts.index') }}">Accounts</a>
+			<a class="dropdown-item" href="{{ route('group.index') }}">Groups</a>
 			<a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">Settings</a>
 			<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 					{{ __('Logout') }}
@@ -43,5 +44,11 @@
 					@csrf
 			</form>
 		</div>
+		<a class="nav-link-custom js-scroll-trigger" href="{{ url('/locale/nl') }}">
+			<img src={{ url('img/nl.png') }} width="15px" height="15px">
+		</a>
+		<a class="nav-link-custom js-scroll-trigger" href="{{ url('/locale/en') }}">
+			<img src="{{ url('img/uk.png') }}" width="15px" height="15px">
+		</a>
 	</div>
 @endguest
