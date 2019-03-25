@@ -35,6 +35,7 @@
 			<a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
 			<a class="dropdown-item" href="{{ route('accounts.index') }}">Accounts</a>
 			<a class="dropdown-item" href="{{ route('group.index') }}">Groups</a>
+			<a class="dropdown-item" href="{{ route('contact.index') }}">Contacts</a>
 			<a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">Settings</a>
 			<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 					{{ __('Logout') }}
