@@ -76,7 +76,7 @@ class PaymentRequestController extends Controller
 	 */
 	public function edit(PaymentRequest $paymentRequest)
 	{
-		
+
 	}
 
 	/**
@@ -114,7 +114,7 @@ class PaymentRequestController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		
+
 
 		$this->validate(request(), [
 			'account_id' => 'required|integer',
@@ -125,7 +125,7 @@ class PaymentRequestController extends Controller
 			'request_type' => ['required','regex:(payment|donation)'],
 			'media' => ['image']
 		]);
-		
+
 		$url = $this->preparePayment();
 		//Image
 		$name = 'default.gif';
@@ -153,7 +153,7 @@ class PaymentRequestController extends Controller
 				'media' =>				$name
 			]);
 		// }
-		
+
 	}
 
 	/**
@@ -165,7 +165,7 @@ class PaymentRequestController extends Controller
 	 */
 	public function update(Request $request, PaymentRequest $paymentRequest)
 	{
-		
+
 	}
 
 	/**

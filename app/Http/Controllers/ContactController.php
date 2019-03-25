@@ -52,16 +52,20 @@ class ContactController extends Controller
     {
         if(Auth::check())
         {
+            $this->validate(request(), [
+    			'contact' => 'integer|not_in:' . Auth::user()->id
+    		]);
+
             Contact::create([
-                'user_id' => Auth::user()->id,
-                'user_id1' => request('contact')
-            ]);
+				'user_id' =>	Auth::user()->id,
+				'user_id1' =>	request('contact')
+			]);
 
             return redirect('/contact');
         }
         else
         {
-           return redirect('/');
+           authFail();
         }
     }
 
