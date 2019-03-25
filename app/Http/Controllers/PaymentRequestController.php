@@ -137,7 +137,7 @@ class PaymentRequestController extends Controller
 
     	$to_users_id = explode(',', request('to_users_id'));
 		
-		$to_users_id.sizeof
+		$amount_of_users = $to_users_id.sizeof();
 		
 		$amount = request('requested_amount');
 
