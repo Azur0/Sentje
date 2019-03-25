@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Group;
+use App\Contact;
 use App\User;
 
-class GroupController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class GroupController extends Controller
     public function index()
     {
         if(Auth::check()) {
-        	$groups = Group::all()->where('owner_id', Auth::user()->id);
+        	$contacts = Contact::all()->where('user_id', Auth::user()->id);
 
-        	return view('group.index', compact('groups'));
+        	return view('contact.index', compact('contacts'));
         } else {
         	return redirect('login');
         }
@@ -36,7 +36,7 @@ class GroupController extends Controller
 
         if(Auth::check())
         {
-            return view('group.create', compact('users'));
+            return view('contact.create', compact('users'));
         } else {
             return redirect('/');
         }
@@ -50,7 +50,23 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check())
+        {
+            $this->validate(request(), [
+    			'contact' => 'integer|not_in:' . Auth::user()->id
+    		]);
+
+            Contact::create([
+				'user_id' =>	Auth::user()->id,
+				'user_id1' =>	request('contact')
+			]);
+
+            return redirect('/contact');
+        }
+        else
+        {
+           authFail();
+        }
     }
 
     /**
@@ -72,24 +88,7 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::check())
-        {
-            $users = User::all()->where('id','!=', Auth::user()->id);
-            $group = Group::find($id);
-            
-            if($group->owner_id == Auth::user()->id)
-            {
-                return view('group.edit', compact('users', 'group'));
-            }
-            else
-            {
-                return redirect('/group');
-            }
-        }
-        else
-        {
-            return redirect('/login');
-        }
+        //
     }
 
     /**
@@ -112,8 +111,8 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        Group::destroy($id);
+        Contact::destroy($id);
 
-        return redirect('/group');
+        return redirect('/contact');
     }
 }

@@ -37,3 +37,5 @@ Route::get('/admin/groups', 'AdminController@groups');
 Route::resource('users','UserController');
 
 Route::resource('group','GroupController');
+
+Route::resource('contact', 'ContactController');

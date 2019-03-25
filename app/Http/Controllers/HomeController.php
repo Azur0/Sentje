@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $friends = Contact::all()->where('user_id', Auth::user()->id);
-        $paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id);
+        $paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id)->where('status', 'open');
         $accounts = Account::all()->where('user_id', Auth::user()->id);
 
         return view('home', compact(['friends', 'paymentrequests','accounts']));

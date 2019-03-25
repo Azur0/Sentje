@@ -29,25 +29,20 @@
 					<div class="card-header">Incoming requests</div>
 
 					<div class="card-body">
-						@if (session('status'))
-							<div class="alert alert-success" role="alert">
-								{{ session('status') }}
-							</div>
-						@endif
-
-						<ul>
-						@if ($paymentrequests->count())
-							@foreach ($paymentrequests as $paymentrequest)
-								<li>
-									<?= $paymentrequest->description ?>
-									<span class="float-right"><a href="{{ $paymentrequest->payment_url }}"><i class="fas fa-hand-holding-usd" style="font-size: 30px; margin-right: 20px;"></i></a></span>
-								</li>
-							@endforeach
-						@else
-							<p>No incoming requests</p>
-						@endif
-						</ul>
-
+						<table class="table">
+							<tbody>
+								@if ($paymentrequests->count())
+									@foreach ($paymentrequests as $paymentrequest)
+										<tr>
+											<td><?= $paymentrequest->description ?><td>
+											<td><span class="float-right"><a href="{{ $paymentrequest->payment_url }}"><i class="fas fa-hand-holding-usd" style="font-size: 30px; margin-right: 20px;"></i></a></span></td>
+										</tr>
+									@endforeach
+								@else
+									<p>No incoming requests</p>
+								@endif
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -86,7 +81,7 @@
 						</table>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

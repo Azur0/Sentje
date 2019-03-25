@@ -84,7 +84,9 @@ class AccountController extends Controller
         	if($account->user_id == Auth::user()->id)
         	{
 				return view('accounts.show',compact('account','paymentrequests'));
-        	}
+        	} else {
+                return redirect('/accounts');
+            }
         }
         else
         {
