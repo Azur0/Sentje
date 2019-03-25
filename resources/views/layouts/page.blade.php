@@ -25,5 +25,6 @@
 
         <!-- Custom scripts for this template -->
         <script src="{{ asset('js/agency.min.js') }}"></script>
+        <script src="{{ asset('js/userselect.js') }}"></script>
     </body>
 </html>

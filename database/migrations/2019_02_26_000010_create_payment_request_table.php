@@ -32,7 +32,7 @@ class CreatePaymentRequestTable extends Migration
             $table->string('payment_url');
             $table->string('description');
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
-           	$table->binary('media')->nullable();
+           	$table->string('media')->nullable();
             $table->timestamps();
 
             $table->index(["created_by_user_id"], 'fk_payment_request_user_idx');

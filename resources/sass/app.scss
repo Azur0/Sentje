@@ -46,6 +46,7 @@
 	#all_users, #paymentrequest_reciever,#buttons
 	{
 		min-height: 200px;
+		max-height: 240px;
 		margin:	0;
 		padding: 5px;
 		font-size: 12px;
@@ -62,6 +63,18 @@
 			background-color: #FFFFFF;
 			width: 100%;
 			margin-bottom: 3px;
+
+			span
+			{
+				display: none;
+			}
+		}
+
+		.selected_user
+		{
+			background-color: #FEC502;
+			color: grey;
+			font-weight: bold;
 		}
 	}
 	#buttons
