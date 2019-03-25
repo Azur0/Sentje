@@ -10686,6 +10686,7 @@ a.text-dark:focus {
 #select_user #paymentrequest_reciever,
 #select_user #buttons {
   min-height: 200px;
+  max-height: 240px;
   margin: 0;
   padding: 5px;
   font-size: 12px;
@@ -10704,6 +10705,18 @@ a.text-dark:focus {
   background-color: #FFFFFF;
   width: 100%;
   margin-bottom: 3px;
+}
+
+#select_user #all_users .user span,
+#select_user #paymentrequest_reciever .user span {
+  display: none;
+}
+
+#select_user #all_users .selected_user,
+#select_user #paymentrequest_reciever .selected_user {
+  background-color: #FEC502;
+  color: grey;
+  font-weight: bold;
 }
 
 #select_user #buttons input {

@@ -31,9 +31,10 @@
 								</select>
 
 								<div id="select_user" class="row">
+									<input type="hidden" name="to_users_id" value="">
 									<div id="all_users" class="col-5">
 										@foreach($users as $user)
-											<div class="user">{{ $user->id }}{{ $user->name }}</div>
+											<div class="user"><span>{{ $user->id }}</span>{{ $user->name }}</div>
 										@endforeach
 									</div>
 									<div id="buttons" class="col-sm">
@@ -79,16 +80,6 @@
 								@endif
 							</div>
 							<div class="form-group">
-								<label for="description">Description</label>
-								<textarea name="description" required value="{{ old('description') }}"></textarea>
-								@if( $errors->has('description'))
-									<div class="alert alert-danger">
-										{{ $errors->first('description') }}
-										
-									</div>
-								@endif
-							</div>
-							<div class="form-group">
 								<label for="request_type">Request type</label>
 							
 								<select name="request_type">
@@ -98,6 +89,16 @@
 								@if( $errors->has('request_type'))
 									<div class="alert alert-danger">
 										{{ $errors->first('request_type') }}
+										
+									</div>
+								@endif
+							</div>
+							<div class="form-group">
+								<label for="description">Description</label>
+								<textarea name="description" required value="{{ old('description') }}"></textarea>
+								@if( $errors->has('description'))
+									<div class="alert alert-danger">
+										{{ $errors->first('description') }}
 										
 									</div>
 								@endif
