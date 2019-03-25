@@ -22,7 +22,8 @@ function selectedUsers()
 	});
 
 	selectUsers.sort();
-
+	$("input[name='to_users_id']").val("");
+	
 	selectUsers.forEach(function (arrayItem)
 	{
 		if($("input[name='to_users_id']").val().length != 0)

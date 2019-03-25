@@ -119,6 +119,13 @@
 								<input type="submit" name="btn_submit" value="create"><a href="/accounts/{{$account->id}}">cancel</a>
 							</div>
 						</form>
+						<div>
+								@foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+
+
+						</div>
 					</div>
 				</div>
 			</div>

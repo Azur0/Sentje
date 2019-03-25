@@ -12,7 +12,7 @@ use Mollie\Laravel\Facades\Mollie;
 
 class PaymentRequestController extends Controller
 {
-	public function preparePayment()
+	public function preparePayment($amount)
 	{
 		$payment = Mollie::api()->payments()->create([
 		'amount' => [
@@ -20,7 +20,7 @@ class PaymentRequestController extends Controller
 			'value' => strval(request('requested_amount')), // You must send the correct number of decimals, thus we enforce the use of strings
 		],
 		'description' => request('description'),
-		'redirectUrl' => route('accounts.index'),
+		'redirectUrl' => route('paymentrequests.success'),
 		]);
 
 		$payment = Mollie::api()->payments()->get($payment->id);
@@ -114,11 +114,10 @@ class PaymentRequestController extends Controller
 	 */
 	public function store(Request $request)
 	{
-
-
 		$this->validate(request(), [
 			'account_id' => 'required|integer',
 			'to_user_id' => 'nullable|integer',
+			'to_users_id' => 'nullable|integer',
 			'currencies_id' => 'required',
 			'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',
 			'description' => 'required|min:4',
@@ -126,7 +125,6 @@ class PaymentRequestController extends Controller
 			'media' => ['image']
 		]);
 
-		$url = $this->preparePayment();
 		//Image
 		$name = 'default.gif';
 		if ($request->hasFile('media'))
@@ -137,23 +135,30 @@ class PaymentRequestController extends Controller
         	$image->move($destinationPath, $name);
     	}
 
-		// foreach($to_users_id as $to_user_id)
-		// {
-			$to_user_id = request('to_user_id');
+    	$to_users_id = explode(',', request('to_users_id'));
+		
+		$to_users_id.sizeof
+		
+		$amount = request('requested_amount');
+
+		foreach($to_users_id as $to_user_id)
+		{
+			$url = $this->preparePayment($amount);
 
 			PaymentRequest::create([
 				'created_by_user_id' =>	Auth::user()->id,
 				'to_user_id' =>			$to_user_id,
 				'deposit_account_id' =>	request('account_id'),
 				'currencies_id' =>		request('currencies_id'),
-				'requested_amount' =>	request('requested_amount'),
+				'requested_amount' =>	$amount,
 				'description' =>		request('description'),
 				'request_type' =>		strtolower(request('request_type')),
 				'payment_url' =>		$url,
 				'media' =>				$name
 			]);
-		// }
+		}
 
+		redirect('/');
 	}
 
 	/**
