@@ -41,3 +41,5 @@ Route::resource('users','UserController');
 Route::resource('group','GroupController');
 
 Route::resource('contact', 'ContactController');
+
+Route::resource('payment', 'PaymentController');

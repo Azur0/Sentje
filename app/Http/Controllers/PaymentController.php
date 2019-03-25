@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Mollie\Laravel\Facades\Mollie;
 
 class PaymentController extends Controller
 {
@@ -13,7 +15,15 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payment = Mollie::api()->payments()->get("tr_TW597y6MTu");
+
+        if(Auth::check()) {
+        	//$contacts = Contact::all()->where('user_id', Auth::user()->id);
+
+        	return view('payment.index', compact('payment'));
+        } else {
+        	return redirect('login');
+        }
     }
 
     /**
