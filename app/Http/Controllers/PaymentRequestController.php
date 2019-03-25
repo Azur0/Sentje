@@ -114,16 +114,16 @@ class PaymentRequestController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate(request(), [
-			'account_id' => 'required|integer',
-			'to_user_id' => 'nullable|integer',
-			'to_users_id' => 'nullable|integer',
-			'currencies_id' => 'required',
-			'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',
-			'description' => 'required|min:4',
-			'request_type' => ['required','regex:(payment|donation)'],
-			'media' => ['image']
-		]);
+		// $this->validate(request(), [
+		// 	'account_id' => 'required|integer',
+		// 	'to_user_id' => 'nullable|integer',
+		// 	'to_users_id' => 'nullable',
+		// 	'currencies_id' => 'required',
+		// 	'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',
+		// 	'description' => 'required|min:4',
+		// 	'request_type' => ['required','regex:(payment|donation)'],
+		// 	'media' => ['image']
+		// ]);
 
 		//Image
 		$name = 'default.gif';
@@ -137,7 +137,7 @@ class PaymentRequestController extends Controller
 
     	$to_users_id = explode(',', request('to_users_id'));
 		
-		$amount_of_users = $to_users_id.sizeof();
+		//$amount_of_users = $to_users_id.sizeof();
 		
 		$amount = request('requested_amount');
 
