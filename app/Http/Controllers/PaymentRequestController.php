@@ -20,7 +20,7 @@ class PaymentRequestController extends Controller
 			'value' => strval(request('requested_amount')), // You must send the correct number of decimals, thus we enforce the use of strings
 		],
 		'description' => request('description'),
-		'redirectUrl' => route('paymentrequests.success'),
+		'redirectUrl' => route('paymentrequestsSuccess'),
 		]);
 
 		$payment = Mollie::api()->payments()->get($payment->id);
@@ -116,7 +116,6 @@ class PaymentRequestController extends Controller
 	{
 		// $this->validate(request(), [
 		// 	'account_id' => 'required|integer',
-		// 	'to_user_id' => 'nullable|integer',
 		// 	'to_users_id' => 'nullable',
 		// 	'currencies_id' => 'required',
 		// 	'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',

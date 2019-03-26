@@ -18,18 +18,6 @@
 							<input type="hidden" name="account_id" required value="{{$account->id}}">
 
 							<div class="form-group">
-								<label for="to_user_id">User</label>
-								<select name="to_user_id">
-								@if($contact === null )
-									<option selected value="-">select a user</option>
-									@foreach($users as $user)
-										<option value="{{ $user->id }}">{{ $user->name }}</option>
-									@endforeach
-								@else
-									<option value="{{ $contact->id }}">{{ $contact->name }}</option>
-								@endif
-								</select>
-
 								<div id="select_user" class="row">
 									<input type="hidden" name="to_users_id" value="">
 									<div id="all_users" class="col-5">
