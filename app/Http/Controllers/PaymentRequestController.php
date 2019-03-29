@@ -17,10 +17,10 @@ class PaymentRequestController extends Controller
 		$payment = Mollie::api()->payments()->create([
 		'amount' => [
 			'currency' => 'EUR', //Currency::select('currency')->where('id', request('currencies_id'))->get(),
-			'value' => strval(request('requested_amount')), // You must send the correct number of decimals, thus we enforce the use of strings
+			'value' => strval($amount), // You must send the correct number of decimals, thus we enforce the use of strings
 		],
 		'description' => request('description'),
-		'redirectUrl' => route('home'),
+		'redirectUrl' => route('succes'),
 		]);
 
 		$payment = Mollie::api()->payments()->get($payment->id);
@@ -63,20 +63,25 @@ class PaymentRequestController extends Controller
 	 * @param  \App\PaymentRequest  $paymentRequest
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(PaymentRequest $paymentRequest)
+	public function show($account_id, PaymentRequest $paymentRequest)
 	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\PaymentRequest  $paymentRequest
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(PaymentRequest $paymentRequest)
-	{
-
+		$account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
+		$paymentrequests = PaymentRequest::all()->where('id', $paymentRequest);
+		if(Auth::check())
+		{
+			if($account->user_id == Auth::user()->id)
+			{
+				return view('paymentrequest.show');
+			}
+			else
+			{
+				redirect('/accounts');
+			}
+		}
+		else
+		{
+			redirect('/login');
+		}
 	}
 
 	/**
@@ -161,18 +166,6 @@ class PaymentRequestController extends Controller
 			]);
 		}
 		redirect('/');
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\PaymentRequest  $paymentRequest
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, PaymentRequest $paymentRequest)
-	{
-
 	}
 
 	/**
