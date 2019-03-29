@@ -17,10 +17,10 @@ class PaymentRequestController extends Controller
 		$payment = Mollie::api()->payments()->create([
 		'amount' => [
 			'currency' => 'EUR', //Currency::select('currency')->where('id', request('currencies_id'))->get(),
-			'value' => strval($amount), // You must send the correct number of decimals, thus we enforce the use of strings
+			'value' => strval(number_format($amount, 2)), // You must send the correct number of decimals, thus we enforce the use of strings
 		],
 		'description' => request('description'),
-		'redirectUrl' => route('succes'),
+		'redirectUrl' => route('success',[1,1]),
 		]);
 
 		$payment = Mollie::api()->payments()->get($payment->id);
@@ -148,7 +148,7 @@ class PaymentRequestController extends Controller
 		{
 			$amount = $amount / $amount_of_users;
 		}
-
+		
 		foreach($to_users_id as $to_user_id)
 		{
 			$url = $this->preparePayment($amount);
