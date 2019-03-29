@@ -22,6 +22,7 @@
 	                        <div class="form-group">
 	                            <label for="iban">IBAN</label>
 	                            <input type="text" class="form-control" id="iban" name="iban" placeholder="NL00 1234 5678 90">
+								{!! $errors->first('iban','<span class="help-block">:message</span>') !!}
 	                        </div>
 	                        <button type="submit" class="btn btn-primary">Add account</button>
 	                    </form>
