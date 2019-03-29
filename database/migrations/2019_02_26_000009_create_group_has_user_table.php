@@ -10,7 +10,7 @@ class CreateGroupHasUserTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'group_has_user';
+    public $tableName = 'group_has_users';
 
     /**
      * Run the migrations.
