@@ -121,7 +121,7 @@ class PaymentRequestController extends Controller
 	{
 		$this->validate(request(), [
 			'account_id' => 'required|integer',
-			'to_users_id' => 'nullable',
+			'to_users_id' => 'nullable|regex:(^([0-9]+,?\s*)+$)',
 			'currencies_id' => 'required',
 			'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',
 			'description' => 'required|min:4',
@@ -139,31 +139,44 @@ class PaymentRequestController extends Controller
         	$image->move($destinationPath, $name);
     	}
 
-    	$to_users_id = explode(',', request('to_users_id'));
-		
-		$amount_of_users = sizeof($to_users_id);
-		$amount = request('requested_amount');
-		
-		if($amount_of_users > 0)
+    	$amount = request('requested_amount');
+
+    	if(strlen(request('to_users_id')) > 0)
 		{
-			$amount = $amount / $amount_of_users;
+    		$to_users_id = explode(',', request('to_users_id'));
+			$amount = $amount / sizeof($to_users_id);
+			
+			foreach($to_users_id as $to_user_id)
+			{
+				$url = $this->preparePayment($amount);
+
+				PaymentRequest::create([
+					'created_by_user_id' =>	Auth::user()->id,
+					'to_user_id' =>			$to_user_id,
+					'deposit_account_id' =>	request('account_id'),
+					'currencies_id' =>		request('currencies_id'),
+					'requested_amount' =>	$amount,
+					'description' =>		request('description'),
+					'request_type' =>		strtolower(request('request_type')),
+					'payment_url' =>		$url,
+					'media' =>				$name
+				]);
+			}
 		}
-		
-		foreach($to_users_id as $to_user_id)
+		else
 		{
 			$url = $this->preparePayment($amount);
 
-			PaymentRequest::create([
-				'created_by_user_id' =>	Auth::user()->id,
-				'to_user_id' =>			$to_user_id,
-				'deposit_account_id' =>	request('account_id'),
-				'currencies_id' =>		request('currencies_id'),
-				'requested_amount' =>	$amount,
-				'description' =>		request('description'),
-				'request_type' =>		strtolower(request('request_type')),
-				'payment_url' =>		$url,
-				'media' =>				$name
-			]);
+				PaymentRequest::create([
+					'created_by_user_id' =>	Auth::user()->id,
+					'deposit_account_id' =>	request('account_id'),
+					'currencies_id' =>		request('currencies_id'),
+					'requested_amount' =>	$amount,
+					'description' =>		request('description'),
+					'request_type' =>		strtolower(request('request_type')),
+					'payment_url' =>		$url,
+					'media' =>				$name
+				]);
 		}
 		redirect('/');
 	}
