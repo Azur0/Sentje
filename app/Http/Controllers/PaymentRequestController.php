@@ -137,10 +137,12 @@ class PaymentRequestController extends Controller
     	$to_users_id = explode(',', request('to_users_id'));
 		
 		$amount_of_users = sizeof($to_users_id);
-		
 		$amount = request('requested_amount');
-
-		$amount = $amount / $amount_of_users;
+		
+		if($amount_of_users > 0)
+		{
+			$amount = $amount / $amount_of_users;
+		}
 
 		foreach($to_users_id as $to_user_id)
 		{
@@ -181,8 +183,31 @@ class PaymentRequestController extends Controller
 	 */
 	public function destroy(PaymentRequest $paymentRequest)
 	{
-		//$mollie->payments->delete("tr_WDqYK6vllg");
+		$paymentRequest = PaymentRequest::all()->where('id', $paymentRequest);
+
+		if($paymentRequest->created_by_user_id == Auth::user()->id)
+		{
+			//$mollie->payments->delete("tr_WDqYK6vllg");
+		}
+		
 	}
 
-
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  \App\PaymentRequest  $paymentRequest
+	 * @return \Illuminate\Http\Response
+	 */
+	public function succes(PaymentRequest $paymentRequest)
+	{
+		$paymentRequest = PaymentRequest::all()->where('id', $paymentRequest)->where('status', 'completed');
+		if($paymentRequest !== null)
+		{
+			return view('paymentrequest.succes', compact('paymentRequest'));
+		}
+		else
+		{
+			redirect('/');
+		}
+	}
 }
