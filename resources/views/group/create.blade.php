@@ -13,7 +13,7 @@
 	                </div>
 
 	                <div class="card-body">
-	                    <form id="form" action="/accounts" method="POST">
+	                    <form id="form" action="/group" method="POST">
 	                    @csrf
 	                        <div class="form-group">
 	                            <label for="name">Group name</label>
@@ -22,12 +22,12 @@
 									<div class="alert alert-danger">
 										{{ $errors->first('to_user_id') }}
 									</div>
-								@endif 
+								@endif
 	                        </div>
 	                        <div class="form-group">
 								<label>users</label>
 								<div id="select_user" class="row">
-									
+
 									<input type="hidden" name="to_users_id" value="">
 									<div id="all_users" class="col-5">
 										@foreach($users as $user)
@@ -41,13 +41,13 @@
 										<input type="button" name="allout" value="<<">
 									</div>
 									<div id="paymentrequest_reciever" class="col-5">
-										
+
 									</div>
 								</div>
 								@if( $errors->has('to_user_id'))
 									<div class="alert alert-danger">
 										{{ $errors->first('to_user_id') }}
-										
+
 									</div>
 								@endif
 							</div>

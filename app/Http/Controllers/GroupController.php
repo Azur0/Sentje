@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Group;
 use App\User;
+use App\GroupHasUser;
 
 class GroupController extends Controller
 {
@@ -55,8 +56,8 @@ class GroupController extends Controller
 			'to_users_id' => 'required',
 		]);
 
-		Group::create([
-			'owner_ID' =>	Auth::user()->id,
+		$current = Group::create([
+			'owner_id' =>	Auth::user()->id,
 			'groupname' =>	request('name'),
 		]);
 
@@ -64,8 +65,13 @@ class GroupController extends Controller
 
 		foreach($to_users_id as $to_user_id)
 		{
-			//GroupHasUser::create(['group_id','user_id'])
+			GroupHasUser::create([
+                'group_id' => $current->id,
+                'user_id' => $to_user_id
+            ]);
 		}
+
+        return redirect('/group');
     }
 
     /**
@@ -91,7 +97,7 @@ class GroupController extends Controller
         {
             $users = User::all()->where('id','!=', Auth::user()->id);
             $group = Group::find($id);
-            
+
             if($group->owner_id == Auth::user()->id)
             {
                 return view('group.edit', compact('users', 'group'));

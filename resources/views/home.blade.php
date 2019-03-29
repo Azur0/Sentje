@@ -87,7 +87,7 @@
 					<div class="card-body">
 						<table class="table table-hover">
 							<tbody>
-								@foreach ($groups as $groups)
+								@foreach ($groups as $group)
 									<tr>
 										<td>
 											<a href="/accounts/{{ $group->id }}"><span style="vertical-align: middle;">{{ $group->user_id . ' ' . $group->name }}</span></a>
@@ -103,4 +103,3 @@
 	</div>
 </div>
 @endsection
-			
