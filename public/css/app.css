@@ -10655,6 +10655,67 @@ a.text-dark:focus {
   }
 }
 
+#content_wrapper {
+  min-height: calc(100vh - 70px);
+}
+
+#bg_img {
+  min-height: calc(100vh - 70px);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  padding: 100px 0 0 0;
+  background-color: #85868494;
+  background-blend-mode: soft-light;
+}
+
+#form_login,
+#form_register {
+  margin: auto;
+  width: 500px;
+  background-color: #F3F3F3;
+  position: relative;
+  border-radius: 0.25rem;
+}
+
+.form_buttons {
+  background-color: #14181D;
+  padding: 1em;
+  text-align: center;
+}
+
+.form_buttons input[type=button],
+.form_buttons a {
+  width: calc(50% - (1em / 2));
+}
+
+.form_fields {
+  padding: 1em;
+}
+
+.form_fields input,
+.form_fields label {
+  width: 40%;
+  font-size: 20px;
+  margin: 0 0 1em 0;
+}
+
+.form_fields input {
+  border: 4px solid #FFFFFF;
+  border-radius: 0.25rem;
+  outline: none;
+  padding: 5px 8px;
+  width: 60%;
+}
+
+#logreg_other {
+  background-color: grey;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -10732,5 +10793,18 @@ a.text-dark:focus {
 #form_media div img {
   height: 100%;
   border: 1px solid black;
+}
+
+.card {
+  border: 1px solid #202529;
+}
+
+.card .card-header {
+  background-color: #202529;
+  color: white;
+}
+
+.card .card-body a {
+  color: #3490dc;
 }
 

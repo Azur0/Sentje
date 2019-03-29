@@ -18,20 +18,39 @@
 	                        <div class="form-group">
 	                            <label for="name">Group name</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+	                            @if( $errors->has('to_user_id'))
+									<div class="alert alert-danger">
+										{{ $errors->first('to_user_id') }}
+									</div>
+								@endif 
 	                        </div>
 	                        <div class="form-group">
-	                            <label for="iban">Users</label>
-								<div class="input-group">
-		                            <select class="form-control">
-										@foreach ($users as $user)
-											<option value="{{ $user->id }}">{{ $user->name }}</option>
+								<label>users</label>
+								<div id="select_user" class="row">
+									
+									<input type="hidden" name="to_users_id" value="">
+									<div id="all_users" class="col-5">
+										@foreach($users as $user)
+											<div class="user"><span>{{ $user->id }}</span>{{ $user->name }}</div>
 										@endforeach
-									</select>
-									<a href="">
-										<i class="fas fa-plus-square" style="font-size: 35px; vertical-align: middle; float:right; margin-left: 15px;"></i>
-									</a>
+									</div>
+									<div id="buttons" class="col-sm">
+										<input type="button" name="allin" value=">>">
+										<input type="button" name="in" value=">">
+										<input type="button" name="out" value="<">
+										<input type="button" name="allout" value="<<">
+									</div>
+									<div id="paymentrequest_reciever" class="col-5">
+										
+									</div>
 								</div>
-	                        </div>
+								@if( $errors->has('to_user_id'))
+									<div class="alert alert-danger">
+										{{ $errors->first('to_user_id') }}
+										
+									</div>
+								@endif
+							</div>
 	                        <button type="submit" class="btn btn-primary">Create group</button>
 	                    </form>
 	                </div>

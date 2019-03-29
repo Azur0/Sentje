@@ -50,7 +50,22 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+			'name' => 'required',
+			'to_users_id' => 'required',
+		]);
+
+		Group::create([
+			'owner_ID' =>	Auth::user()->id,
+			'groupname' =>	request('name'),
+		]);
+
+		$to_users_id = explode(',', request('to_users_id'));
+
+		foreach($to_users_id as $to_user_id)
+		{
+			//GroupHasUser::create(['group_id','user_id'])
+		}
     }
 
     /**

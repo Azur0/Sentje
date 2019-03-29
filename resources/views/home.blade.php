@@ -47,8 +47,8 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="card" style="margin-bottom: 50px;">
-					<div class="card-header">Accounts</div>
+				<div class="card" style="margin-bottom: 35px;">
+					<div class="card-header"><a href="{{ route('accounts.index') }}">Accounts</a></div>
 
 					<div class="card-body">
 						<table class="table table-hover">
@@ -64,8 +64,8 @@
 						</table>
 					</div>
 				</div>
-				<div class="card">
-					<div class="card-header">Contacts</div>
+				<div class="card" style="margin-bottom: 35px;">
+					<div class="card-header"><a href="{{ route('contact.index') }}">Contacts</a></div>
 
 					<div class="card-body">
 						<table class="table table-hover">
@@ -81,9 +81,26 @@
 						</table>
 					</div>
 				</div>
+				<div class="card" style="margin-bottom: 50px;">
+					<div class="card-header"><a href="{{ route('group.index') }}">my Groups</a></div>
 
+					<div class="card-body">
+						<table class="table table-hover">
+							<tbody>
+								@foreach ($groups as $groups)
+									<tr>
+										<td>
+											<a href="/accounts/{{ $group->id }}"><span style="vertical-align: middle;">{{ $group->user_id . ' ' . $group->name }}</span></a>
+										</td>
+									</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 @endsection
+			
