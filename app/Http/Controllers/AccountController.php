@@ -56,8 +56,8 @@ class AccountController extends Controller
         if(Auth::check())
         {
             Account::create(array_merge($this->validate(request(), [
-                'name' => ['required'],
-                'iban' => ['required']
+                'name' => ['required', 'max:40'],
+                'iban' => ['required', 'max:40', 'iban']
             ]), ['user_id' => Auth::user()->id]));
 
             return redirect('/accounts');
