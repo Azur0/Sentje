@@ -11,8 +11,8 @@
 					Payment Request
 				</div>
 				<div class="card-body">
-					<div>{{ $paymentRequest->created_by_user->name }}</div> {{ $paymentRequest->created_at }}
-					<h2>{{ $paymentRequest->requested_amount }} {{ $paymentRequest->currency->currency }}</h2>
+					<div>{{ $paymentRequest->id }}</div> {{ $paymentRequest->created_at }}
+					<h2>{{ $paymentRequest->requested_amount }} {{ $paymentRequest->currency_id }}{{ $paymentRequest}}</h2>
 					<h2>status: {{ $paymentRequest->status }}</h2>
 					<div>
 						{{ $paymentRequest->description }}
