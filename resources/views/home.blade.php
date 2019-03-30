@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="card">
-					<div class="card-header">Incoming requests</div>
+					<div class="card-header">{{ __('header.incomingrequest') }}</div>
 
 					<div class="card-body">
 						<table class="table">
@@ -39,7 +39,7 @@
 										</tr>
 									@endforeach
 								@else
-									<p>No incoming requests</p>
+									<p>{{ __('header.noincomingrequest') }}</p>
 								@endif
 							</tbody>
 						</table>
@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<div class="card" style="margin-bottom: 35px;">
-					<div class="card-header"><a href="{{ route('contact.index') }}">Contacts</a></div>
+					<div class="card-header"><a href="{{ route('contact.index') }}">{{ __('header.contact') }}</a></div>
 
 					<div class="card-body">
 						<table class="table table-hover">
@@ -82,7 +82,7 @@
 					</div>
 				</div>
 				<div class="card" style="margin-bottom: 50px;">
-					<div class="card-header"><a href="{{ route('group.index') }}">my Groups</a></div>
+					<div class="card-header"><a href="{{ route('group.index') }}">{{ __('header.group') }}</a></div>
 
 					<div class="card-body">
 						<table class="table table-hover">

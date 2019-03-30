@@ -32,14 +32,14 @@
 				<a class="dropdown-item" href="/admin">Admin</a>
 			@endif
 
-			<a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
-			<a class="dropdown-item" href="{{ route('accounts.index') }}">Accounts</a>
-			<a class="dropdown-item" href="{{ route('payment.index') }}">Payments</a>
-			<a class="dropdown-item" href="{{ route('group.index') }}">Groups</a>
-			<a class="dropdown-item" href="{{ route('contact.index') }}">Contacts</a>
-			<a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">Settings</a>
+			<a class="dropdown-item" href="{{ route('home') }}">{{ __('header.dashboard') }}</a>
+			<a class="dropdown-item" href="{{ route('accounts.index') }}">{{ __('header.account') }}</a>
+			<a class="dropdown-item" href="{{ route('payment.index') }}">{{ __('header.payment') }}</a>
+			<a class="dropdown-item" href="{{ route('group.index') }}">{{ __('header.group') }}</a>
+			<a class="dropdown-item" href="{{ route('contact.index') }}">{{ __('header.contact') }}</a>
+			<a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">{{ __('header.setting') }}</a>
 			<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-					{{ __('Logout') }}
+					{{ __('header.logout') }}
 			</a>
 
 			<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -9,7 +9,7 @@
 	        <div class="col-md-8">
 	            <div class="card">
 	                <div class="card-header">
-	                    Edit account
+	                    {{ __('header.editaccount') }}
 	                </div>
 
 	                <div class="card-body">
@@ -17,14 +17,16 @@
 	                    @csrf
 	                    @method('PATCH')
 	                        <div class="form-group">
-	                            <label for="name">Name</label>
+	                            <label for="name">{{ __('header.name') }}</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $account->name }}">
+								{!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <div class="form-group">
-	                            <label for="iban">IBAN</label>
+	                            <label for="iban">{{ __('header.ibannumber') }}</label>
 	                            <input type="text" class="form-control" id="iban" name="iban" placeholder="NL00 1234 5678 90" value="{{ $account->iban }}">
+								{!! $errors->first('iban', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
-	                        <button type="submit" class="btn btn-primary">Edit account</button>
+	                        <button type="submit" class="btn btn-primary">{{ __('header.editaccount') }}</button>
 	                    </form>
 	                </div>
 	            </div>

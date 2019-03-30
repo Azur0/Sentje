@@ -9,23 +9,19 @@
 	        <div class="col-md-8">
 	            <div class="card">
 	                <div class="card-header">
-	                    Create a new group
+	                    {{ __('header.creategroup') }}
 	                </div>
 
 	                <div class="card-body">
 	                    <form id="form" action="/group" method="POST">
 	                    @csrf
 	                        <div class="form-group">
-	                            <label for="name">Group name</label>
+	                            <label for="name">{{ __('header.groupname') }}</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-	                            @if( $errors->has('to_user_id'))
-									<div class="alert alert-danger">
-										{{ $errors->first('to_user_id') }}
-									</div>
-								@endif
+	                            {!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <div class="form-group">
-								<label>users</label>
+								<label>{{ __('header.users') }}</label>
 								<div id="select_user" class="row">
 
 									<input type="hidden" name="to_users_id" value="">
@@ -51,7 +47,7 @@
 									</div>
 								@endif
 							</div>
-	                        <button type="submit" class="btn btn-primary">Create group</button>
+	                        <button type="submit" class="btn btn-primary">{{ __('header.creategroup') }}</button>
 	                    </form>
 	                </div>
 	            </div>

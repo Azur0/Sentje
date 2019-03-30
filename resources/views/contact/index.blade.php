@@ -9,7 +9,7 @@
 	        <div class="col-md-8">
 	            <div class="card" style="margin-bottom: 50px;">
 	                <div class="card-header">
-	                    My Contacts
+	                    {{ __('header.mycontact') }}
 	                    <a href="/contact/create">
 	                        <i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
 	                    </a>
@@ -19,7 +19,7 @@
 	                    <table class="table table-hover">
 	                        <thead>
 	                            <tr>
-	                                <td scope="col">Contact name</td>
+	                                <td scope="col">{{ __('header.contactname') }}</td>
 	                                <td scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></td>
 	                            </tr>
 	                        </thead>

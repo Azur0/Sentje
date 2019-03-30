@@ -9,22 +9,23 @@
 	        <div class="col-md-8">
 	            <div class="card">
 	                <div class="card-header">
-	                    Add a new account
+	                    {{ __('header.addaccount') }}
 	                </div>
 
 	                <div class="card-body">
 	                    <form id="form" action="/accounts" method="POST">
 	                    @csrf
 	                        <div class="form-group">
-	                            <label for="name">Name</label>
+	                            <label for="name">{{ __('header.name') }}</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+								{!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <div class="form-group">
-	                            <label for="iban">IBAN</label>
+	                            <label for="iban">{{ __('header.ibannumber') }}</label>
 	                            <input type="text" class="form-control" id="iban" name="iban" placeholder="NL00 1234 5678 90">
-								{!! $errors->first('iban','<span class="help-block">:message</span>') !!}
+								{!! $errors->first('iban','<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
-	                        <button type="submit" class="btn btn-primary">Add account</button>
+	                        <button type="submit" class="btn btn-primary">{{ __('header.addaccount') }}</button>
 	                    </form>
 	                </div>
 	            </div>
