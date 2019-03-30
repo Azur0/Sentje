@@ -32,20 +32,20 @@
 										<input type="button" name="allout" value="<<">
 									</div>
 									<div id="paymentrequest_reciever" class="col-5">
-										
+
 									</div>
 								</div>
 								@if( $errors->has('to_user_id'))
 									<div class="alert alert-danger">
 										{{ $errors->first('to_user_id') }}
-										
+
 									</div>
 								@endif
 							</div>
 							<div class="form-group">
 								<label for="currencies_id">Currency</label>
 								<select name="currencies_id">
-									<option selected value="-">select a currency</option>
+									<option selected value="">select a currency</option>
 									@foreach($currencies as $currency)
 										<option value="{{ $currency->id }}">{{ $currency->currency }}</option>
 									@endforeach
@@ -53,7 +53,7 @@
 								@if( $errors->has('currencies_id'))
 									<div class="alert alert-danger">
 										{{ $errors->first('currencies_id') }}
-										
+
 									</div>
 								@endif
 							</div>
@@ -63,13 +63,13 @@
 								@if( $errors->has('requested_amount'))
 									<div class="alert alert-danger">
 										{{ $errors->first('requested_amount') }}
-										
+
 									</div>
 								@endif
 							</div>
 							<div class="form-group">
 								<label for="request_type">Request type</label>
-							
+
 								<select name="request_type">
 									<option value="payment">Payment</option>
 									<option value="donation">Donation</option>
@@ -77,7 +77,7 @@
 								@if( $errors->has('request_type'))
 									<div class="alert alert-danger">
 										{{ $errors->first('request_type') }}
-										
+
 									</div>
 								@endif
 							</div>
@@ -87,7 +87,7 @@
 								@if( $errors->has('description'))
 									<div class="alert alert-danger">
 										{{ $errors->first('description') }}
-										
+
 									</div>
 								@endif
 							</div>
