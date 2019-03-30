@@ -18,41 +18,25 @@
 	                        <div class="form-group">
 	                            <label for="name">Name</label>
 	                            <input type="text" class="form-control" id="name" name="name"  value="{{ $user->name }}" />
-	                            @if ($errors->has('name'))
-	                                <div class="alert alert-danger">
-	                                    {{ $errors->first('name') }}
-	                                </div>
-	                            @endif
+	                            {!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 
 	                        <div class="form-group">
 	                            <label for="email">Email</label>
 	                            <input type="email" class="form-control" id="email" name="email"  value="{{ $user->email }}" />
-	                            @if ($errors->has('email'))
-	                                <div class="alert alert-danger">
-	                                    {{ $errors->first('email') }}
-	                                </div>
-	                            @endif
+	                            {!! $errors->first('email', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 
 	                        <div class="form-group">
-	                            <label for="password">Password</label>
+	                            <label for="password">New password</label>
 	                            <input type="password" class="form-control" id="password" name="password" />
-	                            @if ($errors->has('password'))
-	                                <div class="alert alert-danger">
-	                                    {{ $errors->first('password') }}
-	                                </div>
-	                            @endif
+	                           {!! $errors->first('password', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 
 	                        <div class="form-group">
-	                            <label for="confirmPassword">Confirm password</label>
+	                            <label for="confirmPassword">Confirm new password</label>
 	                            <input type="password" class="form-control" id="confirmPassword" name="password_confirmation" />
-	                            @if ($errors->has('password_confirmation'))
-	                                <div class="alert alert-danger">
-	                                    {{ $errors->first('password_confirmation') }}
-	                                </div>
-	                            @endif
+	                           {!! $errors->first('confirmPassword', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 
 	                        <button type="submit" class="btn btn-primary">Edit account</button>

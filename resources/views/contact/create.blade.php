@@ -22,6 +22,7 @@
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
+								{!! $errors->first('contact', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <button type="submit" class="btn btn-primary">Add contact</button>
 	                    </form>
