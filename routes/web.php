@@ -25,7 +25,7 @@ Route::resource('payments', 'PaymentController');
 
 Route::resource('/accounts/{account_id}/paymentrequests','PaymentRequestController');
 Route::get('/accounts/{account_id}/paymentrequests/{paymentrequest}/delete', 'PaymentRequestController@delete');
-Route::get('/accounts/{account_id}/paymentrequests/{paymentrequest}/success', 'PaymentRequestController@success')->name('success');
+Route::get('/success/{succesurl}', 'PaymentRequestController@success')->name('success2');
 
 Route::resource('accounts', 'AccountController');
 Route::get('accounts/{account}/delete', 'AccountController@delete');
