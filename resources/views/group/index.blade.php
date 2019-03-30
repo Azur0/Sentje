@@ -9,7 +9,7 @@
     	        <div class="col-md-8">
     	            <div class="card" style="margin-bottom: 50px;">
     	                <div class="card-header">
-    	                    My Groups
+    	                    {{ __('header.mygroup') }}
     	                    <a href="/group/create">
     	                        <i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
     	                    </a>
@@ -19,7 +19,7 @@
     	                    <table class="table table-hover">
     	                        <thead>
                                     <tr>
-    	                                <th scope="col">Group Name</th>
+    	                                <th scope="col">{{ __('header.groupname') }}</th>
                                         <th></th>
                                         <th scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></th>
                                     </tr>

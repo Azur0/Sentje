@@ -9,14 +9,14 @@
 	        <div class="col-md-8">
 	            <div class="card" style="margin-bottom: 50px;">
 	                <div class="card-header">
-	                    <b>Add new contact</b>
+	                    <b>{{ __('header.addcontact')}}</b>
 	                </div>
 
                     <div class="card-body">
 	                    <form id="form" action="/contact" method="POST">
 	                    @csrf
 	                        <div class="form-group">
-	                            <label for="contact">User name</label>
+	                            <label for="contact">{{ __('header.user')}}</label>
                                 <select class="form-control" name="contact">
                                     @foreach ($users as $user)
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -24,7 +24,7 @@
                                 </select>
 								{!! $errors->first('contact', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
-	                        <button type="submit" class="btn btn-primary">Add contact</button>
+	                        <button type="submit" class="btn btn-primary">{{ __('header.addcontact')}}</button>
 	                    </form>
 	                </div>
 	            </div>

@@ -9,14 +9,14 @@
 	        <div class="col-md-8">
 	            <div class="card" style="margin-bottom: 50px;">
 	                <div class="card-header">
-	                    My Payments
+	                    {{ __('header.mypayment') }}
 	                </div>
 
 	                <div class="card-body">
 	                    <table class="table table-hover">
 	                        <thead>
 	                            <tr>
-	                                <td scope="col">Payment</td>
+	                                <td scope="col">{{ __('header.payment') }}</td>
 	                                <td scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></td>
 	                            </tr>
 	                        </thead>

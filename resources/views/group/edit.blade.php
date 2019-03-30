@@ -9,19 +9,19 @@
 	        <div class="col-md-8">
 	            <div class="card">
 	                <div class="card-header">
-	                    Edit group: {{ $group->groupname }}
+	                    {{ __('header.editgroup')}}
 	                </div>
 
 	                <div class="card-body">
 	                    <form id="form" action="/accounts" method="POST">
 	                    @csrf
 	                        <div class="form-group">
-	                            <label for="name">Group name</label>
+	                            <label for="name">{{ __('header.groupname')}}</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
 								{!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <div class="form-group">
-	                            <label for="iban">Users</label>
+	                            <label for="iban">{{ __('header.users')}}</label>
 								<div class="input-group">
 		                            <select class="form-control">
 										@foreach ($users as $user)
@@ -33,7 +33,7 @@
 									</a>
 								</div>
 	                        </div>
-	                        <button type="submit" class="btn btn-primary">Edit group</button>
+	                        <button type="submit" class="btn btn-primary">{{ __('header.editgroup')}}</button>
 	                    </form>
 	                </div>
 	            </div>
