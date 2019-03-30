@@ -145,7 +145,7 @@ class PaymentRequestController extends Controller
 		{
     		$to_users_id = explode(',', request('to_users_id'));
 			$amount = $amount / sizeof($to_users_id);
-			
+
 			foreach($to_users_id as $to_user_id)
 			{
 				$url = $this->preparePayment($amount);
@@ -195,7 +195,7 @@ class PaymentRequestController extends Controller
 		{
 			//$mollie->payments->delete("tr_WDqYK6vllg");
 		}
-		
+
 	}
 
 	/**
