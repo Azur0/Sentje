@@ -44,7 +44,7 @@
 							</div>
 							<div class="form-group">
 								<label for="currencies_id">Currency</label>
-								<select name="currencies_id">
+								<select class="form-control" name="currencies_id">
 									<option selected value="">select a currency</option>
 									@foreach($currencies as $currency)
 										<option value="{{ $currency->id }}">{{ $currency->currency }}</option>
@@ -59,7 +59,7 @@
 							</div>
 							<div class="form-group">
 								<label for="requested_amount">Amount</label>
-								<input type="text" name="requested_amount" pattern="^\d{1,3}(,\d{3})*(\.\d+)?$" value="{{ old('requested_amount') }}" data-type="currency" placeholder="$1.00" required>
+								<input class="form-control" type="number" name="requested_amount" pattern="^\d{1,3}(,\d{3})*(\.\d+)?$" value="{{ old('requested_amount') }}" data-type="currency" placeholder="€1.00" required>
 								@if( $errors->has('requested_amount'))
 									<div class="alert alert-danger">
 										{{ $errors->first('requested_amount') }}
@@ -70,7 +70,7 @@
 							<div class="form-group">
 								<label for="request_type">Request type</label>
 
-								<select name="request_type">
+								<select class="form-control" name="request_type">
 									<option value="payment">Payment</option>
 									<option value="donation">Donation</option>
 								</select>
@@ -83,7 +83,7 @@
 							</div>
 							<div class="form-group">
 								<label for="description">Description</label>
-								<textarea name="description" required value="{{ old('description') }}"></textarea>
+								<textarea class="form-control" name="description" required value="{{ old('description') }}"></textarea>
 								@if( $errors->has('description'))
 									<div class="alert alert-danger">
 										{{ $errors->first('description') }}
