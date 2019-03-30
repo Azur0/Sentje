@@ -36,6 +36,6 @@ class PaymentRequest extends Model
     }
 
     public function currency() {
-        return $this->belongsTo(Currency::class, 'id');
+        return $this->belongsTo(Currency::class, 'currencies_id');
     }
 }

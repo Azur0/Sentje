@@ -12,7 +12,7 @@
 				</div>
 				<div class="card-body">
 					<div>{{ $paymentRequest->id }}</div> {{ $paymentRequest->created_at }}
-					<h2>{{ $paymentRequest->requested_amount }} {{ $paymentRequest->currency_id }}{{ $paymentRequest}}</h2>
+					<h2>{{ $paymentRequest->currency->currency }}{{ $paymentRequest->requested_amount }} {{ $paymentRequest->currency_id }}</h2>
 					<h2>status: {{ $paymentRequest->status }}</h2>
 					<div>
 						{{ $paymentRequest->description }}
