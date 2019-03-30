@@ -19,10 +19,12 @@
 	                        <div class="form-group">
 	                            <label for="name">Name</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $account->name }}">
+								{!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="iban">IBAN</label>
 	                            <input type="text" class="form-control" id="iban" name="iban" placeholder="NL00 1234 5678 90" value="{{ $account->iban }}">
+								{!! $errors->first('iban', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <button type="submit" class="btn btn-primary">Edit account</button>
 	                    </form>

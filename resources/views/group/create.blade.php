@@ -18,11 +18,7 @@
 	                        <div class="form-group">
 	                            <label for="name">Group name</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-	                            @if( $errors->has('to_user_id'))
-									<div class="alert alert-danger">
-										{{ $errors->first('to_user_id') }}
-									</div>
-								@endif
+	                            {!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <div class="form-group">
 								<label>users</label>

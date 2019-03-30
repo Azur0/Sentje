@@ -42,7 +42,7 @@ class AccountController extends Controller
             return view('accounts.create');
         }
 
-        authFail();
+        $this->authFail();
     }
 
     /**
@@ -128,6 +128,11 @@ class AccountController extends Controller
      */
     public function update(Account $account)
     {
+        $this->validate(request(), [
+            'name' => ['required', 'max:40'],
+            'iban' => ['required', 'max:40', 'iban']
+		]);
+
         $account->update(request(['name', 'iban']));
 
         return redirect('/accounts');

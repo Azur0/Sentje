@@ -52,7 +52,7 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-			'name' => 'required',
+			'name' => ['required', 'max:45'],
 			'to_users_id' => 'required',
 		]);
 
@@ -122,7 +122,10 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(), [
+			'name' => ['required', 'max:45'],
+			'to_users_id' => 'required',
+		]);
     }
 
     /**

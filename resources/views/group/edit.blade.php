@@ -18,6 +18,7 @@
 	                        <div class="form-group">
 	                            <label for="name">Group name</label>
 	                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+								{!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="iban">Users</label>
