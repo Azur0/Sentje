@@ -207,11 +207,9 @@ class PaymentRequestController extends Controller
 	 * @param  \App\PaymentRequest  $paymentRequest
 	 * @return \Illuminate\Http\Response
 	 */
-	public function success($paymentrequest)
+	public function success($succesurl)
 	{
-		
-
-		$paymentRequest = PaymentRequest::all()->where('id', $paymentrequest)->first(); //->where('status', 'completed');
+		$paymentRequest = PaymentRequest::all()->where('id', $paymentrequest)->first();
 		if($paymentRequest !== null)
 		{
 			return view('paymentrequests.success', compact('paymentRequest'));
