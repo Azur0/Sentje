@@ -117,7 +117,7 @@ class PaymentRequestController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(Request $request, $account_id)
 	{
 		$this->validate(request(), [
 			'account_id' => 'required|integer',
@@ -204,12 +204,14 @@ class PaymentRequestController extends Controller
 	 * @param  \App\PaymentRequest  $paymentRequest
 	 * @return \Illuminate\Http\Response
 	 */
-	public function succes(PaymentRequest $paymentRequest)
+	public function success($paymentrequest)
 	{
-		$paymentRequest = PaymentRequest::all()->where('id', $paymentRequest)->where('status', 'completed');
+		
+
+		$paymentRequest = PaymentRequest::all()->where('id', $paymentrequest)->first(); //->where('status', 'completed');
 		if($paymentRequest !== null)
 		{
-			return view('paymentrequest.succes', compact('paymentRequest'));
+			return view('paymentrequests.success', compact('paymentRequest'));
 		}
 		else
 		{
