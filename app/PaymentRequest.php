@@ -15,6 +15,7 @@ class PaymentRequest extends Model
         'description',
         'request_type',
         'payment_url',
+        'success_url',
         'media'
     ];
 

@@ -12,7 +12,7 @@ use Mollie\Laravel\Facades\Mollie;
 
 class PaymentRequestController extends Controller
 {
-	public function preparePayment($amount)
+	public function preparePayment($amount,$succesUrl)
 	{
 		$payment = Mollie::api()->payments()->create([
 		'amount' => [
@@ -20,7 +20,7 @@ class PaymentRequestController extends Controller
 			'value' => strval(number_format($amount, 2)), // You must send the correct number of decimals, thus we enforce the use of strings
 		],
 		'description' => request('description'),
-		'redirectUrl' => route('success',[1,1]),
+		'redirectUrl' => route('success2', $succesUrl),
 		'method' => ['paypal', 'creditcard', 'ideal'],
 		]);
 
@@ -141,6 +141,7 @@ class PaymentRequestController extends Controller
     	}
 
     	$amount = request('requested_amount');
+    	$succesUrl = 'a'.request('account_id').'t'.time();
 
     	if(strlen(request('to_users_id')) > 0)
 		{
@@ -149,7 +150,7 @@ class PaymentRequestController extends Controller
 
 			foreach($to_users_id as $to_user_id)
 			{
-				$url = $this->preparePayment($amount);
+				$url = $this->preparePayment($amount, $succesUrl);
 
 				PaymentRequest::create([
 					'created_by_user_id' =>	Auth::user()->id,
@@ -160,13 +161,14 @@ class PaymentRequestController extends Controller
 					'description' =>		request('description'),
 					'request_type' =>		strtolower(request('request_type')),
 					'payment_url' =>		$url,
+					'success_url' =>		$succesUrl,
 					'media' =>				$name
 				]);
 			}
 		}
 		else
 		{
-			$url = $this->preparePayment($amount);
+			$url = $this->preparePayment($amount, $succesUrl);
 
 				PaymentRequest::create([
 					'created_by_user_id' =>	Auth::user()->id,
@@ -176,10 +178,11 @@ class PaymentRequestController extends Controller
 					'description' =>		request('description'),
 					'request_type' =>		strtolower(request('request_type')),
 					'payment_url' =>		$url,
+					'success_url' =>		$succesUrl,
 					'media' =>				$name
 				]);
 		}
-		redirect('/');
+		redirect('/home');
 	}
 
 	/**
