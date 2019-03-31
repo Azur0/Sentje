@@ -14,5 +14,9 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         DB::table('roles')->insert(['role' => 'user',]);
         DB::table('roles')->insert(['role' => 'admin',]);
+
+        DB::table('currencies')->insert(['currency' => 'EUR','fullname' => 'Euro','symbol' => '€',]);
+        DB::table('currencies')->insert(['currency' => 'USD','fullname' => 'Dollar','symbol' => '$',]);
+
     }
 }
