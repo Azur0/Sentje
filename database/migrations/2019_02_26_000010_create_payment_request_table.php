@@ -31,6 +31,7 @@ class CreatePaymentRequestTable extends Migration
             $table->enum('status', ['open','pending', 'partial', 'completed', 'canceled', 'expired'])->default('open');
             $table->string('payment_url');
             $table->string('success_url')->unique();
+            $table->string('mollie_id');
             $table->string('description');
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
            	$table->string('media')->nullable();

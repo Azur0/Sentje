@@ -25,9 +25,8 @@ class PaymentRequestController extends Controller
 		]);
 
 		$payment = Mollie::api()->payments()->get($payment->id);
-
-		// redirect customer to Mollie checkout page
-		return $payment->getCheckoutUrl();
+		
+		return array($payment->id, $payment->getCheckoutUrl());
 	}
 
 
@@ -151,7 +150,7 @@ class PaymentRequestController extends Controller
 
 			foreach($to_users_id as $to_user_id)
 			{
-				$url = $this->preparePayment($amount, $succesUrl);
+				$mollinfo = $this->preparePayment($amount, $succesUrl);
 
 				PaymentRequest::create([
 					'created_by_user_id' =>	Auth::user()->id,
@@ -161,8 +160,9 @@ class PaymentRequestController extends Controller
 					'requested_amount' =>	$amount,
 					'description' =>		request('description'),
 					'request_type' =>		strtolower(request('request_type')),
-					'payment_url' =>		$url,
+					'payment_url' =>		$mollinfo[1],
 					'success_url' =>		$succesUrl,
+					'mollie_id' =>			$mollinfo[0],
 					'media' =>				$name
 				]);
 			}
@@ -171,7 +171,7 @@ class PaymentRequestController extends Controller
 		}
 		else
 		{
-			$url = $this->preparePayment($amount, $succesUrl);
+			$mollinfo = $this->preparePayment($amount, $succesUrl);
 
 				PaymentRequest::create([
 					'created_by_user_id' =>	Auth::user()->id,
@@ -180,8 +180,9 @@ class PaymentRequestController extends Controller
 					'requested_amount' =>	$amount,
 					'description' =>		request('description'),
 					'request_type' =>		strtolower(request('request_type')),
-					'payment_url' =>		$url,
+					'payment_url' =>		$mollinfo[1],
 					'success_url' =>		$succesUrl,
+					'mollie_id' =>			$mollinfo[0],
 					'media' =>				$name
 				]);
 		}

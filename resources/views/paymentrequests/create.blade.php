@@ -83,7 +83,7 @@
 							</div>
 							<div class="form-group">
 								<label for="description">Description</label>
-								<textarea class="form-control" name="description" required value="{{ old('description') }}"></textarea>
+								<textarea class="form-control" name="description" required>{{ old('description') }}</textarea>
 								@if( $errors->has('description'))
 									<div class="alert alert-danger">
 										{{ $errors->first('description') }}
@@ -107,13 +107,6 @@
 								<input type="submit" name="btn_submit" value="create"><a href="/accounts/{{$account->id}}">cancel</a>
 							</div>
 						</form>
-						<div>
-								@foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-
-
-						</div>
 					</div>
 				</div>
 			</div>
