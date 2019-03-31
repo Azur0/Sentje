@@ -7,22 +7,23 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-7">
-				<div class="card" style="margin-bottom: 50px;">
-					<div class="card-header">Dashboard</div>
+				<div class="card" style="margin-bottom: 35px;">
+					<div class="card-header">{{ __('header.openrequest') }}</div>
 
-					<div class="card-body">
-						@if (session('status'))
-							<div class="alert alert-success" role="alert">
-								{{ session('status') }}
-							</div>
-						@endif
-
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Integer pharetra massa ac viverra dignissim. Cras eu quam rhoncus
-						est egestas aliquet. Aliquam aliquet in leo sed lobortis. In hac habitasse
-						platea dictumst. Pellentesque eu efficitur turpis. Aliquam orci velit, viverra
-						in augue eget, vestibulum ultricies lacus. In hac habitasse platea dictumst.
-						Pellentesque ante leo, accumsan nec metus a, varius dapibus mi. Duis ut pharetra lectus.
+					<div class="card-body" >
+						<table class="table">
+							<tbody>
+								@if ($paymentrequests->count())
+									@foreach ($openrequests as $paymentrequest)
+										<tr>
+											<td><?= $paymentrequest->description ?><td>
+										</tr>
+									@endforeach
+								@else
+									<p>{{ __('header.noincomingrequest') }}</p>
+								@endif
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div class="card">
@@ -46,7 +47,21 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="col-md-4">
+				<div class="card" style="margin-bottom: 35px;">
+					<div class="card-header">Dashboard</div>
+
+					<div class="card-body">
+						@if (session('status'))
+							<div class="alert alert-success" role="alert">
+								{{ session('status') }}
+							</div>
+						@endif
+
+						Welcome to the Dashboard.
+					</div>
+				</div>
 				<div class="card" style="margin-bottom: 35px;">
 					<div class="card-header"><a href="{{ route('accounts.index') }}">Accounts</a></div>
 
