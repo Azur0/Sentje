@@ -21,12 +21,11 @@ class PaymentRequestController extends Controller
 		],
 		'description' => request('description'),
 		'redirectUrl' => route('success2', $succesUrl),
-		'method' => ['paypal', 'creditcard', 'ideal'],
-		'isCancelable' => true,
+		'method' => ['paypal', 'banktransfer', 'ideal'],
 		]);
 
 		$payment = Mollie::api()->payments()->get($payment->id);
-		
+
 		return array($payment->id, $payment->getCheckoutUrl());
 	}
 
@@ -142,7 +141,7 @@ class PaymentRequestController extends Controller
     	}
 
     	$amount = request('requested_amount');
-    	
+
 
     	if(strlen(request('to_users_id')) > 0)
 		{
@@ -169,7 +168,7 @@ class PaymentRequestController extends Controller
 					'media' =>				$name
 				]);
 			}
-			
+
 			return redirect()->route('accounts.show', [$account_id]);
 		}
 		else
