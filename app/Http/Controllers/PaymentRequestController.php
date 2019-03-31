@@ -201,21 +201,21 @@ class PaymentRequestController extends Controller
 
 		if($paymentRequest->created_by_user_id == Auth::user()->id)
 		{
-			//$mollie->payments->delete("tr_WDqYK6vllg");
+			$mollie->payments->delete($paymentRequest->mollie_id);
 		}
 
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\PaymentRequest  $paymentRequest
-	 * @return \Illuminate\Http\Response
-	 */
 	public function success($succesurl)
 	{
-
 		$paymentRequest = PaymentRequest::where('success_url', $succesurl)->first();
+
+		$payment = Mollie::api()->payments()->get($paymentRequest->mollie_id);
+
+		$paymentRequest->status = $payment->status;
+		$paymentRequest->save();
+
+		//dd($payment);
 
 		if($paymentRequest !== null)
 		{

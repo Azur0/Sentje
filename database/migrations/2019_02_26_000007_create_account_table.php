@@ -25,7 +25,7 @@ class CreateAccountTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name', 40);
-            $table->string('iban', 40);
+            $table->string('iban', 40)->unique();
             $table->timestamps();
 
             $table->index(["user_id"], 'fk_account_user1_idx');

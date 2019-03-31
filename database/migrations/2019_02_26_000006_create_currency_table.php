@@ -24,6 +24,8 @@ class CreateCurrencyTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('currency', 45);
+            $table->string('fullname', 45);
+            $table->string('symbol', 1);
             $table->timestamps();
         });
     }

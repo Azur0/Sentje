@@ -18,6 +18,7 @@
         'logout' => 'Logout',
 
         // Dashboard
+        'openrequest' => 'Open requests',
         'incomingrequest' => 'Incoming requests',
         'noincomingrequest' => 'No incoming requests',
 
