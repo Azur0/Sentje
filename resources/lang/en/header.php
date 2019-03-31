@@ -29,6 +29,7 @@
         'addaccount' => 'Add new account',
         'editaccount' => 'Edit account',
         'myrequest' => 'My payment request',
+        'myrequests' => 'My payment requests',
         'amount' => 'amount',
         'datefiled' => 'Date Filed',
         'addpaymentrequest' => 'Add new payment request',
