@@ -179,3 +179,25 @@
 		}
 	}
 }
+
+.card .card-body a
+{
+	color: #D8D8D8;
+
+	&:hover
+	{
+		.fa-ban
+		{
+			color: red;
+		}
+
+		.fa-edit
+		{
+			color: #2578AF;
+		}
+		.fa-trash-alt
+		{
+			color: red;
+		}
+	}
+}

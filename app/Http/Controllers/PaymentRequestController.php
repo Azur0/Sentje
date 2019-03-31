@@ -173,7 +173,7 @@ class PaymentRequestController extends Controller
 		}
 		else
 		{
-			$succesUrl = 'a'.request('account_id').'u'.$to_user_id.'t'.time();
+			$succesUrl = 'a'.request('account_id').'u'.'t'.time();
 
 			$mollinfo = $this->preparePayment($amount, $succesUrl);
 
@@ -193,6 +193,16 @@ class PaymentRequestController extends Controller
 		redirect('/home');
 	}
 
+	public function delete($paymentRequest)
+	{
+		if(Auth::check())
+		{
+			$paymentrequest = PaymentRequest::all()->where('id', $paymentRequest)->first;
+
+			return view('', compact('paymentrequest'));
+		}
+	}
+
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -205,7 +215,7 @@ class PaymentRequestController extends Controller
 
 		if($paymentRequest->created_by_user_id == Auth::user()->id)
 		{
-			$mollie->payments->delete($paymentRequest->mollie_id);
+			Mollie::api()->payments->delete($paymentRequest->mollie_id);
 		}
 
 	}

@@ -10808,3 +10808,19 @@ a.text-dark:focus {
   color: #3490dc;
 }
 
+.card .card-body a {
+  color: #D8D8D8;
+}
+
+.card .card-body a:hover .fa-ban {
+  color: red;
+}
+
+.card .card-body a:hover .fa-edit {
+  color: #2578AF;
+}
+
+.card .card-body a:hover .fa-trash-alt {
+  color: red;
+}
+
