@@ -27,13 +27,10 @@
     	                        <tbody>
                                     @foreach ($groups as $group)
                                         <tr>
-                                            <td><a href="/group/{{ $group->id }}/edit">{{ $group->groupname }}</a></td>
+                                            <td><a href="/group/{{ $group->id }}">{{ $group->groupname }}</a></td>
                                             <td></td>
                                             <td class="text-center">
                                                 <div class="row justify-content-center">
-                                                    <div>
-                                                        <a href="/group/{{ $group->id }}/edit"><i class="fas fa-edit" style="font-size:20px; margin-right: 10px; color:#2578AF; cursor: pointer;"></i></a>
-                                                    </div>
                                                     <div>
                                                         <form id="formDelete" method="post" action="/group/{{ $group->id }}">
                                                             @method('DELETE')
