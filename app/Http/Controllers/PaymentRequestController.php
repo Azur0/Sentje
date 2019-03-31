@@ -22,6 +22,7 @@ class PaymentRequestController extends Controller
 		'description' => request('description'),
 		'redirectUrl' => route('success2', $succesUrl),
 		'method' => ['paypal', 'creditcard', 'ideal'],
+		'isCancelable' => true,
 		]);
 
 		$payment = Mollie::api()->payments()->get($payment->id);
@@ -146,8 +147,8 @@ class PaymentRequestController extends Controller
     	if(strlen(request('to_users_id')) > 0)
 		{
     		$to_users_id = explode(',', request('to_users_id'));
-			$amount = $amount / sizeof($to_users_id);
-
+			$amount = round($amount / sizeof($to_users_id), 2, PHP_ROUND_HALF_UP);
+	
 			foreach($to_users_id as $to_user_id)
 			{
 				$succesUrl = 'a'.request('account_id').'u'.$to_user_id.'t'.time();
@@ -220,16 +221,18 @@ class PaymentRequestController extends Controller
 	 * @param  \App\PaymentRequest  $paymentRequest
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy(PaymentRequest $paymentRequest)
+	public function destroy($account_id,$paymentRequest)
 	{
-		$paymentRequest = PaymentRequest::all()->where('id', $paymentRequest);
+		$paymentRequest = PaymentRequest::all()->where('id', $paymentRequest)->first();
 
 		if($paymentRequest->created_by_user_id == Auth::user()->id)
 		{
 			$paymentRequest->status = 'canceled';
 			$paymentRequest->save();
 
-			Mollie::api()->payments->delete($paymentRequest->mollie_id);
+			Mollie::api()->payments()->delete($paymentRequest->mollie_id);
+
+			redirect('/accounts/');
 		}
 
 	}

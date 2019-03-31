@@ -13,7 +13,7 @@
 					</div>
 					<div class="card-body">
 						
-						<form class="" action="/accounts/{{ $paymentrequest->deposit_account_id }}/paymentrequests/{{ $paymentrequest->id }}/delete" method="post">
+						<form class="" action="/accounts/{{ $paymentrequest->deposit_account_id }}/paymentrequests/{{ $paymentrequest->id }}" method="post">
 							@csrf
 							@method('DELETE')
 
