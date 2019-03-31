@@ -8,12 +8,14 @@ class CreateAccountTable extends Migration
 {
     /**
      * Schema table name to migrate
+     *
      * @var string
      */
     public $tableName = 'accounts';
 
     /**
      * Run the migrations.
+     *
      * @table account
      *
      * @return void
@@ -43,8 +45,8 @@ class CreateAccountTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->tableName);
+    }
 }

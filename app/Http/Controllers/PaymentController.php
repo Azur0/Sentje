@@ -17,12 +17,12 @@ class PaymentController extends Controller
     {
         $payment = Mollie::api()->payments()->get("tr_TW597y6MTu");
 
-        if(Auth::check()) {
-        	//$contacts = Contact::all()->where('user_id', Auth::user()->id);
+        if (Auth::check()) {
+            //$contacts = Contact::all()->where('user_id', Auth::user()->id);
 
-        	return view('payment.index', compact('payment'));
+            return view('payment.index', compact('payment'));
         } else {
-        	return redirect('login');
+            return redirect('login');
         }
     }
 
@@ -39,7 +39,7 @@ class PaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,7 +50,7 @@ class PaymentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,7 +61,7 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -72,8 +72,8 @@ class PaymentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -84,7 +84,7 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

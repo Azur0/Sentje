@@ -16,7 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -25,30 +27,37 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
-    public function group() {
+    public function group()
+    {
         return $this->belongsToMany(Group::class);
     }
 
-    public function contact() {
+    public function contact()
+    {
         return $this->hasMany(Contact::class);
     }
 
-    public function account() {
+    public function account()
+    {
         return $this->hasMany(Account::class);
     }
 
-    public function payment() {
+    public function payment()
+    {
         return $this->belongsTo(Payment::class);
     }
 
-    public function paymentrequest() {
+    public function paymentrequest()
+    {
         return $this->belongsTo(PaymentRequest::class);
     }
 
-    public function roles() {
+    public function roles()
+    {
         return $this->hasOne(Role::class);
     }
 }

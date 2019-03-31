@@ -8,12 +8,14 @@ class CreatePaymentTable extends Migration
 {
     /**
      * Schema table name to migrate
+     *
      * @var string
      */
     public $tableName = 'payments';
 
     /**
      * Run the migrations.
+     *
      * @table payment
      *
      * @return void
@@ -60,8 +62,8 @@ class CreatePaymentTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->tableName);
+    }
 }

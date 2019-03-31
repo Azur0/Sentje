@@ -8,12 +8,14 @@ class CreatePaymentRequestTable extends Migration
 {
     /**
      * Schema table name to migrate
+     *
      * @var string
      */
     public $tableName = 'payment_requests';
 
     /**
      * Run the migrations.
+     *
      * @table payment_request
      *
      * @return void
@@ -28,13 +30,13 @@ class CreatePaymentRequestTable extends Migration
             $table->unsignedInteger('deposit_account_id');
             $table->unsignedInteger('currencies_id');
             $table->double('requested_amount');
-            $table->enum('status', ['open','pending', 'partial', 'completed', 'canceled', 'expired'])->default('open');
+            $table->enum('status', ['open', 'pending', 'partial', 'completed', 'canceled', 'expired'])->default('open');
             $table->string('payment_url');
             $table->string('success_url')->unique();
             $table->string('mollie_id');
             $table->string('description');
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
-           	$table->string('media')->nullable();
+            $table->string('media')->nullable();
             $table->timestamps();
 
             $table->index(["created_by_user_id"], 'fk_payment_request_user_idx');
@@ -73,8 +75,8 @@ class CreatePaymentRequestTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->tableName);
+    }
 }

@@ -34,6 +34,6 @@ class HomeController extends Controller
         $accounts = Account::all()->where('user_id', Auth::user()->id);
         $groups = Group::all()->where('owner_id', Auth::user()->id);
 
-        return view('home', compact(['friends', 'paymentrequests','accounts','groups','openrequests']));
+        return view('home', compact(['friends', 'paymentrequests', 'accounts', 'groups', 'openrequests']));
     }
 }

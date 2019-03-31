@@ -16,12 +16,12 @@ class ContactController extends Controller
      */
     public function index()
     {
-        if(Auth::check()) {
-        	$contacts = Contact::all()->where('user_id', Auth::user()->id);
+        if (Auth::check()) {
+            $contacts = Contact::all()->where('user_id', Auth::user()->id);
 
-        	return view('contact.index', compact('contacts'));
+            return view('contact.index', compact('contacts'));
         } else {
-        	return redirect('login');
+            return redirect('login');
         }
     }
 
@@ -32,9 +32,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        if(Auth::check())
-        {
-            $users = User::all()->where('id','!=', Auth::user()->id);
+        if (Auth::check()) {
+            $users = User::all()->where('id', '!=', Auth::user()->id);
 
             return view('contact.create', compact('users'));
         } else {
@@ -45,36 +44,32 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             $this->validate(request(), [
-    			'contact' => 'integer|not_in:' . Auth::user()->id
-    		]);
-
+                'contact' => 'integer|not_in:' . Auth::user()->id
+            ]);
 
 
             Contact::create([
-				'user_id' =>	Auth::user()->id,
-				'user_id1' =>	request('contact')
-			]);
+                'user_id' => Auth::user()->id,
+                'user_id1' => request('contact')
+            ]);
 
             return redirect('/contact');
-        }
-        else
-        {
-           authFail();
+        } else {
+            authFail();
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -85,7 +80,7 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -96,8 +91,8 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -108,12 +103,12 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
             Contact::destroy($id);
 
             return redirect('/contact');

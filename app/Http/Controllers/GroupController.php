@@ -18,12 +18,12 @@ class GroupController extends Controller
      */
     public function index()
     {
-        if(Auth::check()) {
-        	$groups = Group::all()->where('owner_id', Auth::user()->id);
+        if (Auth::check()) {
+            $groups = Group::all()->where('owner_id', Auth::user()->id);
 
-        	return view('group.index', compact('groups'));
+            return view('group.index', compact('groups'));
         } else {
-        	return redirect('login');
+            return redirect('login');
         }
     }
 
@@ -34,9 +34,8 @@ class GroupController extends Controller
      */
     public function create()
     {
-        if(Auth::check())
-        {
-            $users = User::all()->where('id','!=', Auth::user()->id);
+        if (Auth::check()) {
+            $users = User::all()->where('id', '!=', Auth::user()->id);
 
             return view('group.create', compact('users'));
         } else {
@@ -47,30 +46,29 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate(request(), [
-			'name' => ['required', 'max:45'],
-			'to_users_id' => 'required',
-		]);
+            'name' => ['required', 'max:45'],
+            'to_users_id' => 'required',
+        ]);
 
-		$current = Group::create([
-			'owner_id' =>	Auth::user()->id,
-			'groupname' =>	request('name'),
-		]);
+        $current = Group::create([
+            'owner_id' => Auth::user()->id,
+            'groupname' => request('name'),
+        ]);
 
-		$to_users_id = explode(',', request('to_users_id'));
+        $to_users_id = explode(',', request('to_users_id'));
 
-		foreach($to_users_id as $to_user_id)
-		{
-			GroupHasUser::create([
+        foreach ($to_users_id as $to_user_id) {
+            GroupHasUser::create([
                 'group_id' => $current->id,
                 'user_id' => $to_user_id
             ]);
-		}
+        }
 
         return redirect('/group');
     }
@@ -78,33 +76,29 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if(Auth::check())
-        {
-        	$groups = Group::all()->where('owner_id', Auth::user()->id)->where('id', $id)->first();
+        if (Auth::check()) {
+            $groups = Group::all()->where('owner_id', Auth::user()->id)->where('id', $id)->first();
             $groupusers = GroupHasUser::all()->where('group_id', $id);
 
-        	if($groups->owner_id == Auth::user()->id)
-        	{
-				return view('group.show',compact('groups', 'groupusers'));
-        	} else {
+            if ($groups->owner_id == Auth::user()->id) {
+                return view('group.show', compact('groups', 'groupusers'));
+            } else {
                 return redirect('/group');
             }
-        }
-        else
-        {
-        	return redirect('/login');
+        } else {
+            return redirect('/login');
         }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -115,8 +109,8 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -127,16 +121,16 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
             $group = Group::where('owner_id', Auth::user()->id)->where('id', $id)->get();
 
-            if(!$group->isEmpty()) {
-                if($group[0]->id == $id) {
+            if (!$group->isEmpty()) {
+                if ($group[0]->id == $id) {
                     Group::destroy($id);
                 }
             }

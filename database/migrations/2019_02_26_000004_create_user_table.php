@@ -8,12 +8,14 @@ class CreateUserTable extends Migration
 {
     /**
      * Schema table name to migrate
+     *
      * @var string
      */
     public $tableName = 'users';
 
     /**
      * Run the migrations.
+     *
      * @table user
      *
      * @return void
@@ -44,8 +46,8 @@ class CreateUserTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->tableName);
+    }
 }

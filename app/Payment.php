@@ -19,15 +19,18 @@ class Payement extends Model
         'iban'
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function currency() {
+    public function currency()
+    {
         return $this->belongsTo(Currency::class);
     }
 
-    public function paymentrequest() {
+    public function paymentrequest()
+    {
         return $this->belongsTo(PaymentRequest::class);
     }
 }

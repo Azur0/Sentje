@@ -8,12 +8,14 @@ class CreateCurrencyTable extends Migration
 {
     /**
      * Schema table name to migrate
+     *
      * @var string
      */
     public $tableName = 'currencies';
 
     /**
      * Run the migrations.
+     *
      * @table currency
      *
      * @return void
@@ -35,8 +37,8 @@ class CreateCurrencyTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->tableName);
+    }
 }

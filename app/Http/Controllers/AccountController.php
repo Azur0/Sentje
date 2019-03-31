@@ -75,8 +75,10 @@ class AccountController extends Controller
     {
         if (Auth::check()) {
             $account = Account::all()->where('id', $id)->first();
-            $paymentrequests = PaymentRequest::all()->where('created_by_user_id',
-                Auth::user()->id)->where('deposit_account_id', $id);
+            $paymentrequests = PaymentRequest::all()->where(
+                'created_by_user_id',
+                Auth::user()->id
+            )->where('deposit_account_id', $id);
 
             if ($account->user_id == Auth::user()->id) {
                 return view('accounts.show', compact('account', 'paymentrequests'));
@@ -143,8 +145,10 @@ class AccountController extends Controller
      */
     public function delete(Account $account)
     {
-        $paymentrequests = PaymentRequest::all()->where('created_by_user_id',
-            Auth::user()->id)->where('deposit_account_id', $account->id);
+        $paymentrequests = PaymentRequest::all()->where(
+            'created_by_user_id',
+            Auth::user()->id
+        )->where('deposit_account_id', $account->id);
 
         if (Auth::check()) {
             if ($account->user_id == Auth::user()->id) {

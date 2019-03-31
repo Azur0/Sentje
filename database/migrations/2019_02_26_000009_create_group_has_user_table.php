@@ -8,12 +8,14 @@ class CreateGroupHasUserTable extends Migration
 {
     /**
      * Schema table name to migrate
+     *
      * @var string
      */
     public $tableName = 'group_has_users';
 
     /**
      * Run the migrations.
+     *
      * @table group_has_user
      *
      * @return void
@@ -49,8 +51,8 @@ class CreateGroupHasUserTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->tableName);
+    }
 }
