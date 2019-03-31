@@ -231,7 +231,7 @@ class PaymentRequestController extends Controller
 
 			Mollie::api()->payments()->delete($paymentRequest->mollie_id);
 
-			redirect('/accounts/');
+			return redirect('/accounts');
 		}
 
 	}
