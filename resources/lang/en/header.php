@@ -28,6 +28,17 @@
         'ibannumber' => 'IBAN Number',
         'addaccount' => 'Add new account',
         'editaccount' => 'Edit account',
+        'myrequest' => 'My payment request',
+        'amount' => 'amount',
+        'datefiled' => 'Date Filed',
+        'addpaymentrequest' => 'Add new payment request',
+        'currency' => 'Currency',
+        'selectcurrency' => 'Select a currency',
+        'requesttype' => 'Request type',
+        'payment' => 'Payment',
+        'donation' => 'Donation',
+        'description' => 'Description',
+        'selectmedia' => 'Select media',
 
         // Payment
         'mypayment' => 'My Payments',

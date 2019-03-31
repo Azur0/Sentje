@@ -14,6 +14,11 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct() {
+        setLocale(LC_TIME, app()->getLocale());
+     }
+
     public function index()
     {
         if(Auth::check()) {

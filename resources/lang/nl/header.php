@@ -28,6 +28,17 @@
         'ibannumber' => 'IBAN Nummer',
         'addaccount' => 'Voeg nieuw account toe',
         'editaccount' => 'Wijzig account',
+        'myrequest' => 'Mijn betaalverzoeken',
+        'amount' => 'Bedrag',
+        'datefiled' => 'Datum Ingediend',
+        'addpaymentrequest' => 'Voeg nieuw betaalverzoek toe',
+        'currency' => 'Valuta',
+        'selectcurrency' => 'Selecteer een valuta',
+        'requesttype' => 'Aanvraagtype',
+        'payment' => 'Betaling',
+        'donation' => 'Donatie',
+        'description' => 'Omschrijving',
+        'selectmedia' => 'Selecteer media',
 
         // Payment
         'mypayment' => 'Mijn Betalingen',

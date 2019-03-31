@@ -9,7 +9,7 @@
 			<div class="col-md-8">
 				<div class="card">
 					<div class="card-header">
-						Add a new paymentrequest
+						{{ __('header.addpaymentrequest') }}
 					</div>
 
 					<div class="card-body">
@@ -26,10 +26,10 @@
 										@endforeach
 									</div>
 									<div id="buttons" class="col-sm">
-										<input type="button" name="allin" value=">>">
-										<input type="button" name="in" value=">">
-										<input type="button" name="out" value="<">
-										<input type="button" name="allout" value="<<">
+										<input type="button" class="btn btn-primary btn-sm" style="width: 40px;" name="allin" value=">>">
+										<input type="button" class="btn btn-primary btn-sm" style="width: 40px;" name="in" value=">">
+										<input type="button" class="btn btn-primary btn-sm" style="width: 40px;" name="out" value="<">
+										<input type="button" class="btn btn-primary btn-sm" style="width: 40px;" name="allout" value="<<">
 									</div>
 									<div id="paymentrequest_reciever" class="col-5">
 
@@ -43,9 +43,9 @@
 								@endif
 							</div>
 							<div class="form-group">
-								<label for="currencies_id">Currency</label>
+								<label for="currencies_id">{{ __('header.currency') }}</label>
 								<select class="form-control" name="currencies_id">
-									<option selected value="">select a currency</option>
+									<option selected value="">{{ __('header.selectcurrency') }}</option>
 									@foreach($currencies as $currency)
 										<option value="{{ $currency->id }}">{{ $currency->currency }}</option>
 									@endforeach
@@ -58,7 +58,7 @@
 								@endif
 							</div>
 							<div class="form-group">
-								<label for="requested_amount">Amount</label>
+								<label for="requested_amount">{{ __('header.amount') }}</label>
 								<input class="form-control" type="number" name="requested_amount" pattern="^\d{1,3}(,\d{3})*(\.\d+)?$" value="{{ old('requested_amount') }}" data-type="currency" placeholder="€1.00" required>
 								@if( $errors->has('requested_amount'))
 									<div class="alert alert-danger">
@@ -68,11 +68,11 @@
 								@endif
 							</div>
 							<div class="form-group">
-								<label for="request_type">Request type</label>
+								<label for="request_type">{{ __('header.requesttype') }}</label>
 
 								<select class="form-control" name="request_type">
-									<option value="payment">Payment</option>
-									<option value="donation">Donation</option>
+									<option value="payment">{{ __('header.payment') }}</option>
+									<option value="donation">{{ __('header.donation') }}</option>
 								</select>
 								@if( $errors->has('request_type'))
 									<div class="alert alert-danger">
@@ -82,7 +82,7 @@
 								@endif
 							</div>
 							<div class="form-group">
-								<label for="description">Description</label>
+								<label for="description">{{ __('header.description') }}</label>
 								<textarea class="form-control" name="description" required>{{ old('description') }}</textarea>
 								@if( $errors->has('description'))
 									<div class="alert alert-danger">
@@ -93,7 +93,7 @@
 							</div>
 							<div class="form-group">
 								<div id="form_media">
-									<label for="request_type">Select Media</label>
+									<label for="request_type">{{ __('header.selectmedia') }}</label>
 									<input type="file" name="media">
 									<div id="media"><img src="/img/placeholder.png" alt="media"></div>
 								</div>
@@ -104,7 +104,7 @@
 								@endif
 							</div>
 							<div>
-								<input type="submit" name="btn_submit" value="create"><a href="/accounts/{{$account->id}}">cancel</a>
+								<input type="submit" name="btn_submit" value="{{ __('header.addpaymentrequest') }}"><a href="/accounts/{{$account->id}}">cancel</a>
 							</div>
 						</form>
 					</div>
