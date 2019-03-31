@@ -33,7 +33,11 @@
 	                            @endforeach
 	                        </tbody>
 	                    </table>
-	                    <button type="submit" class="btn btn-primary" style="background-color: red;">Delete account</button>
+						<form class="" action="/accounts/{{ $account->id }}" method="post">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn btn-primary" style="background-color: red;">Delete account</button>
+						</form>
 	                </div>
 	            </div>
 	        </div>

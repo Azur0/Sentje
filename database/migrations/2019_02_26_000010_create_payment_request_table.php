@@ -52,7 +52,7 @@ class CreatePaymentRequestTable extends Migration
 
             $table->foreign('deposit_account_id', 'fk_payment_request_account2_idx')
                 ->references('id')->on('accounts')
-                ->onDelete('no action')
+                ->onDelete('cascade')
                 ->onUpdate('no action');
 
             $table->foreign('to_user_id', 'fk_payment_request_user1_idx')

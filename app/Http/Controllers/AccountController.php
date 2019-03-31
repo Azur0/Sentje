@@ -147,7 +147,7 @@ class AccountController extends Controller
      */
     public function delete(Account $account)
     {
-        $paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id)->where('id', $account->id);
+        $paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id)->where('deposit_account_id', $account->id);
 
         if(Auth::check())
         {
@@ -174,6 +174,8 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Account::destroy($id);
+
+        return redirect('/accounts');
     }
 }
