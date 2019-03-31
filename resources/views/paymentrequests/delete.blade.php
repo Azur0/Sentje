@@ -9,14 +9,17 @@
 			<div class="col-md-12">
 				<div class="card" style="margin-bottom: 50px;">
 					<div class="card-header">
-						{{ $account->name }}: Payment Requests: {{ $paymentrequest->description }}
+						{{ $paymentrequest->account->name }}: Payment Requests: {{ $paymentrequest->description }}
 					</div>
 					<div class="card-body">
 						
-						<form class="" action="/accounts/{{ $paymentrequest->deposit_account_id }}/paymentrequest/{{ $paymentrequest->id }}/delete" method="post">
+						<form class="" action="/accounts/{{ $paymentrequest->deposit_account_id }}/paymentrequests/{{ $paymentrequest->id }}/delete" method="post">
 							@csrf
 							@method('DELETE')
-							<button type="submit" class="btn btn-primary" style="background-color: red;">Delete account</button>
+
+							@if($paymentrequest->status == 'open')
+								<button type="submit" class="btn btn-primary" style="background-color: red;">Cancel Request</button>
+							@endif
 						</form>
 
 					</div>

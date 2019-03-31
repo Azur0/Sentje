@@ -40,7 +40,9 @@
 									<td>{{ $paymentrequest->status }}</td>
 									<td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
 									<td class="text-center">
-	                                    <a href="/paymentrequest/{{ $paymentrequest->id }}/delete" alt="cancel"><i class="fas fa-ban" style="font-size:20px;"></i></a>
+	                                    <a href="/accounts/{{ $paymentrequest->deposit_account_id }}/paymentrequests/{{ $paymentrequest->id }}/delete" alt="cancel">
+	                                    	<i class="fas fa-ban" style="font-size:20px;"></i>
+	                                    </a>
 	                                </td>
 								</tr>
 							@endforeach

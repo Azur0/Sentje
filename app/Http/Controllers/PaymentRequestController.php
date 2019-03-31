@@ -199,7 +199,7 @@ class PaymentRequestController extends Controller
 		{
 			$paymentrequest = PaymentRequest::all()->where('id', $paymentRequest)->first;
 
-			return view('', compact('paymentrequest'));
+			return view('paymentrequests.delete', compact('paymentrequest'));
 		}
 	}
 
