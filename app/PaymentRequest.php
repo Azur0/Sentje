@@ -24,7 +24,7 @@ class PaymentRequest extends Model
     }
 
     public function to_user(){
-    	return $this->belongsTo(User::class, 'id');
+    	return $this->belongsTo(User::class, 'to_user_id', 'id');
     }
 
     public function account() {

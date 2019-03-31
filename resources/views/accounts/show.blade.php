@@ -58,7 +58,13 @@
 	                        @foreach ($paymentrequests as $paymentrequest)
 	                            <tr>
 	                            	<a href="/accounts/{{ $account->id }}/paymentrequests/{{$paymentrequest->id}}">
-	                                	<td>{{ $paymentrequest->to_user->id }}</td>
+	                                	<td>
+											@if (empty($paymentrequest->to_user->name))
+												Guest
+											@else
+												{{ $paymentrequest->to_user->name }}
+											@endif
+										</td>
 	                                	<td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>
 	                                	<td>{{ $paymentrequest->status }}</td>
 	                                	<td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
