@@ -165,6 +165,8 @@ class PaymentRequestController extends Controller
 					'media' =>				$name
 				]);
 			}
+
+			return redirect()->route('accounts.show', [$account_id]);
 		}
 		else
 		{
@@ -210,9 +212,9 @@ class PaymentRequestController extends Controller
 	 */
 	public function success($succesurl)
 	{
-		
+
 		$paymentRequest = PaymentRequest::where('success_url', $succesurl)->first();
-	
+
 		if($paymentRequest !== null)
 		{
 			return view('paymentrequests.success', compact('paymentRequest'));

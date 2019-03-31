@@ -9,11 +9,6 @@ use App\PaymentRequest;
 
 class AccountController extends Controller
 {
-    private function authFail()
-    {
-    	return redirect('/');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +37,7 @@ class AccountController extends Controller
             return view('accounts.create');
         }
 
-        $this->authFail();
+        return redirect('/login');
     }
 
     /**
@@ -51,7 +46,7 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Account $account)
     {
         if(Auth::check())
         {
@@ -64,7 +59,7 @@ class AccountController extends Controller
         }
         else
         {
-           authFail();
+           return redirect('/login');
         }
     }
 
@@ -90,7 +85,7 @@ class AccountController extends Controller
         }
         else
         {
-        	authFail();
+        	return redirect('/login');
         }
     }
 
@@ -102,20 +97,15 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        if(Auth::check())
-        {
-            if($account->user_id == Auth::user()->id)
-            {
+        if(Auth::check()) {
+            if($account->user_id == Auth::user()->id) {
                 return view('accounts.edit', compact('account'));
-            }
-            else
-            {
+            } else {
                 return redirect('/accounts');
             }
         }
-        else
-        {
-            authFail();
+        else {
+            return redirect('/login');
         }
     }
 
@@ -128,14 +118,25 @@ class AccountController extends Controller
      */
     public function update(Account $account)
     {
-        $this->validate(request(), [
-            'name' => ['required', 'max:40'],
-            'iban' => ['required', 'max:40', 'iban']
-		]);
+        if(Auth::check()) {
+            if($account->user_id == Auth::user()->id) {
+                $this->validate(request(), [
+                    'name' => ['required', 'max:40'],
+                    'iban' => ['required', 'max:40', 'iban', 'unique:accounts']
+        		]);
 
-        $account->update(request(['name', 'iban']));
+                $account->update([
+                    'name' => request('name'),
+                    'iban' => str_replace(' ', '', request('iban'))
+                ]);
 
-        return redirect('/accounts');
+                //$account->update(request('name'), request('iban'));
+            }
+
+            return redirect('/accounts');
+        } else {
+            return redirect('login');
+        }
     }
 
     /**
@@ -146,7 +147,7 @@ class AccountController extends Controller
      */
     public function delete(Account $account)
     {
-        $paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id);
+        $paymentrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id)->where('id', $account->id);
 
         if(Auth::check())
         {
@@ -161,7 +162,7 @@ class AccountController extends Controller
         }
         else
         {
-            authFail();
+            return redirect('/login');
         }
     }
 
