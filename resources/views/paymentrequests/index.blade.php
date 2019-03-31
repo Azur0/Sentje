@@ -9,7 +9,7 @@
 			<div class="col-md-12">
 				<div class="card" style="margin-bottom: 50px;">
 					<div class="card-header">
-						{{ $account->name }}: Payment Requests
+						{{ $account->name }}: {{ __('header.myrequests') }}
 						<a href="/accounts/{{ $account->id }}/paymentrequests/create">
 							<i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
 						</a>
@@ -19,10 +19,10 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th scope="col">User</th>
-									<th scope="col">Amount</th>
+									<th scope="col">{{ __('header.user') }}</th>
+									<th scope="col">{{ __('header.amount') }}</th>
 									<th scope="col">Status</th>
-									<th scope="col">Date Filed</th>
+									<th scope="col">{{ __('header.datefiled') }}</th>
 									<th scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></th>
 								</tr>
 							</thead>
