@@ -193,13 +193,24 @@ class PaymentRequestController extends Controller
 		redirect('/home');
 	}
 
-	public function delete($paymentRequest)
+	public function delete($account_id,$paymentRequest)
 	{
 		if(Auth::check())
 		{
-			$paymentrequest = PaymentRequest::all()->where('id', $paymentRequest)->first;
+			$paymentrequest = PaymentRequest::all()->where('id', $paymentRequest)->first();
 
-			return view('paymentrequests.delete', compact('paymentrequest'));
+			if($paymentrequest->created_by_user_id == Auth::user()->id)
+			{
+				return view('paymentrequests.delete', compact('paymentrequest'));
+			}
+			else
+			{
+				redirect('/accounts');
+			}
+		}
+		else
+		{
+			redirect('/');
 		}
 	}
 
@@ -215,6 +226,9 @@ class PaymentRequestController extends Controller
 
 		if($paymentRequest->created_by_user_id == Auth::user()->id)
 		{
+			$paymentRequest->status = 'canceled';
+			$paymentRequest->save();
+
 			Mollie::api()->payments->delete($paymentRequest->mollie_id);
 		}
 

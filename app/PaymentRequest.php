@@ -29,7 +29,7 @@ class PaymentRequest extends Model
     }
 
     public function account() {
-        return $this->belongsTo(Account::class, 'deposit_account_id', 'id');
+        return $this->hasOne(Account::class, 'id', 'deposit_account_id');
     }
 
     public function payment() {
