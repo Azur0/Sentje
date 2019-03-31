@@ -129,8 +129,6 @@ class AccountController extends Controller
                     'name' => request('name'),
                     'iban' => str_replace(' ', '', request('iban'))
                 ]);
-
-                //$account->update(request('name'), request('iban'));
             }
 
             return redirect('/accounts');
@@ -174,8 +172,18 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        Account::destroy($id);
+        if(Auth::check()) {
+            $account = Account::where('user_id', Auth::user()->id)->where('id', $id)->get();
 
-        return redirect('/accounts');
+            if(!$account->isEmpty()) {
+                if($account[0]->id == $id) {
+                    Account::destroy($id);
+                }
+            }
+
+            return redirect('/accounts');
+        }
+
+        return redirect('/login');
     }
 }

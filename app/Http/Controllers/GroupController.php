@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Account;
 use App\Group;
 use App\User;
 use App\GroupHasUser;
@@ -82,7 +83,22 @@ class GroupController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::check())
+        {
+        	$groups = Group::all()->where('owner_id', Auth::user()->id)->where('id', $id)->first();
+            $groupusers = GroupHasUser::all()->where('group_id', $id);
+
+        	if($groups->owner_id == Auth::user()->id)
+        	{
+				return view('group.show',compact('groups', 'groupusers'));
+        	} else {
+                return redirect('/group');
+            }
+        }
+        else
+        {
+        	return redirect('/login');
+        }
     }
 
     /**
@@ -93,24 +109,7 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::check())
-        {
-            $users = User::all()->where('id','!=', Auth::user()->id);
-            $group = Group::find($id);
 
-            if($group->owner_id == Auth::user()->id)
-            {
-                return view('group.edit', compact('users', 'group'));
-            }
-            else
-            {
-                return redirect('/group');
-            }
-        }
-        else
-        {
-            return redirect('/login');
-        }
     }
 
     /**
@@ -122,10 +121,7 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate(request(), [
-			'name' => ['required', 'max:45'],
-			'to_users_id' => 'required',
-		]);
+
     }
 
     /**
@@ -136,6 +132,16 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
+        if(Auth::check()) {
+            $group = Group::where('owner_id', Auth::user()->id)->where('id', $id)->get();
 
+            if(!$group->isEmpty()) {
+                if($group[0]->id == $id) {
+                    Group::destroy($id);
+                }
+            }
+
+            return redirect('/group');
+        }
     }
 }

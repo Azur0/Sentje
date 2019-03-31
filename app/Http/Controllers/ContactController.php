@@ -56,6 +56,8 @@ class ContactController extends Controller
     			'contact' => 'integer|not_in:' . Auth::user()->id
     		]);
 
+
+
             Contact::create([
 				'user_id' =>	Auth::user()->id,
 				'user_id1' =>	request('contact')

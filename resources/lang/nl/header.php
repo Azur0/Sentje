@@ -35,6 +35,7 @@
         // Group
         'mygroup' => 'Mijn Groepen',
         'groupname' => 'Groep Naam',
+        'showgroup' => 'Groep:',
         'creategroup' => 'Nieuwe group aanmaken',
         'users' => 'Gebruikers',
         'editgroup' => 'Groep wijzigen',

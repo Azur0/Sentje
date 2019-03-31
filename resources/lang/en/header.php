@@ -35,6 +35,7 @@
         // Group
         'mygroup' => 'My Groups',
         'groupname' => 'Group Name',
+        'showgroup' => 'Group:',
         'creategroup' => 'Create new group',
         'users' => 'Users',
         'editgroup' => 'Edit group',
