@@ -166,7 +166,7 @@ class PaymentRequestController extends Controller
 					'media' =>				$name
 				]);
 			}
-
+			
 			return redirect()->route('accounts.show', [$account_id]);
 		}
 		else
