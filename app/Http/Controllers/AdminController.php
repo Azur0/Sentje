@@ -15,53 +15,36 @@ class AdminController extends Controller
 
 	public function index()
 	{
-		if( Auth::user()->role_id == 2 )
-		{
-			return view('admin.index');
+		if(Auth::check()) {
+			if(Auth::user()->role_id == 2) {
+				return view('admin.index');
+			}
 		}
-		else
-		{
-			welcome();
-		}
+
+		return redirect('/');
 	}
 
 	public function groups()
 	{
-		if( Auth::user()->role_id == 2 )
-		{
-			$groups = Group::All();	
-			return view('admin.groups', ['groups' => $groups]);
+		if(Auth::check()) {
+			if(Auth::user()->role_id == 2) {
+				$groups = Group::All();
+				return view('admin.groups', ['groups' => $groups]);
+			}
 		}
-		else
-		{
-			welcome();
-		}
+
+		return redirect('/');
 	}
 
 	public function users()
 	{
-		if( Auth::user()->role_id == 2 )
-		{
-			$users = User::All();
-			return view('admin.users', [ 'users' => $users ]);
+		if(Auth::check()) {
+			if(Auth::user()->role_id == 2) {
+				$users = User::All();
+				return view('admin.users', [ 'users' => $users ]);
+			}
 		}
-		else
-		{
-			welcome();
-		}
+
+		return redirect('/');
 	}
-/*
-	public function currency()
-	{
-		if( Auth::user()->role_id == 2 )
-		{
-			redirect('/currency');
-		}
-		else
-		{
-			welcome();
-		}
-	}
-*/
-	
 }

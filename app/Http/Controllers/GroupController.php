@@ -33,13 +33,13 @@ class GroupController extends Controller
      */
     public function create()
     {
-        $users = User::all()->where('id','!=', Auth::user()->id);
-
         if(Auth::check())
         {
+            $users = User::all()->where('id','!=', Auth::user()->id);
+
             return view('group.create', compact('users'));
         } else {
-            return redirect('/');
+            return redirect('/login');
         }
     }
 

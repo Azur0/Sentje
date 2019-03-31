@@ -14,11 +14,15 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role == 0)
-        {
-            $currencies = Currency::All();
-            return view('currency.index', ['currencies' => $currencies]);
+        if(Auth::check()) {
+            if(Auth::user()->role == 0)
+            {
+                $currencies = Currency::All();
+                return view('currency.index', ['currencies' => $currencies]);
+            }
         }
+
+        return redirect('login');
     }
 
     /**
@@ -28,10 +32,14 @@ class CurrencyController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->role == 0)
-        {
-            return view('currency.create');
+        if(Auth::check()) {
+            if(Auth::user()->role == 0)
+            {
+                return view('currency.create');
+            }
         }
+
+        return redirect('/login');
     }
 
     /**
@@ -42,11 +50,15 @@ class CurrencyController extends Controller
      */
     public function show($id)
     {
-        if(Auth::user()->role == 0)
-        {
-            $currency = Currency::find($id);
-            return view('currency.create', ['currencies' => $currency]);
+        if(Auth::check()) {
+            if(Auth::user()->role == 0)
+            {
+                $currency = Currency::find($id);
+                return view('currency.create', ['currencies' => $currency]);
+            }
         }
+
+        return redirect('/login');
     }
 
     /**
@@ -57,13 +69,17 @@ class CurrencyController extends Controller
      */
     public function store()
     {
-        $values = request()->validate([
-            'currency' => ['required','min:2','string','max:45']
-        ]);
+        if(Auth::check()) {
+            $values = request()->validate([
+                'currency' => ['required','min:2','string','max:45']
+            ]);
 
-        Currency::create($values);
+            Currency::create($values);
 
-        redirect('/currency.index');
+            return redirect('/currency');
+        }
+
+        return redirect('/login');
     }
 
     /**

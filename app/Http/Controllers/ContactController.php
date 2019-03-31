@@ -32,10 +32,10 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $users = User::all()->where('id','!=', Auth::user()->id);
-
         if(Auth::check())
         {
+            $users = User::all()->where('id','!=', Auth::user()->id);
+
             return view('contact.create', compact('users'));
         } else {
             return redirect('/');
@@ -111,8 +111,12 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        Contact::destroy($id);
+        if(Auth::check()) {
+            Contact::destroy($id);
 
-        return redirect('/contact');
+            return redirect('/contact');
+        }
+
+        return redirect('/login');
     }
 }

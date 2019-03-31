@@ -66,10 +66,11 @@ class PaymentRequestController extends Controller
 	 */
 	public function show($account_id, PaymentRequest $paymentRequest)
 	{
-		$account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
-		$paymentrequests = PaymentRequest::all()->where('id', $paymentRequest);
 		if(Auth::check())
 		{
+			$account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
+			$paymentrequests = PaymentRequest::all()->where('id', $paymentRequest);
+
 			if($account->user_id == Auth::user()->id)
 			{
 				return view('paymentrequest.show');
