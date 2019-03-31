@@ -115,8 +115,8 @@
                                 @foreach ($groups as $group)
                                     <tr>
                                         <td>
-                                            <a href="/accounts/{{ $group->id }}"><span
-                                                        style="vertical-align: middle;">{{ $group->user_id . ' ' . $group->name }}</span></a>
+                                            <a href="/group/{{ $group->id }}"><span
+                                                        style="vertical-align: middle;">{{ $group->user_id . ' ' . $group->groupname }}</span></a>
                                         </td>
                                     </tr>
                                 @endforeach

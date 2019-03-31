@@ -41,7 +41,7 @@
                                         </td>
                                         <td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>
                                         <td>{{ $paymentrequest->status }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->formatLocalized('%A %d %B %Y') }}</td>
                                         <td class="text-center">
                                             <a href="/accounts/{{ $paymentrequest->deposit_account_id }}/paymentrequests/{{ $paymentrequest->id }}/delete"
                                                alt="cancel">

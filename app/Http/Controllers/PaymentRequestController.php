@@ -12,6 +12,11 @@ use Mollie\Laravel\Facades\Mollie;
 
 class PaymentRequestController extends Controller
 {
+    public function __construct()
+    {
+        setLocale(LC_TIME, app()->getLocale());
+    }
+
     /**
      * Display a listing of the resource.
      *
