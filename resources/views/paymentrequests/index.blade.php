@@ -6,7 +6,7 @@
 <div id="bg_img" style="background-image: url(/../img/header-bg.jpg)">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<div class="card" style="margin-bottom: 50px;">
 					<div class="card-header">
 						{{ $account->name }}: Payment Requests
@@ -23,6 +23,7 @@
 									<th scope="col">Amount</th>
 									<th scope="col">Status</th>
 									<th scope="col">Date Filed</th>
+									<th scope="col" style="text-align: center;"><i class="fas fa-cog" style="font-size: 20px; vertical-align: middle; color: #D8D8D8;"></i></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -38,6 +39,9 @@
 									<td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>
 									<td>{{ $paymentrequest->status }}</td>
 									<td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
+									<td class="text-center">
+	                                    <a href="{{ url("/accounts/$account->id/delete") }}"><i class="fas fa-trash-alt" style="font-size:20px; color:red;"></i></a>
+	                                </td>
 								</tr>
 							@endforeach
 							</tbody>

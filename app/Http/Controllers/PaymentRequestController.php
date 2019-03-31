@@ -141,7 +141,7 @@ class PaymentRequestController extends Controller
     	}
 
     	$amount = request('requested_amount');
-    	$succesUrl = 'a'.request('account_id').'t'.time();
+    	
 
     	if(strlen(request('to_users_id')) > 0)
 		{
@@ -150,6 +150,8 @@ class PaymentRequestController extends Controller
 
 			foreach($to_users_id as $to_user_id)
 			{
+				$succesUrl = 'a'.request('account_id').'u'.$to_user_id.'t'.time();
+
 				$mollinfo = $this->preparePayment($amount, $succesUrl);
 
 				PaymentRequest::create([
@@ -171,6 +173,8 @@ class PaymentRequestController extends Controller
 		}
 		else
 		{
+			$succesUrl = 'a'.request('account_id').'u'.$to_user_id.'t'.time();
+
 			$mollinfo = $this->preparePayment($amount, $succesUrl);
 
 				PaymentRequest::create([
