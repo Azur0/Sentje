@@ -10809,7 +10809,7 @@ a.text-dark:focus {
 }
 
 .card .card-body a {
-  color: #D8D8D8;
+  color: black;
 }
 
 .card .card-body a:hover .fa-ban {
