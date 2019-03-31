@@ -50,18 +50,18 @@
 	                            <tr>
 	                                <th scope="col">User</th>
 	                                <th scope="col">Amount</th>
+	                                <th scope="col">Status</th>
 	                                <th scope="col">Date Filed</th>
-	                                <th scope="col">status</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
 	                        @foreach ($paymentrequests as $paymentrequest)
 	                            <tr>
 	                            	<a href="/accounts/{{ $account->id }}/paymentrequests/{{$paymentrequest->id}}">
-	                                	<td>{{ $paymentrequest->to_user_id }}</td>
-	                                	<td>{{ $paymentrequest->requested_amount }}</td>
-	                                	<td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
+	                                	<td>{{ $paymentrequest->to_user->id }}</td>
+	                                	<td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>
 	                                	<td>{{ $paymentrequest->status }}</td>
+	                                	<td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
 	                            	</a>
 	                            </tr>
 	                        @endforeach
