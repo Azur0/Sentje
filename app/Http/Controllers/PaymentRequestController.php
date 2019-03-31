@@ -148,7 +148,7 @@ class PaymentRequestController extends Controller
 		{
     		$to_users_id = explode(',', request('to_users_id'));
 			$amount = round($amount / sizeof($to_users_id), 2, PHP_ROUND_HALF_UP);
-	
+
 			foreach($to_users_id as $to_user_id)
 			{
 				$succesUrl = 'a'.request('account_id').'u'.$to_user_id.'t'.time();
@@ -216,7 +216,7 @@ class PaymentRequestController extends Controller
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the specified resource from storage.asdf
 	 *
 	 * @param  \App\PaymentRequest  $paymentRequest
 	 * @return \Illuminate\Http\Response
