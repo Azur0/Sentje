@@ -23,7 +23,7 @@ Route::resource('currency', 'CurrencyController');
 
 Route::resource('payments', 'PaymentController');
 
-Route::resource('/accounts/{account_id}/paymentrequests','PaymentRequestController');
+Route::resource('/accounts/{account_id}/paymentrequests', 'PaymentRequestController');
 Route::get('/accounts/{account_id}/paymentrequests/{paymentrequest}/delete', 'PaymentRequestController@delete');
 Route::get('/success/{succesurl}', 'PaymentRequestController@success')->name('success2');
 
@@ -34,9 +34,9 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/groups', 'AdminController@groups');
 
-Route::resource('users','UserController');
+Route::resource('users', 'UserController');
 
-Route::resource('group','GroupController');
+Route::resource('group', 'GroupController');
 
 Route::resource('contact', 'ContactController');
 
