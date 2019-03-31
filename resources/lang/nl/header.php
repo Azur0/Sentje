@@ -18,6 +18,7 @@
         'logout' => 'Uitloggen',
 
         // Dashboard
+        'openrequest' => 'Open verzoeken',
         'incomingrequest' => 'Inkomende verzoeken',
         'noincomingrequest' => 'Geen inkomende verzoeken',
 

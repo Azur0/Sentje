@@ -209,10 +209,13 @@ class PaymentRequestController extends Controller
 	public function success($succesurl)
 	{
 		$paymentRequest = PaymentRequest::where('success_url', $succesurl)->first();
-		
-		$payment = $mollie->payments->get($paymentRequest->mollie_id);
 
-		dd($payment);
+		$payment = Mollie::api()->payments()->get($paymentRequest->mollie_id);
+
+		$paymentRequest->status = $payment->status;
+		$paymentRequest->save();
+
+		//dd($payment);
 
 		if($paymentRequest !== null)
 		{
