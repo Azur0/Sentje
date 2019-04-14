@@ -34,10 +34,10 @@ class PaymentRequestController extends Controller
             if ($account->user_id == Auth::user()->id) {
                 return view('paymentrequests.index', compact('account', 'paymentrequests'));
             } else {
-                redirect('/accounts');
+                return redirect('/accounts');
             }
         } else {
-            redirect('/login');
+            return redirect('/login');
         }
     }
 
@@ -56,10 +56,10 @@ class PaymentRequestController extends Controller
             if ($account->user_id == Auth::user()->id) {
                 return view('paymentrequest.show');
             } else {
-                redirect('/accounts');
+                return redirect('/accounts');
             }
         } else {
-            redirect('/login');
+            return redirect('/login');
         }
     }
 
@@ -158,7 +158,7 @@ class PaymentRequestController extends Controller
                 'media' => $name
             ]);
         }
-        redirect('/home');
+        return redirect('/home');
     }
 
     public function preparePayment($amount, $succesUrl)
@@ -187,10 +187,10 @@ class PaymentRequestController extends Controller
             if ($paymentrequest->created_by_user_id == Auth::user()->id) {
                 return view('paymentrequests.delete', compact('paymentrequest'));
             } else {
-                redirect('/accounts');
+                return redirect('/accounts');
             }
         } else {
-            redirect('/');
+            return redirect('/');
         }
     }
 
