@@ -28,6 +28,7 @@ class CreateGroupHasUserTable extends Migration
             $table->unsignedInteger('group_id');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(["user_id"], 'fk_group_has_user_user1_idx');
 

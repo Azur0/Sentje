@@ -32,6 +32,7 @@ class CreatePaymentTable extends Migration
             $table->unsignedInteger('currencies_id');
             $table->string('iban', 40);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(["user_id"], 'fk_payment_user1_idx');
 

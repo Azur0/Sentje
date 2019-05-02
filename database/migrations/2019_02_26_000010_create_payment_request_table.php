@@ -38,6 +38,7 @@ class CreatePaymentRequestTable extends Migration
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
             $table->string('media')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(["created_by_user_id"], 'fk_payment_request_user_idx');
 

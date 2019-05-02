@@ -31,6 +31,7 @@ class CreateUserTable extends Migration
             $table->unsignedInteger('role_id')->default('1');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(["role_id"], 'fk_user_has_role_idx');
 

@@ -28,6 +28,7 @@ class CreateContactTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('user_id1');
             $table->timestamps();
+            $table->softDeletes();
             $table->unique(['user_id', 'user_id1']);
             $table->index(["user_id1"], 'fk_group_user2_idx');
 

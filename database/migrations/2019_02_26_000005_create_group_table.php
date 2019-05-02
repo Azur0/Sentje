@@ -28,6 +28,7 @@ class CreateGroupTable extends Migration
             $table->unsignedInteger('owner_id');
             $table->string('groupname', 45);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('owner_id', 'fk_group_user_idx')
                 ->references('id')->on('users')

@@ -19,6 +19,7 @@ class Role extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('role', 45);
+            $table->softDeletes();
         });
     }
 

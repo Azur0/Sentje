@@ -29,6 +29,7 @@ class CreateCurrencyTable extends Migration
             $table->string('fullname', 45);
             $table->string('symbol', 1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
