@@ -7,11 +7,14 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">
-                            {{ __('header.addpaymentrequest') }}
-                        </div>
+                    <div id="backlink">
+                    	<i class="fas fa-arrow-left"></i> <a href="{{ url()->previous() }}">{{ __('link.back') }}</a>
+                    </div>
 
+                    <div class="card">
+                    	<div class="card-header">
+	                        {{ __('header.addpaymentrequest') }}
+	                    </div>
                         <div class="card-body">
                             <form method="POST" action="/accounts/{{$account->id}}/paymentrequests" id="form"
                                   enctype="multipart/form-data">
@@ -43,6 +46,16 @@
                                     @if( $errors->has('to_user_id'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('to_user_id') }}
+
+                                        </div>
+                                    @endif
+                                </div>
+                                 <div class="form-group">
+                                    <label for="title">{{ __('header.title') }}</label>
+                                    <input class="form-control" name="title" min="1" max="30" required>
+                                    @if( $errors->has('title'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('title') }}
 
                                         </div>
                                     @endif

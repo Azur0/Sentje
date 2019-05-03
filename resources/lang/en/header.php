@@ -40,6 +40,7 @@
         'donation' => 'Donation',
         'description' => 'Description',
         'selectmedia' => 'Select media',
+        'title' => 'Title',
 
         // Payment
         'mypayment' => 'My Payments',

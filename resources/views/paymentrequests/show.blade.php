@@ -7,27 +7,27 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    <div id="backlink">
+                    	<i class="fas fa-arrow-left"></i> <a href="{{ url()->previous() }}">{{ __('link.back') }}</a>
+                    </div>
+
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">
-                            {{ $account->name }}: Payment Requests
-                            <a href="/accounts/{{ $account->id }}/paymentrequests/create">
-                                <i class="fas fa-plus-square"
-                                   style="font-size: 30px; vertical-align: middle; float:right;"></i>
-                            </a>
+                            {{ $account->name }}: Payment Request: {{ $paymentrequest->title }}
                         </div>
-
                         <div class="card-body">
+                            <h2>{{ $paymentrequest->title }}</h2>
+                            <h6>Date Filed: {{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</h6>
+                            <p>link: <span class="boxed-in">{{ $paymentrequest->payment_url }}</span></p>
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th scope="col">User</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Date Filed</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($paymentrequests as $paymentrequest)
                                     <tr>
                                         <td>
                                             @if (empty($paymentrequest->to_user->name))
@@ -38,11 +38,12 @@
                                         </td>
                                         <td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>
                                         <td>{{ $paymentrequest->status }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</td>
                                     </tr>
-                                @endforeach
                                 </tbody>
                             </table>
+                            <p class="boxed-in">
+                            	{{ $paymentrequest->description }}
+                            </p>
                         </div>
                     </div>
                 </div>

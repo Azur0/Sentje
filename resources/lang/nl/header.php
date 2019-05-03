@@ -40,6 +40,7 @@
         'donation' => 'Donatie',
         'description' => 'Omschrijving',
         'selectmedia' => 'Selecteer media',
+        'title' => 'Titel',
 
         // Payment
         'mypayment' => 'Mijn Betalingen',

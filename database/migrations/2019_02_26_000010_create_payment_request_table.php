@@ -34,6 +34,7 @@ class CreatePaymentRequestTable extends Migration
             $table->string('payment_url');
             $table->string('success_url')->unique();
             $table->string('mollie_id');
+            $table->string('title')->nullable();
             $table->string('description');
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
             $table->string('media')->nullable();

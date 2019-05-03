@@ -47,14 +47,14 @@ class PaymentRequestController extends Controller
      * @param  \App\PaymentRequest $paymentRequest
      * @return \Illuminate\Http\Response
      */
-    public function show($account_id, PaymentRequest $paymentRequest)
+    public function show($account_id, $paymentRequest)
     {
         if (Auth::check()) {
             $account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
-            $paymentrequests = PaymentRequest::all()->where('id', $paymentRequest);
+            $paymentrequest = PaymentRequest::where('id', $paymentRequest)->first();
 
             if ($account->user_id == Auth::user()->id) {
-                return view('paymentrequest.show');
+                return view('paymentrequests.show', compact('account','paymentrequest'));
             } else {
                 return redirect('/accounts');
             }
@@ -100,7 +100,8 @@ class PaymentRequestController extends Controller
             'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',
             'description' => 'required|min:4',
             'request_type' => ['required', 'regex:(payment|donation)'],
-            'media' => ['image']
+            'media' => ['image'],
+            'title' => 'required|min:1|max:30|string'
         ]);
 
         //Image
@@ -135,7 +136,8 @@ class PaymentRequestController extends Controller
                     'payment_url' => $mollinfo[1],
                     'success_url' => $succesUrl,
                     'mollie_id' => $mollinfo[0],
-                    'media' => $name
+                    'media' => $name,
+                    'title' => request('title')
                 ]);
             }
 
@@ -155,7 +157,8 @@ class PaymentRequestController extends Controller
                 'payment_url' => $mollinfo[1],
                 'success_url' => $succesUrl,
                 'mollie_id' => $mollinfo[0],
-                'media' => $name
+                'media' => $name,
+                'title' => request('title')
             ]);
         }
         return redirect('/home');

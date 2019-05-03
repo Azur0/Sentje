@@ -7,6 +7,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    <div id="backlink">
+                    	<i class="fas fa-arrow-left"></i> <a href="/accounts">{{ __('link.accounts') }}</a>
+                    </div>
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">
                             Delete account: {{ $account->name }} - {{ $account->iban }}
