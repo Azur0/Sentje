@@ -212,7 +212,7 @@ class PaymentRequestController extends Controller
                 $paymentRequest->status = 'canceled';
                 $paymentRequest->save();
 
-                Mollie::api()->payments()->delete($paymentRequest->mollie_id);
+                //Mollie::api()->payments()->delete($paymentRequest->mollie_id);
             }
 
             return redirect('/accounts');

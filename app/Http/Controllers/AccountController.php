@@ -56,7 +56,7 @@ class AccountController extends Controller
         if (Auth::check()) {
             Account::create(array_merge($this->validate(request(), [
                 'name' => ['required', 'max:40'],
-                'iban' => ['required', 'max:40', 'iban']
+                'iban' => ['required', 'max:40', 'iban', 'unique:accounts,iban']
             ]), ['user_id' => Auth::user()->id]));
 
             return redirect('/accounts');
@@ -122,7 +122,7 @@ class AccountController extends Controller
             if ($account->user_id == Auth::user()->id) {
                 $this->validate(request(), [
                     'name' => ['required', 'max:40'],
-                    'iban' => ['required', 'max:40', 'iban', 'unique:accounts']
+                    'iban' => ['required', 'max:40', 'iban', 'unique:accounts,iban,' . $account->id]
                 ]);
 
                 $account->update([
