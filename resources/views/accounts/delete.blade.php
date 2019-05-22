@@ -12,7 +12,7 @@
                     </div>
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">
-                            Delete account: {{ $account->name }} - {{ $account->iban }}
+                            Delete account: {{ decrypt($account->name) }} - {{ decrypt($account->iban) }}
                         </div>
 
                         <div class="card-body">

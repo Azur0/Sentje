@@ -26,8 +26,8 @@ class CreateAccountTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('name', 40);
-            $table->string('iban', 40)->unique();
+            $table->string('name', 255);
+            $table->string('iban', 255);
             $table->timestamps();
             $table->softDeletes();
 

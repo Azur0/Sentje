@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PaymentRequest extends Model
 {
-	//use SoftDeletes;
+	use SoftDeletes;
 
 	protected $fillable = [
 		'created_by_user_id',

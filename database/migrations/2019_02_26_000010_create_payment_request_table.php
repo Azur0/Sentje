@@ -30,7 +30,7 @@ class CreatePaymentRequestTable extends Migration
             $table->unsignedInteger('deposit_account_id');
             $table->unsignedInteger('currencies_id');
             $table->double('requested_amount');
-            $table->enum('status', ['open', 'pending', 'partial', 'completed', 'canceled', 'expired'])->default('open');
+            $table->enum('status', ['open', 'pending', 'partial', 'paid', 'canceled', 'expired'])->default('open');
             $table->string('payment_url');
             $table->string('success_url')->unique();
             $table->string('mollie_id');

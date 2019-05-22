@@ -33,8 +33,8 @@
                                 <tbody>
                                 @foreach ($accounts as $account)
                                     <tr>
-                                        <td><a href="/accounts/{{ $account->id }}">{{ $account->name }}</a></td>
-                                        <td>{{ $account->iban }}</td>
+                                        <td><a href="/accounts/{{ $account->id }}">{{ decrypt($account->name) }}</a></td>
+                                        <td>{{ decrypt($account->iban) }}</td>
                                         <td class="text-center">
                                             <a href="{{ url("/accounts/$account->id/edit") }}"><i class="fas fa-edit"
                                                                                                   style="font-size:20px; margin-right: 10px; color:#2578AF;"></i></a>

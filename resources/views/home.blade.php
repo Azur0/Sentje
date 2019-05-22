@@ -82,7 +82,7 @@
 									<tr>
 										<td>
 											<a href="/accounts/{{ $account->id }}"><span
-														style="vertical-align: middle;">{{ $account->user_id . ' ' . $account->name }}</span></a>
+														style="vertical-align: middle;">{{ $account->user_id . ' ' . decrypt($account->name) }}</span></a>
 										</td>
 									</tr>
 								@endforeach

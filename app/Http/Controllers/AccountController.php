@@ -54,10 +54,27 @@ class AccountController extends Controller
     public function store(Account $account)
     {
         if (Auth::check()) {
-            Account::create(array_merge($this->validate(request(), [
+
+            $ibans = Account::all()->pluck('iban');
+
+            foreach($ibans as $iban) {
+                if(decrypt($iban) == str_replace(' ', '', request('iban'))) {
+                    return back()->withInput()->withErrors(array('iban' => 'There already is an account with this IBAN'));
+                }
+            }
+
+            $this->validate(request(), [
                 'name' => ['required', 'max:40'],
                 'iban' => ['required', 'max:40', 'iban', 'unique:accounts,iban']
-            ]), ['user_id' => Auth::user()->id]));
+            ]);
+
+            Account::create([
+                'name' => encrypt(request('name')),
+                'iban' => encrypt(str_replace(' ', '', request('iban'))),
+                'user_id' => Auth::id()
+            ]);
+
+            
 
             return redirect('/accounts');
         } else {
@@ -120,14 +137,29 @@ class AccountController extends Controller
     {
         if (Auth::check()) {
             if ($account->user_id == Auth::user()->id) {
+
+                $ibans = Account::all()->pluck('iban');
+
+                for($x = 0; $x < count($ibans); $x++) {
+                    if(decrypt($ibans[$x]) == decrypt($account->iban)) {
+                        unset($ibans[$x]);
+                    }
+                }
+
+                foreach($ibans as $iban) {
+                    if(decrypt($iban) == str_replace(' ', '', request('iban'))) {
+                        return back()->withInput()->withErrors(array('iban' => 'There already is an account with this IBAN'));
+                    }
+                }
+
                 $this->validate(request(), [
                     'name' => ['required', 'max:40'],
                     'iban' => ['required', 'max:40', 'iban', 'unique:accounts,iban,' . $account->id]
                 ]);
 
                 $account->update([
-                    'name' => request('name'),
-                    'iban' => str_replace(' ', '', request('iban'))
+                    'name' => encrypt(request('name')),
+                    'iban' => encrypt(str_replace(' ', '', request('iban')))
                 ]);
             }
 
