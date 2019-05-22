@@ -19,33 +19,33 @@ class DatabaseSeeder extends Seeder
         DB::table('currencies')->insert(['currency' => 'USD', 'fullname' => 'Dollar', 'symbol' => '$',]);
 
         DB::table('users')->insert([
-            'name' => 'jeroen',
+            'name' => encrypt('jeroen'),
             'email' => 'jeroen3529@gmail.com',
             'password' => password_hash('vunzkees', PASSWORD_BCRYPT),
             'role_id' => 2
         ]);
         DB::table('users')->insert([
-            'name' => 'test1',
+            'name' => encrypt('test1'),
             'email' => 'test1@test.test',
             'password' => password_hash('vunzkees', PASSWORD_BCRYPT),
         ]);
         DB::table('users')->insert([
-            'name' => 'test2',
+            'name' => encrypt('test2'),
             'email' => 'test2@test.test',
             'password' => password_hash('vunzkees', PASSWORD_BCRYPT),
         ]);
         DB::table('users')->insert([
-            'name' => 'test3',
+            'name' => encrypt('test3'),
             'email' => 'test3@test.test',
             'password' => password_hash('vunzkees', PASSWORD_BCRYPT),
         ]);
         DB::table('users')->insert([
-            'name' => 'test4',
+            'name' => encrypt('test4'),
             'email' => 'test4@test.test',
             'password' => password_hash('vunzkees', PASSWORD_BCRYPT),
         ]);
         DB::table('users')->insert([
-            'name' => 'test5',
+            'name' => encrypt('test5'),
             'email' => 'test5@test.test',
             'password' => password_hash('vunzkees', PASSWORD_BCRYPT),
         ]);

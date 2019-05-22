@@ -16,7 +16,7 @@
                         Payment Request
                     </div>
                     <div class="card-body">
-                        <div>{{ $paymentRequest->created_by_user->name }}</div> {{ \Carbon\Carbon::parse($paymentRequest->created_at) }}
+                        <div>{{ decrypt($paymentRequest->created_by_user->name) }}</div> {{ \Carbon\Carbon::parse($paymentRequest->created_at) }}
                         <h2>{{ $paymentRequest->currency->symbol }} {{ $paymentRequest->requested_amount }} {{ $paymentRequest->currency_id }}</h2>
                         <h2>status: {{ $paymentRequest->status }}</h2>
                         <div>

@@ -13,7 +13,7 @@
 
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">
-                            {{ $account->name }}: Payment Request: {{ $paymentrequest->title }}
+                            {{ decrypt($account->name) }}: Payment Request: {{ $paymentrequest->title }}
                         </div>
                         <div class="card-body">
                             <h2>{{ $paymentrequest->title }}</h2>
@@ -33,7 +33,7 @@
                                             @if (empty($paymentrequest->to_user->name))
                                                 Guest
                                             @else
-                                                {{ $paymentrequest->to_user->name }}
+                                                {{ decrypt($paymentrequest->to_user->name) }}
                                             @endif
                                         </td>
                                         <td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>

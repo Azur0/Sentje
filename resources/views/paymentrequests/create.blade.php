@@ -26,7 +26,7 @@
                                         <input type="hidden" name="to_users_id" value="">
                                         <div id="all_users" class="col-5">
                                             @foreach($users as $user)
-                                                <div class="user"><span>{{ $user->id }}</span>{{ $user->name }}</div>
+                                                <div class="user"><span>{{ $user->id }}</span>{{ decrypt($user->name) }}</div>
                                             @endforeach
                                         </div>
                                         <div id="buttons" class="col-sm">

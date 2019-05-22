@@ -22,7 +22,7 @@ class UserController extends Controller
             'password' => 'required|min:6|max:191|confirmed',
         ]);
 
-        $user->name = request('name');
+        $user->name = encrypt(request('name'));
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
 

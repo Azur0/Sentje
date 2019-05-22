@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <label for="name">{{ __('header.name') }}</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                           value="{{ $user->name }}"/>
+                                           value="{{ decrypt($user->name) }}"/>
                                     {!! $errors->first('name', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}
                                 </div>
 

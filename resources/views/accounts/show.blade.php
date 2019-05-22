@@ -71,7 +71,7 @@
                                             @if (empty($paymentrequest->to_user->name))
                                                 Guest
                                             @else
-                                                {{ $paymentrequest->to_user->name }}
+                                                {{ decrypt($paymentrequest->to_user->name) }}
                                             @endif
                                         </td>
                                         <td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>
