@@ -23,8 +23,8 @@
         'noincomingrequest' => 'Geen inkomende verzoeken',
 
         // Account
-        'myaccount' => 'Mijn Accounten',
-        'accountname' => 'Account Naam',
+        'myaccount' => 'Mijn Rekeningen',
+        'accountname' => 'Rekening Naam',
         'ibannumber' => 'IBAN Nummer',
         'addaccount' => 'Voeg nieuw account toe',
         'editaccount' => 'Wijzig account',

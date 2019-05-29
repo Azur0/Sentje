@@ -46,7 +46,7 @@
                 <div class="col-md-8">
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">
-                            <a href="/accounts/{{ $account->id }}/paymentrequests">{{ __('header.mypayment') }}</a>
+                            <a href="/accounts/{{ $account->id }}/paymentrequests">{{ __('header.myrequests') }}</a>
                             <a href="/accounts/{{ $account->id }}/paymentrequests/create">
                                 <i class="fas fa-plus-square" style="font-size: 30px; vertical-align: middle; float:right;"></i>
                             </a>
