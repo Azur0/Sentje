@@ -18,6 +18,7 @@
                         <div class="card-body">
                             <h2>{{ $paymentrequest->title }}</h2>
                             <h6>Date Filed: {{ \Carbon\Carbon::parse($paymentrequest->created_at)->format('d/m/Y') }}</h6>
+                            <h6>Due Date: {{ \Carbon\Carbon::parse($paymentrequest->date_due)->format('d/m/Y') }}</h6>
                             <p>link: <span class="boxed-in">{{ $paymentrequest->payment_url }}</span></p>
                             <table class="table table-hover">
                                 <thead>

@@ -32,7 +32,8 @@ class PaymentRequestController extends Controller
                 foreach ($data as $key => $value) {
                     //dd($value);
                     $events[] = Calendar::event(
-                        $value->title,
+                        'User: '. decrypt($value->to_user->name) . '
+                        Amount: ' . $value->requested_amount,
                         true,
                         new \DateTime($value->date_due),
                         new \DateTime($value->date_due),
@@ -40,7 +41,7 @@ class PaymentRequestController extends Controller
                         // Add color and link on event
                         [
                             'color' => '#fed136',
-                            //'url' => 'pass here url and any route',
+                            'url' => '/accounts/'.$value->deposit_account_id.'/paymentrequests/'.$value->id,
                         ]
                     );
                 }
