@@ -1,5 +1,9 @@
 @extends('layouts/page')
 
+@section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+@endsection
+
 @section('create', 'account')
 
 @section('content')
@@ -55,14 +59,19 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div id="table">
-                            	
-                            	
-                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                            {!! $calendar->calendar() !!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+{!! $calendar->script() !!}
 @endsection

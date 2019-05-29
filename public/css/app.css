@@ -4260,8 +4260,8 @@ input[type=button].btn-block {
 }
 
 .nav-link {
-  display: block;
-  padding: 0.5rem 1rem;
+  display: block !important;
+  padding: 0.5rem 1rem !important;
 }
 
 .nav-link:hover,
@@ -4546,7 +4546,7 @@ input[type=button].btn-block {
 
   .navbar-expand-lg .navbar-collapse {
     display: flex !important;
-    flex-basis: auto;
+    flex-basis: auto !important;
   }
 
   .navbar-expand-lg .navbar-toggler {
@@ -8005,7 +8005,7 @@ button.bg-dark:focus {
 }
 
 .fixed-top {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   right: 0;
   left: 0;

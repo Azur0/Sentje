@@ -8,6 +8,7 @@ use App\Account;
 use App\Currency;
 use App\User;
 use Auth;
+use Calendar;
 use Mollie\Laravel\Facades\Mollie;
 
 class PaymentRequestController extends Controller
@@ -25,6 +26,26 @@ class PaymentRequestController extends Controller
     public function index($account_id)
     {
         if (Auth::check()) {
+            $events = [];
+            $data = PaymentRequest::all();
+            if($data->count()) {
+                foreach ($data as $key => $value) {
+                    $events[] = Calendar::event(
+                        $value->title,
+                        true,
+                        new \DateTime($value->start_date),
+                        new \DateTime($value->end_date.' +1 day'),
+                        null,
+                        // Add color and link on event
+                        [
+                            'color' => '#f05050',
+                            'url' => 'pass here url and any route',
+                        ]
+                    );
+                }
+            }
+            $calendar = Calendar::addEvents($events);
+
             $account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
             $paymentrequests = PaymentRequest::all()->where(
                 'created_by_user_id',
@@ -33,7 +54,7 @@ class PaymentRequestController extends Controller
 
             if(!is_null($account)) {
                 if ($account->user_id == Auth::user()->id) {
-                    return view('paymentrequests.index', compact('account', 'paymentrequests'));
+                    return view('paymentrequests.index', compact('account', 'paymentrequests', 'calendar'));
                 } else {
                     return redirect('/accounts');
                 }

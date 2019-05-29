@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="/./img/icon.png"/>
 
     @include('partials._styles')
-
+    @yield('style')
 </head>
 <body id="page-top">
 @include('partials._header')
@@ -26,5 +26,6 @@
 <!-- Custom scripts for this template -->
 <script src="{{ asset('js/agency.min.js') }}"></script>
 <script src="{{ asset('js/userselect.js') }}"></script>
+@yield('script')
 </body>
 </html>
