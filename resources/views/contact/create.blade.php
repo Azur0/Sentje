@@ -22,7 +22,7 @@
                                     <label for="contact">{{ __('header.user')}}</label>
                                     <select class="form-control" name="contact">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            <option value="{{ $user->id }}">{{ decrypt($user->name) }}</option>
                                         @endforeach
                                     </select>
                                     {!! $errors->first('contact', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}

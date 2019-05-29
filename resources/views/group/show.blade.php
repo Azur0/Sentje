@@ -25,7 +25,7 @@
                                         @foreach ($groupusers as $groupuser)
                                             <li class="list-group-item">
                                                 <strong>
-                                                    {{ $groupuser->user->name }}
+                                                    {{ decrypt($groupuser->user->name) }}
                                                 </strong>
                                             </li>
                                         @endforeach
