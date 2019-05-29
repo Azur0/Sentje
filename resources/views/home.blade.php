@@ -105,9 +105,9 @@
 								@foreach ($friends as $friend)
 									<tr>
 										<td>
-											<a href="{{ $friend->user_id }}"><span
-														style="vertical-align: middle;">{{ $friend->user_id1 . ' ' . $friend->user1->name }}</span><span
-														class="float-right"></span></a>
+											<span
+														style="vertical-align: middle;">#{{ $friend->user_id1 . ' ' . decrypt($friend->user1->name) }}</span><span
+														class="float-right"></span>
 										</td>
 									</tr>
 								@endforeach

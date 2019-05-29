@@ -31,8 +31,12 @@ class PaymentRequestController extends Controller
                 Auth::user()->id
             )->where('deposit_account_id', $account_id);
 
-            if ($account->user_id == Auth::user()->id) {
-                return view('paymentrequests.index', compact('account', 'paymentrequests'));
+            if(!is_null($account)) {
+                if ($account->user_id == Auth::user()->id) {
+                    return view('paymentrequests.index', compact('account', 'paymentrequests'));
+                } else {
+                    return redirect('/accounts');
+                }
             } else {
                 return redirect('/accounts');
             }
@@ -53,8 +57,12 @@ class PaymentRequestController extends Controller
             $account = Account::all()->where('id', $account_id)->where('user_id', Auth::user()->id)->first();
             $paymentrequest = PaymentRequest::where('id', $paymentRequest)->first();
 
-            if ($account->user_id == Auth::user()->id) {
-                return view('paymentrequests.show', compact('account','paymentrequest'));
+            if(!is_null($account)) {
+                if ($account->user_id == Auth::user()->id) {
+                    return view('paymentrequests.show', compact('account','paymentrequest'));
+                } else {
+                    return redirect('/accounts');
+                }
             } else {
                 return redirect('/accounts');
             }

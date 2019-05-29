@@ -41,9 +41,15 @@
                                         <td>{{ $paymentrequest->status }}</td>
                                         <td>{{ \Carbon\Carbon::parse($paymentrequest->created_at)->formatLocalized('%A %d %B %Y') }}</td>
                                         <td class="text-center">
+                                        @if($paymentrequest->status != 'paid' && $paymentrequest->status != 'expired')
                                             <a href="/accounts/{{ $paymentrequest->deposit_account_id }}/paymentrequests/{{ $paymentrequest->id }}/delete" alt="cancel">
                                                 <i class="fas fa-ban" style="font-size:20px;"></i>
                                             </a>
+                                        @else
+                                        <a href="#" alt="cancel">
+                                                <i class="fas fa-ban" style="font-size:20px;"></i>
+                                            </a>
+                                        @endif
                                         </td>
                                     </tr>
                                 @endforeach

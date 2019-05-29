@@ -8,7 +8,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div id="backlink">
-                    	<i class="fas fa-arrow-left"></i> <a href="/contacts">{{ __('link.contact') }}</a>
+                    	<i class="fas fa-arrow-left"></i> <a href="/contact">{{ __('link.contact') }}</a>
                     </div>
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">
@@ -22,7 +22,7 @@
                                     <label for="contact">{{ __('header.user')}}</label>
                                     <select class="form-control" name="contact">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            <option value="{{ $user->id }}">{{ decrypt($user->name) }}</option>
                                         @endforeach
                                     </select>
                                     {!! $errors->first('contact', '<div class="alert alert-danger" style="margin-top: 10px;">:message</div>') !!}

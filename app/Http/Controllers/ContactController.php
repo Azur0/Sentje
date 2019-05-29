@@ -51,7 +51,7 @@ class ContactController extends Controller
     {
         if (Auth::check()) {
             $this->validate(request(), [
-                'contact' => 'integer|not_in:' . Auth::user()->id
+                'contact' => 'required|unique:contacts,user_id1,NULL,id,user_id,' . Auth::id()
             ]);
 
 

@@ -85,8 +85,12 @@ class GroupController extends Controller
             $groups = Group::all()->where('owner_id', Auth::user()->id)->where('id', $id)->first();
             $groupusers = GroupHasUser::all()->where('group_id', $id);
 
-            if ($groups->owner_id == Auth::user()->id) {
-                return view('group.show', compact('groups', 'groupusers'));
+            if(!is_null($groups)) {
+                if ($groups->owner_id == Auth::user()->id) {
+                    return view('group.show', compact('groups', 'groupusers'));
+                } else {
+                    return redirect('/group');
+                }
             } else {
                 return redirect('/group');
             }

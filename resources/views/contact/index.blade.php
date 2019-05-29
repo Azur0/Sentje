@@ -33,7 +33,7 @@
                                 @foreach ($contacts as $contact)
                                     <tr>
                                         <td>
-                                            {{ $contact->user1->name }}
+                                            {{ decrypt($contact->user1->name) }}
                                         </td>
                                         <td class="text-center">
                                             <div class="row justify-content-center">
