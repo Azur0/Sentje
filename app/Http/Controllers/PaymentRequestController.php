@@ -127,10 +127,11 @@ class PaymentRequestController extends Controller
             'to_users_id' => 'nullable|regex:(^([0-9]+,?\s*)+$)',
             'currencies_id' => 'required',
             'requested_amount' => 'required|numeric|gt:0|regex:(^\d{0,10}(\.\d{1,2})$)',
+            'title' => 'required|min:1|max:30|string',
             'description' => 'required|min:4',
             'request_type' => ['required', 'regex:(payment|donation)'],
             'media' => ['image'],
-            'title' => 'required|min:1|max:30|string'
+            'date_due' => 'date|after_or_equal:now' 
         ]);
 
         //Image
@@ -143,7 +144,6 @@ class PaymentRequestController extends Controller
         }
 
         $amount = request('requested_amount');
-
 
         if (strlen(request('to_users_id')) > 0) {
             $to_users_id = explode(',', request('to_users_id'));
@@ -166,7 +166,8 @@ class PaymentRequestController extends Controller
                     'success_url' => $succesUrl,
                     'mollie_id' => $mollinfo[0],
                     'media' => $name,
-                    'title' => request('title')
+                    'title' => request('title'),
+                    'date_due' => request('date_due'),
                 ]);
             }
 
@@ -187,7 +188,8 @@ class PaymentRequestController extends Controller
                 'success_url' => $succesUrl,
                 'mollie_id' => $mollinfo[0],
                 'media' => $name,
-                'title' => request('title')
+                'title' => request('title'),
+                'date_due' => request('date_due'),
             ]);
         }
         return redirect('/home');

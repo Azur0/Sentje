@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreatePaymentRequestTable extends Migration
 {
@@ -38,7 +39,7 @@ class CreatePaymentRequestTable extends Migration
             $table->string('description');
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
             $table->string('media')->nullable();
-            $table->date('date_due')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->date('date_due')->default(Carbon::now());
             $table->timestamps();
             $table->softDeletes();
 
