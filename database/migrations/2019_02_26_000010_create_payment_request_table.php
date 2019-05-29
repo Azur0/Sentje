@@ -38,6 +38,7 @@ class CreatePaymentRequestTable extends Migration
             $table->string('description');
             $table->enum('request_type', ['payment', 'donation'])->default('payment');
             $table->string('media')->nullable();
+            $table->date('date_due')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
             $table->softDeletes();
 
