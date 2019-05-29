@@ -27,19 +27,20 @@ class PaymentRequestController extends Controller
     {
         if (Auth::check()) {
             $events = [];
-            $data = PaymentRequest::all();
+            $data = PaymentRequest::all()->where('created_by_user_id', Auth::id());
             if($data->count()) {
                 foreach ($data as $key => $value) {
+                    //dd($value);
                     $events[] = Calendar::event(
                         $value->title,
                         true,
-                        new \DateTime($value->start_date),
-                        new \DateTime($value->end_date.' +1 day'),
+                        new \DateTime($value->date_due),
+                        new \DateTime($value->date_due),
                         null,
                         // Add color and link on event
                         [
-                            'color' => '#f05050',
-                            'url' => 'pass here url and any route',
+                            'color' => '#fed136',
+                            //'url' => 'pass here url and any route',
                         ]
                     );
                 }
