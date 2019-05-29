@@ -21,10 +21,10 @@
 										</tr>
 									</thead>
 									<tbody>
-									@foreach ($openrequests as $paymentrequest)
+									@foreach ($openrequests as $openrequest)
 										<tr>											
-											<td>{{ $paymentrequest->title }}</td>
-											<td>{{ decrypt($paymentrequest->created_by_user->name) }}</td>
+											<td>{{ $openrequest->title }}</td>
+											<td>{{ decrypt($openrequest->created_by_user->name) }}</td>
 										</tr>
 									@endforeach
 									</tbody>
