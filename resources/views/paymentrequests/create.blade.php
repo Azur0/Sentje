@@ -61,6 +61,16 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
+                                    <label for="date_due">{{ __('header.date_due') }}</label>
+                                    <input type="date" class="form-control" name="date_due">
+                                    @if( $errors->has('date_due'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('date_due') }}
+
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="form-group">
                                     <label for="currencies_id">{{ __('header.currency') }}</label>
                                     <select class="form-control" name="currencies_id">
                                         <option selected value="">{{ __('header.selectcurrency') }}</option>

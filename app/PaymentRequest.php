@@ -21,7 +21,8 @@ class PaymentRequest extends Model
 		'success_url',
 		'mollie_id',
 		'media',
-		'title'
+		'title',
+		'date_due'
 	];
 
 	public function created_by_user()
