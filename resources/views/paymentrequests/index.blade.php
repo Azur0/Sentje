@@ -19,7 +19,6 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th></th>
                                     <th scope="col">{{ __('header.user') }}</th>
                                     <th scope="col">{{ __('header.amount') }}</th>
                                     <th scope="col">Status</th>
@@ -35,7 +34,7 @@
                                             @if (empty($paymentrequest->to_user->name))
                                                 Guest
                                             @else
-                                                {{ $paymentrequest->to_user->name }}
+                                                {{ decrypt($paymentrequest->to_user->name) }}
                                             @endif
                                         </td>
                                         <td>{{ $paymentrequest->requested_amount }} {{ $paymentrequest->currency->currency }}</td>

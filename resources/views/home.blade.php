@@ -12,21 +12,26 @@
 							{{ __('header.openrequest') }}
 						</div>
 						<div class="card-body">
+						@if ($openrequests->count() > 0)
 							<table class="table">
-								@if ($openrequests->count() > 0)
+									<thead>
+										<tr>
+											<th>Titel</th>
+											<th>Ontvangers</th>
+										</tr>
+									</thead>
 									<tbody>
 									@foreach ($openrequests as $paymentrequest)
 										<tr>											
-											{{ $paymentrequest }}
 											<td>{{ $paymentrequest->title }}</td>
-											<td>{{ $paymentrequest->created_by_user->name }}</td>
+											<td>{{ decrypt($paymentrequest->created_by_user->name) }}</td>
 										</tr>
 									@endforeach
 									</tbody>
-								@else
-									<p>{{ __('header.noincomingrequest') }}</p>
-								@endif
 							</table>
+						@else
+							<p>{{ __('header.noincomingrequest') }}</p>
+						@endif
 						</div>
 					</div>
 					<div class="card">
@@ -34,8 +39,8 @@
 							{{ __('header.incomingrequest') }}
 						</div>
 						<div class="card-body">
+						@if ($paymentrequests->count() > 0)
 							<table class="table">
-								@if ($paymentrequests->count() > 0)
 									<tbody>
 									@foreach ($paymentrequests as $paymentrequest)
 										<tr>
@@ -52,7 +57,7 @@
 									</tbody>
 								@else
 									<p>{{ __('header.noincomingrequest') }}</p>
-								@endif
+						@endif
 							</table>
 						</div>
 					</div>

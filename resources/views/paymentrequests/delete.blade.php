@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">
-                            {{ $paymentrequest->account->name }}: Payment Requests: {{ $paymentrequest->description }}
+                            {{ decrypt($paymentrequest->account->name) }}: Payment Requests: {{ $paymentrequest->description }}
                         </div>
                         <div class="card-body">
 

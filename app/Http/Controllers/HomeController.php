@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $openrequests = PaymentRequest::take(5)->where('created_by_user_id', Auth::user()->id)->where('status', 'open');
+        $openrequests = PaymentRequest::all()->where('created_by_user_id', Auth::user()->id)->where('status', 'open');
         $friends = Contact::all()->where('user_id', Auth::user()->id);
         $paymentrequests = PaymentRequest::all()->where('to_user_id', Auth::user()->id)->where('status', 'open');
         $accounts = Account::all()->where('user_id', Auth::user()->id);
