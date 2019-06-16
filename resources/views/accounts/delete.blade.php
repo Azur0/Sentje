@@ -17,22 +17,25 @@
 
                         <div class="card-body">
                             @if (!$paymentrequests->isEmpty())
-                                <strong style="color:red;">You have open payment requests to this account. Are you sure
-                                    you want to delete this account?</strong>
+                                <strong style="color:red;">You have open payment requests to this account. You can't delete this account, but here's this message anyways just to bother you!</strong>
                                 <table class="table table-hover" style="margin: 40px 0px;">
                                     <thead>
                                     <tr>
+                                        <th scope="col">#</th>
                                         <th scope="col">User</th>
                                         <th scope="col">Pending amount</th>
                                         <th scope="col">Currency</th>
+                                        <th scope="col">Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($paymentrequests as $paymentrequest)
                                         <tr>
                                             <td>{{ $paymentrequest->to_user_id }}</td>
+                                            <td>{{ decrypt($paymentrequest->to_user->name) }}</td>
                                             <td>{{ $paymentrequest->requested_amount }}</td>
                                             <td>{{ $paymentrequest->currency->currency }}</td>
+                                            <td>{{ $paymentrequest->status }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
