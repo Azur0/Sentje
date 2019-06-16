@@ -88,8 +88,8 @@
                                 <div class="form-group">
                                     <label for="requested_amount">{{ __('header.amount') }}</label>
                                     <input class="form-control" type="number" name="requested_amount"
-                                           pattern="^\d{1,3}(,\d{3})*(\.\d+)?$" value="{{ old('requested_amount') }}"
-                                           data-type="currency" placeholder="€1.00" required>
+                                           pattern="^\d{1,3}(.\d{3})*(\.\d+)?$" value="{{ old('requested_amount') }}"
+                                           data-type="currency" placeholder="€1.00" required min="1" step="any">
                                     @if( $errors->has('requested_amount'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('requested_amount') }}

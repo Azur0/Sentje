@@ -109,7 +109,11 @@ class ContactController extends Controller
     public function destroy($id)
     {
         if (Auth::check()) {
-            Contact::destroy($id);
+            $contact = Contact::where('id', $id)->where('user_id', Auth::id())->first();
+
+            if(!is_null($contact)) {
+                Contact::destroy($id);
+            }
 
             return redirect('/contact');
         }

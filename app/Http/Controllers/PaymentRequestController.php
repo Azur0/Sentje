@@ -32,7 +32,7 @@ class PaymentRequestController extends Controller
                 foreach ($data as $key => $value) {
                     //dd($value);
                     $events[] = Calendar::event(
-                        'User: '. decrypt($value->to_user->name) . '
+                        'User: '. (!is_null($value->to_user_id) ? decrypt($value->to_user->name) : 'Guest') . '
                         Amount: ' . $value->requested_amount,
                         true,
                         new \DateTime($value->date_due),
@@ -149,7 +149,7 @@ class PaymentRequestController extends Controller
 
         if (strlen(request('to_users_id')) > 0) {
             $to_users_id = explode(',', request('to_users_id'));
-            $amount = round($amount / sizeof($to_users_id), 2, PHP_ROUND_HALF_UP);
+            //$amount = round($amount / sizeof($to_users_id), 2, PHP_ROUND_HALF_UP);
 
             foreach ($to_users_id as $to_user_id) {
                 $succesUrl = 'a' . request('account_id') . 'u' . $to_user_id . 't' . time();
