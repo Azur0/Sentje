@@ -41,6 +41,7 @@
         'description' => 'Omschrijving',
         'selectmedia' => 'Selecteer media',
         'title' => 'Titel',
+        'accountdeletionerror' => 'Je kunt dit account niet verwijderen omdat er 1 of meerdere open/lopende/partiële verzoeken zijn',
 
         // Payment
         'mypayment' => 'Mijn Betalingen',

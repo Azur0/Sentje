@@ -48,6 +48,12 @@
                                     account
                                 </button>
                             </form>
+                            @if($errors->any())
+                                </br>
+                                <div class="alert alert-danger" role="alert">
+                                    {{ __('header.accountdeletionerror') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -201,16 +201,27 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
+        $status = false;
+        $paymentrequests = PaymentRequest::all()->where('deposit_account_id', $id);
+
+        foreach($paymentrequests as $paymentrequest) {
+            if($paymentrequest->status == 'open' || $paymentrequest->status == 'pending' || $paymentrequest->status == 'partial') {
+                $status = true;
+            }
+        }
+
         if (Auth::check()) {
             $account = Account::where('user_id', Auth::user()->id)->where('id', $id)->get();
 
-            if (!$account->isEmpty()) {
-                if ($account[0]->id == $id) {
+            if (!$account->isEmpty() && $account[0]->id == $id) {
+                if($status == false) {
                     Account::destroy($id);
+                } else {
+                    return back()->withErrors('');
                 }
             }
-
-            return redirect('/accounts');
+            
+            return redirect('/accounts/'.$account[0]->id.'/delete');
         }
 
         return redirect('/login');

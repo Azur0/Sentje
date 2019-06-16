@@ -41,6 +41,7 @@
         'description' => 'Description',
         'selectmedia' => 'Select media',
         'title' => 'Title',
+        'accountdeletionerror' => 'You can\'t delete this account because there are 1 or more open/pending/partial requests',
 
         // Payment
         'mypayment' => 'My Payments',
