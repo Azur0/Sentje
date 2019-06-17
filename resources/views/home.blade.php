@@ -16,6 +16,7 @@
 							<table class="table">
 									<thead>
 										<tr>
+											<th></th>
 											<th>Titel</th>
 											<th>Ontvangers</th>
 										</tr>
@@ -23,6 +24,7 @@
 									<tbody>
 									@foreach ($openrequests as $openrequest)
 										<tr>											
+											<th><a href="/accounts/{{ $openrequest->deposit_account_id}}/paymentrequests/{{ $openrequest->id }}">open</a></th>
 											<td>{{ $openrequest->title }}</td>
 											<td>{{ decrypt($openrequest->created_by_user->name) }}</td>
 										</tr>

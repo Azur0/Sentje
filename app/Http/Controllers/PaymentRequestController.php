@@ -133,7 +133,7 @@ class PaymentRequestController extends Controller
             'description' => 'required|min:4',
             'request_type' => ['required', 'regex:(payment|donation)'],
             'media' => ['image'],
-            'date_due' => 'date|after_or_equal:now' 
+            'date_due' => 'date|after_or_equal:now -1 day' 
         ]);
 
         //Image
