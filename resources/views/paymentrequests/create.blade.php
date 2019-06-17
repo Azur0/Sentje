@@ -8,7 +8,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div id="backlink">
-                    	<i class="fas fa-arrow-left"></i> <a href="{{ url()->previous() }}">{{ __('link.back') }}</a>
+                    	<i class="fas fa-arrow-left"></i> <a href="/accounts/{{$account->id}}">{{ __('link.back') }}</a>
                     </div>
 
                     <div class="card">
@@ -52,7 +52,7 @@
                                 </div>
                                  <div class="form-group">
                                     <label for="title">{{ __('header.title') }}</label>
-                                    <input class="form-control" name="title" min="1" max="30" required>
+                                    <input type="text" class="form-control" name="title" min="1" max="30" required>
                                     @if( $errors->has('title'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('title') }}
